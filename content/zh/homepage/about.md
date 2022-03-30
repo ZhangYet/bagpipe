@@ -1,10 +1,20 @@
 ---
-title: Blank
+title: About
 draft: false
+role: A trivial engineer
+avatar: https://s.gravatar.com/avatar/9d4a72055a6ab800d99f11d0822f0d2c
+bio: 一个充满低级趣味的人
+organization:
+  name: Dantezy
+  url: https://github.com/ZhangYet
+social:
+  - icon: twitter
+    iconPack: fab
+    url: https://twitter.com/dantezy2814
 
-weight: 5
+weight:
 widget:
-  handler: blank
+  handler: about
 
   # Options: sm, md, lg and xl. Default is md.
   width:
@@ -17,16 +27,14 @@ widget:
   
   background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
-    color:
-    image: images/hero-left.jpg
+    color: secondary
+    image:
     # Options: auto, cover and contain. Default is auto.
-    size: cover
+    size:
     # Options: center, top, right, bottom, left.
     position:
     # Options: fixed, local, scroll.
     attachment: 
 ---
 
-<div style="text-align:center">
-  <p>Write anything you like here!</p>
-</div>
+
