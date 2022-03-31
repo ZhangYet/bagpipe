@@ -1,12 +1,12 @@
 ---
 title: About
 draft: false
-role: A trivial engineer
-avatar: https://s.gravatar.com/avatar/9d4a72055a6ab800d99f11d0822f0d2c
-bio: A dummy guy
+role: A dummy guy
+avatar:
+bio:
 organization:
-  name: Dantezy
-  url: https://github.com/ZhangYet
+  name:
+  url:
 social:
   - icon:
     iconPack:

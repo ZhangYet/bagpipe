@@ -8,5 +8,5 @@ en:
   languageCode: en
   languageName: English
   # Uncomment for multilingual sites, and move the default content into corresponding sub-folder.
-  # contentDir: content/en
-
+  contentDir: content/en
+  title: Bullsh*t!
