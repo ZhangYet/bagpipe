@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>一派胡言</title>
+    <link>/</link>
+    <description>Recent content on 一派胡言</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 31 Mar 2022 15:38:21 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我的思想源流</title>
+      <link>/posts/where-does-my-thought-come-from/</link>
+      <pubDate>Thu, 31 Mar 2022 15:38:21 +0800</pubDate>
+      
+      <guid>/posts/where-does-my-thought-come-from/</guid>
+      <description>这篇文章当然是模仿王小波《我的文字师承》。</description>
+    </item>
+    
+    <item>
+      <title>Welcome to Dantezy Xyz</title>
+      <link>/posts/welcome-to-dantezy-xyz/</link>
+      <pubDate>Wed, 30 Mar 2022 15:01:53 +0800</pubDate>
+      
+      <guid>/posts/welcome-to-dantezy-xyz/</guid>
+      <description>测试</description>
+    </item>
+    
+  </channel>
+</rss>

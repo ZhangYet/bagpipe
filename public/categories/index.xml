@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on 一派胡言</title>
+    <link>/categories/</link>
+    <description>Recent content in Categories on 一派胡言</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 31 Mar 2022 15:38:21 +0800</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>随感</title>
+      <link>/categories/%E9%9A%8F%E6%84%9F/</link>
+      <pubDate>Thu, 31 Mar 2022 15:38:21 +0800</pubDate>
+      
+      <guid>/categories/%E9%9A%8F%E6%84%9F/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
