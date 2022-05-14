@@ -2,19 +2,19 @@
 title: 教育经历
 draft: false
 experiences:
-  - title: 中山大学 计算数学 硕士
+  - title: 计算数学 硕士
     organization:
-      name:
-      url:
-    dates:
-    location:
-    writeup:
-  - title: 中山大学 数学与应用数学 学士
+      name: 中山大学
+      url: https://sysu.edu.cn
+    dates: 2013.09 -2015.06
+    location: 广州
+    writeup: 
+  - title: 数学与应用数学 学士
     organization:
-      name:
-      url:
-    dates:
-    location:
+      name: 中山大学
+      url: https://sysu.edu.cn
+    dates: 2009.09 - 2013.06 
+    location: 广州
     writeup:
 
 weight:
