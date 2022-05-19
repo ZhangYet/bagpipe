@@ -5,16 +5,6 @@
     <link>/authors/</link>
     <description>Recent content in Authors on 一派胡言</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
-    <lastBuildDate>Thu, 31 Mar 2022 15:38:21 +0800</lastBuildDate><atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Dantezy</title>
-      <link>/authors/dantezy/</link>
-      <pubDate>Thu, 31 Mar 2022 15:38:21 +0800</pubDate>
-      
-      <guid>/authors/dantezy/</guid>
-      <description></description>
-    </item>
-    
+    <language>zh</language><atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

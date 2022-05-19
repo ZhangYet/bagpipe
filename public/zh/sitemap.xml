@@ -2,21 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/authors/</loc>
-    <lastmod>2022-03-30T15:01:47+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/authors/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="/authors/"
-                />
-  </url><url>
     <loc>/categories/</loc>
-    <lastmod>2022-03-30T15:01:47+08:00</lastmod>
+    <lastmod>2022-05-19T18:43:42+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -28,11 +15,14 @@
                 href="/categories/"
                 />
   </url><url>
-    <loc>/authors/dantezy/</loc>
-    <lastmod>2022-03-30T15:01:47+08:00</lastmod>
+    <loc>/tags/log/</loc>
+    <lastmod>2022-05-19T18:43:42+08:00</lastmod>
+  </url><url>
+    <loc>/categories/log/</loc>
+    <lastmod>2022-05-19T18:43:42+08:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2022-03-30T15:01:47+08:00</lastmod>
+    <lastmod>2022-05-19T18:43:42+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -44,8 +34,21 @@
                 href="/posts/"
                 />
   </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2022-05-19T18:43:42+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="/tags/"
+                />
+  </url><url>
     <loc>/</loc>
-    <lastmod>2022-03-30T15:01:47+08:00</lastmod>
+    <lastmod>2022-05-19T18:43:42+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -57,28 +60,20 @@
                 href="/"
                 />
   </url><url>
-    <loc>/posts/where-does-my-thought-come-from/</loc>
-    <lastmod>2022-03-30T15:01:47+08:00</lastmod>
+    <loc>/posts/yesterday-once-more/</loc>
+    <lastmod>2022-05-19T18:43:42+08:00</lastmod>
+  </url><url>
+    <loc>/authors/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/en/posts/where-does-my-thought-come-from/"
+                href="/en/authors/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="/posts/where-does-my-thought-come-from/"
+                href="/authors/"
                 />
-  </url><url>
-    <loc>/categories/%E9%9A%8F%E6%84%9F/</loc>
-    <lastmod>2022-03-30T15:01:47+08:00</lastmod>
-  </url><url>
-    <loc>/posts/welcome-to-dantezy-xyz/</loc>
-    <lastmod>2022-03-30T15:01:47+08:00</lastmod>
-  </url><url>
-    <loc>/posts/yesterday-once-more/</loc>
-  </url><url>
-    <loc>/yesterday-once-more/</loc>
   </url><url>
     <loc>/series/</loc>
     <xhtml:link
@@ -90,18 +85,6 @@
                 rel="alternate"
                 hreflang="zh"
                 href="/series/"
-                />
-  </url><url>
-    <loc>/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="/tags/"
                 />
   </url>
 </urlset>
