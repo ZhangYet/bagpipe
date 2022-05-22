@@ -3,7 +3,7 @@ title = "博客迁移日记"
 author = ["Dantezy"]
 description = "简单讲述一下博客迁移的过程。"
 date = 2022-05-19
-lastmod = 2022-05-19T18:42:28+08:00
+lastmod = 2022-05-22T02:35:40+00:00
 tags = ["log"]
 categories = ["log"]
 draft = false
@@ -31,6 +31,8 @@ draft = false
 <span class="timestamp-wrapper"><span class="timestamp">[2022-05-14 Sat] </span></span> 更新个人简介。
 
 <span class="timestamp-wrapper"><span class="timestamp">[2022-05-19 Thu] </span></span> 写这篇迁移日记
+
+<span class="timestamp-wrapper"><span class="timestamp">[2022-05-22 Sun] </span></span> 用 [Let's Encrypt](https://letsencrypt.org/) 开启了 https 支持。
 
 
 ## 旧文存档 {#旧文存档}
