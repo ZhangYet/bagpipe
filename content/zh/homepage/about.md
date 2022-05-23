@@ -9,8 +9,14 @@ organization:
   url: https://github.com/ZhangYet
 social:
   - icon: twitter
-    iconPack: fab
+    iconPack: fas
     url: https://twitter.com/dantezy2814
+  - icon: envelope
+    iconPack: fas
+    url: zhangyet@gmail.com
+  - icon: rss
+    iconPack: fas
+    url: https://t.me/danteslimbo
 
 weight:
 widget:
