@@ -1,0 +1,26 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: zh/posts
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: qemu virtualization live-update
+#+hugo_categories: code
+#+description: 简单介绍一下 qemu 的 live-update 技术
+#+author: Dantezy
+#+date: 2022-05-24
+#+TITLE: qemu live update 简介
+* live update patch
+这个 patch 是 Oracle 向社区提交的，直到我写这篇文章的时候（<2022-05-24 Tue 15:28>）还没有合并进 master 分支。
+
+如果想要阅读其中的代码，可以在 [[https://patchwork.ozlabs.org/project/qemu-devel/list/?series=242677][patchwork]] 看所有提交，非常清楚。如果想把这个 patch 提前合并到自己的 qemu 分支。可以通过
+#+BEGIN_SRC bash
+  wget https://patchew.org/QEMU/1640199934-455149-1-git-send-email-steven.sistare@oracle.com/mbox -O live-update.patch
+
+  git am --3way live-update.patch
+#+END_SRC
+合并进去[fn:1]。
+* 基本用法
+* 代码分析
+
+* Footnotes
+
+[fn:1] qemu 社区用 email 进行管理（包括 PR 和 Code Reivew），如何想 qemu 社区提交 patch 可以参考[[https://www.qemu.org/docs/master/devel/submitting-a-patch.html][官方文档]]。我入行的时候
+github 已经很普及，所以其实我也不是很熟。年轻人应该多参与开源社区。

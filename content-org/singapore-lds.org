@@ -1,0 +1,20 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: zh/posts
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: log religion singapore
+#+hugo_categories: log
+#+description: 来新加坡之后跟基督教后期圣徒教会有一定接触。
+#+author: Dantezy
+#+date: 2022-05-24
+#+TITLE: 新加坡观察：基督教后期圣徒教会(LDS)
+
+* 楔子
+来新加坡已经半年有多了，一直想写点东西。
+
+最近读完了[[https://book.douban.com/subject/35114099/][《寻迹狮城》]]。里面写到的内容
+
+* 缘起
+
+* 传教士
+
+* 我对宗教的态度
