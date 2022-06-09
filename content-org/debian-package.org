@@ -1,0 +1,55 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: zh/posts
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: debian package 
+#+hugo_categories: code
+#+hugo_draft: true
+#+description:
+#+author: Dantezy
+#+date: 2022-06-09
+#+TITLE: debian 包的依赖问题
+* 背景
+最近我要把 Ubuntu 社区的 bpftrace 包迁移到公司内部发版，所以我从社区将 bpftrace 的[[https://salsa.debian.org/debian/bpftrace.git][源代码]][fn:1]挪到公司内部的 gitlab 开始自己打包。
+
+目前公司使用的主流 Linux 发行版本是 Ubuntu 20.04，所以我也是从 bpfttrace 0.9.4 版本着手编译[fn:2]。
+* 问题
+bpftrace 源代码里面提供了 ~build.sh~ ，可以直接用 alpine 镜像构建可执行文件。同时它也提供了 ubuntu:bionic Dockerfile 。于是我首先想到按照 docker/Dockerfile.bionic 构建了一个新的 package 镜像。
+这个镜像从 ubuntu:bionic 出发，安装了编译所需的依赖以及打包所需的 devscripts 等工具。
+
+使用这个镜像可以顺利编译出 debian 包。但是在安装的时候，会因为 libbinutils 的依赖，无法成功安装。
+
+从 Ubuntu packages 查询可知（当然用 apt 查也行）， libbinutils 在 Ubuntu 20.04 上的版本是 2.34-6ubuntu1，而我打出来的包要求的版本是：
+
+#+BEGIN_SRC bash
+  dpkg-deb -I bpftrace_0.9.4-1_amd64.deb
+
+  ...
+  Depends: libbcc, libbinutils (>= 2.30), libbinutils (<< 2.30.1), libc6 (>= 2.27), libclang1-9 (>= 1:9~svn359771-1~), libgcc1 (>= 1:3.0), libllvm9 (>= 1:9~svn298832-1~)
+  ...
+#+END_SRC
+这里要求 libbinutils 的版本小于 2.30.1 场面有点尴尬。
+* debian 包如何控制依赖
+#+BEGIN_SRC bash
+   dh_installdocs
+   dh_installchangelogs
+   dh_installexamples
+   dh_installman
+   dh_perl
+   dh_link
+   dh_strip_nondeterminism
+   dh_compress
+   dh_fixperms
+   dh_missing
+   dh_strip
+   dh_makeshlibs
+   dh_shlibdeps
+   dh_installdeb
+   dh_gencontrol
+   dh_md5sums
+   dh_builddeb
+#+END_SRC
+
+* Footnotes
+[fn:2] 见 [[https://packages.ubuntu.com/search?keywords=bpftrace][Ubuntu packages]] 的查询结果。 
+
+[fn:1] Ubuntu 等发行版的社区会维护自己的代码版本，主要是在上游代码中添加编译和打包的配置（Ubuntu 和 Debian 社区会增加一个 deiban 文件夹）。
