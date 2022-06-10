@@ -1,0 +1,145 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: zh/posts
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: debian package 
+#+hugo_categories: code
+#+description: 为 bpftrace 打包遇到的依赖问题以及解决方案。
+#+author: Dantezy
+#+date: 2022-06-09
+#+TITLE: debian 包的依赖问题
+* 背景
+最近我要把 Ubuntu 社区的 bpftrace 包迁移到公司内部发版，所以我从社区将 bpftrace 的[[https://salsa.debian.org/debian/bpftrace.git][源代码]][fn:1]挪到公司内部的 gitlab 开始自己打包。
+
+目前公司使用的主流 Linux 发行版本是 Ubuntu 20.04，所以我也是从 bpfttrace 0.9.4 版本着手编译[fn:2]。
+* 问题
+bpftrace 源代码里面提供了 ~build.sh~ ，可以直接用 alpine 镜像构建可执行文件。同时它也提供了 ubuntu:bionic Dockerfile 。于是我首先想到按照 docker/Dockerfile.bionic 构建了一个新的 package 镜像。
+这个镜像从 ubuntu:bionic 出发，安装了编译所需的依赖以及打包所需的 devscripts 等工具。
+
+使用这个镜像可以顺利编译出 debian 包。但是在安装的时候，会因为 libbinutils 的依赖，无法成功安装。
+
+从 Ubuntu packages 查询可知（当然用 apt 查也行）， libbinutils 在 Ubuntu 20.04 上的版本是 2.34-6ubuntu1，而我打出来的包要求的版本是：
+
+#+BEGIN_SRC bash
+  dpkg-deb -I bpftrace_0.9.4-1_amd64.deb
+
+  ...
+  Depends: libbcc, libbinutils (>= 2.30), libbinutils (<< 2.30.1), libc6 (>= 2.27), libclang1-9 (>= 1:9~svn359771-1~), libgcc1 (>= 1:3.0), libllvm9 (>= 1:9~svn298832-1~)
+  ...
+#+END_SRC
+这里要求 libbinutils 的版本小于 2.30.1 场面有点尴尬。
+* debian 包如何控制依赖
+bpftrace 源代码的 debian/control 给出的依赖项如下：
+#+BEGIN_SRC
+  Depends: ${misc:Depends}, ${shlibs:Depends}
+#+END_SRC
+这是 [[https://www.debian.org/doc/manuals/debmake-doc/ch05.en.html#substvar][substvar]]，具体的值会在打包的过程中计算。其中 libbinutils 由 ~${shlibs:Depends}~ 给出，而 ~${shlibs:Depends}~ 是由 dh_shlibdeps [fn:3]给出的。实际上 dh_shlibdeps 只是封装了 dpkg-shlibdeps。
+
+#+BEGIN_SRC bash
+  dpkg-shlibdeps -Tdebian/bpftrace.substvars debian/bpftrace/usr/bin/bpftrace
+#+END_SRC
+
+这个命令从编译出来的 bpftrace 中扫描所有依赖的符号表，顺着这个符号表去找对应 library 文件。在 Ubuntu 20.04 环境下执行这条命令，会得到如下错误：
+
+#+BEGIN_EXAMPLE
+dpkg-shlibdeps: error: cannot find library libbfd-2.30-system.so needed by debian/bpftrace/usr/bin/bpftrace (ELF format: 'elf64-x86-64' abi: '0201003e00000000'; RPATH: '')
+dpkg-shlibdeps: error: cannot find library libopcodes-2.30-system.so needed by debian/bpftrace/usr/bin/bpftrace (ELF format: 'elf64-x86-64' abi: '0201003e00000000'; RPATH: '')
+#+END_EXAMPLE
+
+用 ~dpkg -S~ 查询，libbfd 和 libopcodes 由 libbinutils 提供的，这解释了 libbinutils (<< 2.30.1) 的来由。
+
+* 标准答案
+之所以 dh_shlibdeps 会找 2.30 版本的 libbfd 和 libopcodes 是因为我在 Ubuntu 18.04 镜像下编译，所以换成 Ubuntu 20.04 镜像。我打了一个 [[https://hub.docker.com/repository/docker/dantezhang/ubuntu2004-packaging][docker image]] 作为后续一系列打包工作的起点。
+
+#+BEGIN_SRC
+FROM ubuntu:focal
+
+RUN sed -i 's/^# deb-src/deb-src/' /etc/apt/sources.list && \
+    apt update && \
+    DEBIAN_FRONTEND=noninteractive TZ=Asia/Singapore apt -y install devscripts build-essential   
+#+END_SRC
+
+这个镜像做的事情很简单：添加 deb-src 因为 ~apt build-dep~ 需要，安装 devscripts 和 build-essential 。
+
+真正进行打包工作的时候，我会从这个 image 出发，把源代码挂到容器中，执行
+
+#+BEGIN_SRC
+  apt build-dep -y bpftrace
+  debuild -us -uc -b 
+#+END_SRC
+
+这是 Debian 社区的标准流程，见 [[https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.en.pdf][Debian Packaging Tutorial]]。
+
+* 岔路
+我之前做过给 qemu 打包的工作，但是当时 qemu 被静态编译成一个单独的可执行文件 ，我没有用标准的打包流程去打包。所以这次我一开始也没有用社区的标准流程去打包。
+
+为了解决 libbinutils 的依赖问题，我尝试过如下失败的解决方案：
+
+1. 把编译的镜像从 Ubuntu 18.04 换成 Ubuntu 20.04，直接这样换编译会失败；
+2. 把 libbinutils 2.34 手动编译到 Ubuntu 18.04 里面；
+
+另外我还想到一个比较脏的解决方法：在 ~debuild -us -uc -b~ 打包之后，手动把 bpftrace.substvars 里面的 libbinutils (<< 2.30.1) 删掉，再执行
+#+BEGIN_SRC bash
+   dh_shlibdeps
+   dh_installdeb
+   dh_gencontrol
+   dh_md5sums
+   dh_builddeb
+#+END_SRC
+
+总的来说，君子行不由径，没什么特殊需要的话，还是按照社区的标准流程走好。
+
+* 附录
+#+CAPTION: 最初用来打包的 Dockerfile
+#+BEGIN_SRC
+FROM ubuntu:bionic
+
+ARG LLVM_VERSION
+ENV LLVM_VERSION=$LLVM_VERSION
+
+RUN apt-get update && apt-get install -y curl gnupg &&\
+    llvmRepository="\n\
+deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main\n\
+deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic main\n\
+deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-${LLVM_VERSION} main\n\
+deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-${LLVM_VERSION} main\n" &&\
+    echo $llvmRepository >> /etc/apt/sources.list && \
+    curl -L https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4052245BD4284CDD && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository -y ppa:team-xbmc/ppa && \
+    echo "deb https://repo.iovisor.org/apt/bionic bionic main" | tee /etc/apt/sources.list.d/iovisor.list
+
+RUN apt-get update && apt-get install -y \
+      bison \
+      binutils-dev \
+      cmake \
+      flex \
+      g++ \
+      git \
+      libelf-dev \
+      zlib1g-dev \
+      libbcc \
+      clang-${LLVM_VERSION} \
+      libclang-${LLVM_VERSION}-dev \
+      libclang-common-${LLVM_VERSION}-dev \
+      libclang1-${LLVM_VERSION} \
+      llvm-${LLVM_VERSION} \
+      llvm-${LLVM_VERSION}-dev \
+      llvm-${LLVM_VERSION}-runtime \
+      libllvm${LLVM_VERSION} \
+      systemtap-sdt-dev \
+      python3 \
+      debhelper \
+      libgmock-dev \
+      curl \
+      devscripts && \
+     mkdir /build/  
+#+END_SRC
+
+* Footnotes
+
+[fn:3] 当然 dh_shilbdeps 是 debuild 调用的。可以从 debuild 的日志看到。
+
+[fn:2] 见 [[https://packages.ubuntu.com/search?keywords=bpftrace][Ubuntu packages]] 的查询结果。 
+
+[fn:1] Ubuntu 等发行版的社区会维护自己的代码版本，主要是在上游代码中添加编译和打包的配置（Ubuntu 和 Debian 社区会增加一个 deiban 文件夹）。
