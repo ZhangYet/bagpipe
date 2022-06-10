@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>一派胡言</title>
-    <link>/</link>
-    <description>Recent content on 一派胡言</description>
+    <title>debian on 一派胡言</title>
+    <link>/tags/debian/</link>
+    <description>Recent content in debian on 一派胡言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 09 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/debian/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>debian 包的依赖问题</title>
       <link>/posts/debian-package-dependency/</link>
@@ -14,15 +14,6 @@
       
       <guid>/posts/debian-package-dependency/</guid>
       <description>背景 最近我要把 Ubuntu 社区的 bpftrace 包迁移到公司内部发版，所以我从社区将 bpftrace 的源代码1挪到公司内部的 gitlab 开始自己打包。 目前公司使用的主流 Linux 发行版本是 Ubuntu 20.04，所以</description>
-    </item>
-    
-    <item>
-      <title>博客迁移日记</title>
-      <link>/posts/yesterday-once-more/</link>
-      <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/yesterday-once-more/</guid>
-      <description>缘起 我的博客原来用 git-page 部署。 因为去年我转岗到了新加坡，所以我有了方便的支付手段，于是我买了虚拟机和域名，把博客迁移到现在的域名上。 选择 hugo 生成网页是受《博</description>
     </item>
     
   </channel>

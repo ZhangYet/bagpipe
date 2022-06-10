@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>一派胡言</title>
+<title>debian | 一派胡言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.1" />
 <link rel="stylesheet" href="/css/eureka.min.6a378a23360d238dc3ef4df2f5cd718093f02c10c9c7eb2437c29701cd8d389ab6da5d9f21bdd3afa305fd56c1235017.css" integrity="sha384-ajeKIzYNI43D703y9c1xgJPwLBDJx&#43;skN8KXAc2NOJq22l2fIb3Tr6MF/VbBI1AX">
@@ -61,6 +61,21 @@
 
 <meta name="description"
   content="Eureka is a elegant and powerful theme for Hugo.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Tags",
+      "item":"/tags/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"debian",
+      "item":"/tags/debian/"}]
+}
+</script>
 
 
 
@@ -75,23 +90,17 @@
             "name": "debian 包的依赖问题",
             "description": "为 bpftrace 打包遇到的依赖问题以及解决方案。",
             "url": "/posts/debian-package-dependency/"
-        },{
-            "@type":"ListItem",
-            "position":  2 ,
-            "name": "博客迁移日记",
-            "description": "简单讲述一下博客迁移的过程。",
-            "url": "/posts/yesterday-once-more/"
         }
     ]
 }
-</script><meta property="og:title" content="一派胡言" />
+</script><meta property="og:title" content="debian | 一派胡言" />
 <meta property="og:type" content="website" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/posts/" />
+<meta property="og:url" content="/tags/debian/" />
 
 
 
@@ -107,10 +116,6 @@
 
 
 
-<meta property="og:locale:alternate" content="en" />
-
-
-
 
 <meta property="og:site_name" content="一派胡言" />
 
@@ -123,10 +128,10 @@
 
 
 
-<meta property="article:section" content="posts" />
+<meta property="article:section" content="tags" />
 
 
-<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="一派胡言" />
+<link rel="alternate" type="application/rss+xml" href="/tags/debian/index.xml" title="一派胡言" />
 
 
   <body class="flex min-h-screen flex-col">
@@ -149,7 +154,7 @@
         class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
         <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
             <a href="/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">About</a>
-            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">Posts</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">Posts</a>
         </div>
 
         <div class="flex">
@@ -164,19 +169,6 @@
                     <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
                     <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
                     <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
-                </div>
-            </div>
-            <div class="relative pt-4 ps-4 md:pt-0">
-                <div class="cursor-pointer hover:text-eureka" id="languageMode">
-                    <i class="fas fa-globe"></i>
-                    <span class="ps-1">简体中文</span>
-                </div>
-                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open-lang">
-                </div>
-                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
-                    id='languageOptions'>
-                    <a class="px-4 py-1 hover:text-eureka" href="/posts/">简体中文</a>
-                    <a class="px-4 py-1 hover:text-eureka" href="/en/posts/">English</a>
                 </div>
             </div>
         </div>
@@ -206,7 +198,6 @@
     document.addEventListener('DOMContentLoaded', () => {
         getcolorscheme();
         switchBurger();
-        switchLanguage()
     });
 </script>
 </div>
@@ -215,7 +206,7 @@
         <div class="pl-scrollbar">
           <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
   <article class="prose mx-6 my-8">
-  <h1>Posts</h1>
+  <h1>debian</h1>
   
 </article>
 
@@ -255,56 +246,6 @@
       
         <a href="/categories/code/" class="hover:text-eureka"
           >code</a
-        >
-      
-    </div>
-  
-
-  
-</div>
-
-  
-</div>
-
-  </div>
-
-  
-</div>
-  </div>
-  
-  <div class="py-6">
-    <div class="flex flex-col-reverse lg:flex-row justify-between">
-  
-  <div class="w-full ">
-    <div class="prose">
-  <a href="/posts/yesterday-once-more/" class="no-underline">
-    <h3 class="mt-0">博客迁移日记</h3>
-  </a>
-  
-    简单讲述一下博客迁移的过程。
-  
-
-  
-    <div
-  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
->
-  <div class="me-6 my-2">
-    <i class="fas fa-calendar me-1"></i>
-    <span
-      >2022-05-19</span
-    >
-  </div>
-  <div class="me-6 my-2">
-    <i class="fas fa-clock me-1"></i>
-    <span>3分钟阅读时长</span>
-  </div>
-
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-folder me-1"></i>
-      
-        <a href="/categories/log/" class="hover:text-eureka"
-          >log</a
         >
       
     </div>

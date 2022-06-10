@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/categories/</loc>
-    <lastmod>2022-05-22T02:39:06+00:00</lastmod>
+    <lastmod>2022-06-10T15:22:51+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,14 +15,20 @@
                 href="/categories/"
                 />
   </url><url>
-    <loc>/tags/log/</loc>
-    <lastmod>2022-05-22T02:39:06+00:00</lastmod>
+    <loc>/categories/code/</loc>
+    <lastmod>2022-06-10T15:22:51+08:00</lastmod>
   </url><url>
-    <loc>/categories/log/</loc>
-    <lastmod>2022-05-22T02:39:06+00:00</lastmod>
+    <loc>/tags/debian/</loc>
+    <lastmod>2022-06-10T15:22:51+08:00</lastmod>
+  </url><url>
+    <loc>/posts/debian-package-dependency/</loc>
+    <lastmod>2022-06-10T15:22:51+08:00</lastmod>
+  </url><url>
+    <loc>/tags/package/</loc>
+    <lastmod>2022-06-10T15:22:51+08:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2022-05-22T02:39:06+00:00</lastmod>
+    <lastmod>2022-06-10T15:22:51+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -35,7 +41,7 @@
                 />
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2022-05-22T02:39:06+00:00</lastmod>
+    <lastmod>2022-06-10T15:22:51+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -48,7 +54,7 @@
                 />
   </url><url>
     <loc>/</loc>
-    <lastmod>2022-05-22T02:39:06+00:00</lastmod>
+    <lastmod>2022-06-10T15:22:51+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -59,6 +65,12 @@
                 hreflang="zh"
                 href="/"
                 />
+  </url><url>
+    <loc>/tags/log/</loc>
+    <lastmod>2022-05-22T02:39:06+00:00</lastmod>
+  </url><url>
+    <loc>/categories/log/</loc>
+    <lastmod>2022-05-22T02:39:06+00:00</lastmod>
   </url><url>
     <loc>/posts/yesterday-once-more/</loc>
     <lastmod>2022-05-22T02:39:06+00:00</lastmod>

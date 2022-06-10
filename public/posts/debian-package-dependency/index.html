@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>博客迁移日记 | 一派胡言</title>
+<title>debian 包的依赖问题 | 一派胡言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.1" />
 <link rel="stylesheet" href="/css/eureka.min.6a378a23360d238dc3ef4df2f5cd718093f02c10c9c7eb2437c29701cd8d389ab6da5d9f21bdd3afa305fd56c1235017.css" integrity="sha384-ajeKIzYNI43D703y9c1xgJPwLBDJx&#43;skN8KXAc2NOJq22l2fIb3Tr6MF/VbBI1AX">
@@ -60,7 +60,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hucbe615c96c237c6bd63974a0e5d5517c_142_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="简单讲述一下博客迁移的过程。">
+  content="为 bpftrace 打包遇到的依赖问题以及解决方案。">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -72,8 +72,8 @@
       "item":"/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"博客迁移日记",
-      "item":"/posts/yesterday-once-more/"}]
+      "name":"debian 包的依赖问题",
+      "item":"/posts/debian-package-dependency/"}]
 }
 </script>
 
@@ -85,11 +85,11 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/posts/yesterday-once-more/"
+        "@id": "/posts/debian-package-dependency/"
     },
-    "headline": "博客迁移日记 | 一派胡言","datePublished": "2022-05-19T00:00:00+00:00",
-    "dateModified": "2022-05-22T02:39:06+00:00",
-    "wordCount":  1286 ,
+    "headline": "debian 包的依赖问题 | 一派胡言","datePublished": "2022-06-09T00:00:00+00:00",
+    "dateModified": "2022-06-10T15:22:51+08:00",
+    "wordCount":  1236 ,
     "publisher": {
         "@type": "Person",
         "name": "Dante Zhang",
@@ -98,20 +98,20 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "简单讲述一下博客迁移的过程。"
+    "description": "为 bpftrace 打包遇到的依赖问题以及解决方案。"
 }
-</script><meta property="og:title" content="博客迁移日记 | 一派胡言" />
+</script><meta property="og:title" content="debian 包的依赖问题 | 一派胡言" />
 <meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/posts/yesterday-once-more/" />
+<meta property="og:url" content="/posts/debian-package-dependency/" />
 
 
 
-<meta property="og:description" content="简单讲述一下博客迁移的过程。" />
+<meta property="og:description" content="为 bpftrace 打包遇到的依赖问题以及解决方案。" />
 
 
 
@@ -127,17 +127,19 @@
 
 
 
-<meta property="article:published_time" content="2022-05-19T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2022-06-09T00:00:00&#43;00:00" />
 
 
-<meta property="article:modified_time" content="2022-05-22T02:39:06&#43;00:00" />
+<meta property="article:modified_time" content="2022-06-10T15:22:51&#43;08:00" />
 
 
 
 <meta property="article:section" content="posts" />
 
 
-<meta property="article:tag" content="log" />
+<meta property="article:tag" content="debian" />
+
+<meta property="article:tag" content="package" />
 
 
 
@@ -222,7 +224,7 @@
       class="lg:col-start-2 bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
       <article class="prose">
-  <h1 class="mb-4">博客迁移日记</h1>
+  <h1 class="mb-4">debian 包的依赖问题</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -230,7 +232,7 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2022-05-19</span
+      >2022-06-09</span
     >
   </div>
   <div class="me-6 my-2">
@@ -242,8 +244,8 @@
     <div class="me-6 my-2">
       <i class="fas fa-folder me-1"></i>
       
-        <a href="/categories/log/" class="hover:text-eureka"
-          >log</a
+        <a href="/categories/code/" class="hover:text-eureka"
+          >code</a
         >
       
     </div>
@@ -256,56 +258,122 @@
   
   
 
-  <h2 id="缘起">缘起</h2>
-<p>我的<a href="https://zhangyet.github.io/">博客</a>原来用 git-page 部署。 因为去年我转岗到了新加坡，所以我有了方便的支付手段，于是我买了虚拟机和域名，把博客迁移到现在的域名上。</p>
-<p>选择 <a href="https://gohugo.io/">hugo</a> 生成网页是受<a href="https://zilongshanren.com/post/move-from-hexo-to-hugo/">《博客从 hexo 迁移到 hugo》</a>，主要考虑的是因为有 <a href="https://ox-hugo.scripter.co/">ox-hugo</a> 可以让我用 org-mode 写博客。博客的主题是 <a href="https://github.com/wangchucheng/hugo-eureka">eureka</a>，选这个主题的原因一是它比较简洁，二是因为它的名字<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。</p>
-<h2 id="进度">进度</h2>
-<p><span class="timestamp-wrapper"><span class="timestamp">[2022-03-18 Fri] </span></span> 在 DigitalOcean 上购买了服务器。</p>
-<p><span class="timestamp-wrapper"><span class="timestamp">[2022-03-19 Sat] </span></span> 决定使用 Hugo，原因如上。</p>
-<p><span class="timestamp-wrapper"><span class="timestamp">[2022-03-20 Sun] </span></span> 买了域名。</p>
-<p><span class="timestamp-wrapper"><span class="timestamp">[2022-03-21 Mon] </span></span> 请教 <a href="https://wzyboy.im/">wzyboy</a> 如何部署博客，采用 nginx + 静态生成网页的方案。</p>
-<p><span class="timestamp-wrapper"><span class="timestamp">[2022-04-03 Sun] </span></span> 装了 ox-hugo 学习用 org-mode 写博客。</p>
-<p><span class="timestamp-wrapper"><span class="timestamp">[2022-05-14 Sat] </span></span> 更新个人简介。</p>
-<p><span class="timestamp-wrapper"><span class="timestamp">[2022-05-19 Thu] </span></span> 写这篇迁移日记</p>
-<p><span class="timestamp-wrapper"><span class="timestamp">[2022-05-22 Sun] </span></span> 用 <a href="https://letsencrypt.org/">Let&rsquo;s Encrypt</a> 开启了 https 支持。</p>
-<h2 id="旧文存档">旧文存档</h2>
-<p>古人云：「愧其少作」。我本来想把过去的一些旧文迁移过来，但是翻了一下以前的文章，着实没有太多好的。所以在这里列一下就算了。当然有少数文章我写的时候还是动了脑子的，所以可能会修改一下，重新在这里发布。</p>
+  <h2 id="背景">背景</h2>
+<p>最近我要把 Ubuntu 社区的 bpftrace 包迁移到公司内部发版，所以我从社区将 bpftrace 的<a href="https://salsa.debian.org/debian/bpftrace.git">源代码</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>挪到公司内部的 gitlab 开始自己打包。</p>
+<p>目前公司使用的主流 Linux 发行版本是 Ubuntu 20.04，所以我也是从 bpfttrace 0.9.4 版本着手编译<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
+<h2 id="问题">问题</h2>
+<p>bpftrace 源代码里面提供了 <code>build.sh</code> ，可以直接用 alpine 镜像构建可执行文件。同时它也提供了 ubuntu:bionic Dockerfile 。于是我首先想到按照 docker/Dockerfile.bionic 构建了一个新的 package 镜像。
+这个镜像从 ubuntu:bionic 出发，安装了编译所需的依赖以及打包所需的 devscripts 等工具。</p>
+<p>使用这个镜像可以顺利编译出 debian 包。但是在安装的时候，会因为 libbinutils 的依赖，无法成功安装。</p>
+<p>从 Ubuntu packages 查询可知（当然用 apt 查也行）， libbinutils 在 Ubuntu 20.04 上的版本是 2.34-6ubuntu1，而我打出来的包要求的版本是：</p>
+<pre><code class="language-bash">dpkg-deb -I bpftrace_0.9.4-1_amd64.deb
+
+...
+Depends: libbcc, libbinutils (&gt;= 2.30), libbinutils (&lt;&lt; 2.30.1), libc6 (&gt;= 2.27), libclang1-9 (&gt;= 1:9~svn359771-1~), libgcc1 (&gt;= 1:3.0), libllvm9 (&gt;= 1:9~svn298832-1~)
+...
+</code></pre>
+<p>这里要求 libbinutils 的版本小于 2.30.1 场面有点尴尬。</p>
+<h2 id="debian-包如何控制依赖">debian 包如何控制依赖</h2>
+<p>bpftrace 源代码的 debian/control 给出的依赖项如下：</p>
+<pre><code class="language-nil">Depends: ${misc:Depends}, ${shlibs:Depends}
+</code></pre>
+<p>这是 <a href="https://www.debian.org/doc/manuals/debmake-doc/ch05.en.html#substvar">substvar</a>，具体的值会在打包的过程中计算。其中 libbinutils 由 <code>${shlibs:Depends}</code> 给出，而 <code>${shlibs:Depends}</code> 是由 dh_shlibdeps <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>给出的。实际上 dh_shlibdeps 只是封装了 dpkg-shlibdeps。</p>
+<pre><code class="language-bash">dpkg-shlibdeps -Tdebian/bpftrace.substvars debian/bpftrace/usr/bin/bpftrace
+</code></pre>
+<p>这个命令从编译出来的 bpftrace 中扫描所有依赖的符号表，顺着这个符号表去找对应 library 文件。在 Ubuntu 20.04 环境下执行这条命令，会得到如下错误：</p>
+<pre><code class="language-text">dpkg-shlibdeps: error: cannot find library libbfd-2.30-system.so needed by debian/bpftrace/usr/bin/bpftrace (ELF format: 'elf64-x86-64' abi: '0201003e00000000'; RPATH: '')
+dpkg-shlibdeps: error: cannot find library libopcodes-2.30-system.so needed by debian/bpftrace/usr/bin/bpftrace (ELF format: 'elf64-x86-64' abi: '0201003e00000000'; RPATH: '')
+</code></pre>
+<p>用 <code>dpkg -S</code> 查询，libbfd 和 libopcodes 由 libbinutils 提供的，这解释了 libbinutils (&lt;&lt; 2.30.1) 的来由。</p>
+<h2 id="标准答案">标准答案</h2>
+<p>之所以 dh_shlibdeps 会找 2.30 版本的 libbfd 和 libopcodes 是因为我在 Ubuntu 18.04 镜像下编译，所以换成 Ubuntu 20.04 镜像。我打了一个 <a href="https://hub.docker.com/repository/docker/dantezhang/ubuntu2004-packaging">docker image</a> 作为后续一系列打包工作的起点。</p>
+<pre><code class="language-nil">FROM ubuntu:focal
+
+RUN sed -i 's/^# deb-src/deb-src/' /etc/apt/sources.list &amp;&amp; \
+    apt update &amp;&amp; \
+    DEBIAN_FRONTEND=noninteractive TZ=Asia/Singapore apt -y install devscripts build-essential
+</code></pre>
+<p>这个镜像做的事情很简单：添加 deb-src 因为 <code>apt build-dep</code> 需要，安装 devscripts 和 build-essential 。</p>
+<p>真正进行打包工作的时候，我会从这个 image 出发，把源代码挂到容器中，执行</p>
+<pre><code class="language-nil">apt build-dep -y bpftrace
+debuild -us -uc -b
+</code></pre>
+<p>这是 Debian 社区的标准流程，见 <a href="https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.en.pdf">Debian Packaging Tutorial</a>。</p>
+<h2 id="岔路">岔路</h2>
+<p>我之前做过给 qemu 打包的工作，但是当时 qemu 被静态编译成一个单独的可执行文件 ，我没有用标准的打包流程去打包。所以这次我一开始也没有用社区的标准流程去打包。</p>
+<p>为了解决 libbinutils 的依赖问题，我尝试过如下失败的解决方案：</p>
 <ol>
-<li><a href="https://zhangyet.github.io/archivers/summary2021">《日月忽其不奄兮，春与秋其代序》</a> 这是我2021年的年度总结。</li>
-<li><a href="https://zhangyet.github.io/archivers/talkshow">《脱口秀狂想》</a>算是比较严肃的脱口秀评论。</li>
-<li><a href="https://zhangyet.github.io/archivers/my-way-to-weight-loss">《我的减肥之道》</a>我减肥是成功了，虽然维持体重比较麻烦，但我最近(<span class="timestamp-wrapper"><span class="timestamp">&lt;2022-05-19 Thu 16:19&gt;</span></span>)在一本书（《饮食的迷思》），可能我会更新一下里面的观点。</li>
-<li><a href="https://zhangyet.github.io/archivers/a-wizard-of-earthsea">《鹰翔地海》</a>《地海巫师》的读后感，想法很多但是我没有整理好，这本书我一读再读，之后应该会重新写。</li>
-<li><a href="https://zhangyet.github.io/archivers/on-996-and-involution">《论996与内卷》</a>这篇写得比较用心，不过没有聚焦在一个中心论点上，所以显得有点凌乱。</li>
-<li><a href="https://zhangyet.github.io/archivers/the-train-to-wuxi">《开往无锡的列车》</a>、<a href="https://zhangyet.github.io/archivers/wuxi">《无锡游记》</a>和<a href="https://zhangyet.github.io/archivers/shanghai">《上海游记》</a>这三篇游记是我2020年五一假期时候写的，现在想想，旅行的意义可能就在回忆。</li>
-<li><a href="https://zhangyet.github.io/archivers/down-and-out-in-Paris-and-London">《如果你想了解贫穷，不妨读一下乔治·奥威尔》</a>奥威尔《巴黎伦敦落魄记》的读书笔记。如果我重读这本书，应该会更新。</li>
-<li><a href="https://zhangyet.github.io/archivers/the-prohet-armed">《&lt;武装的先知&gt;：托洛茨基》</a>这本书对我的影响还挺大的，读完这本书之后我基本不自称「XX主义者<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>」。因为XX主义包含的东西太多了。</li>
-<li><a href="https://zhangyet.github.io/archivers/blackest-night">The Darkest Night</a> 记录了2020年初失业到找到新工作稳定下来的感想。</li>
-<li><a href="https://zhangyet.github.io/archivers/release-the-witch">《女巫、工业与现代化》</a>这是我为《放开那个女巫》写的书评，里面有我对网络小说比较认真的评论。</li>
-<li><a href="https://zhangyet.github.io/archivers/fairy-tale">《爱情童话一则》</a>比较好玩的小小说。</li>
-<li><a href="https://zhangyet.github.io/archivers/quickfixgo">《quickfixgo 源代码剖析》</a> 、<a href="https://zhangyet.github.io/archivers/fix_simulator">《写一个 FIX 模拟器》</a>这两篇技术博客其实写得不好，但我收录在这里，纪念一下倒闭的前公司。</li>
-<li><a href="https://zhangyet.github.io/archivers/kamui">《kamui: bookdown vscode 插件》</a>2019年从北京回来，有一个月时间都在休假，期间翻译了一本书，为了组织翻译，写了个 vscode 小插件，不过已经弃坑（毕竟谁会在 vs code 里面用 bookdown 啊）。</li>
+<li>把编译的镜像从 Ubuntu 18.04 换成 Ubuntu 20.04，直接这样换编译会失败；</li>
+<li>把 libbinutils 2.34 手动编译到 Ubuntu 18.04 里面；</li>
 </ol>
-<p>写了这么久，重新选也只有13项写得还行的博客想来我真是做人失败<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>。</p>
-<h2 id="规划">规划</h2>
-<p>简单划分一下以后博客的分类：</p>
-<ol>
-<li>log 这种就类似日记，或者说随笔、杂文，某种意义上来说就是其他。</li>
-<li>reading 读书笔记。</li>
-<li>code 代码相关，包括源代码阅读和某些有价值写一下的 debug 过程。</li>
-<li>game 游戏相关。</li>
-</ol>
-<p>不排除以后会增加新的分类，眼下就先这样吧。</p>
+<p>另外我还想到一个比较脏的解决方法：在 <code>debuild -us -uc -b</code> 打包之后，手动把 bpftrace.substvars 里面的 libbinutils (&lt;&lt; 2.30.1) 删掉，再执行</p>
+<pre><code class="language-bash">dh_shlibdeps
+dh_installdeb
+dh_gencontrol
+dh_md5sums
+dh_builddeb
+</code></pre>
+<p>总的来说，君子行不由径，没什么特殊需要的话，还是按照社区的标准流程走好。</p>
+<h2 id="附录">附录</h2>
+<pre><code class="language-nil">FROM ubuntu:bionic
+
+ARG LLVM_VERSION
+ENV LLVM_VERSION=$LLVM_VERSION
+
+RUN apt-get update &amp;&amp; apt-get install -y curl gnupg &amp;&amp;\
+    llvmRepository=&quot;\n\
+deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main\n\
+deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic main\n\
+deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-${LLVM_VERSION} main\n\
+deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-${LLVM_VERSION} main\n&quot; &amp;&amp;\
+    echo $llvmRepository &gt;&gt; /etc/apt/sources.list &amp;&amp; \
+    curl -L https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - &amp;&amp; \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4052245BD4284CDD &amp;&amp; \
+    apt-get install -y software-properties-common &amp;&amp; \
+    add-apt-repository -y ppa:team-xbmc/ppa &amp;&amp; \
+    echo &quot;deb https://repo.iovisor.org/apt/bionic bionic main&quot; | tee /etc/apt/sources.list.d/iovisor.list
+
+RUN apt-get update &amp;&amp; apt-get install -y \
+      bison \
+      binutils-dev \
+      cmake \
+      flex \
+      g++ \
+      git \
+      libelf-dev \
+      zlib1g-dev \
+      libbcc \
+      clang-${LLVM_VERSION} \
+      libclang-${LLVM_VERSION}-dev \
+      libclang-common-${LLVM_VERSION}-dev \
+      libclang1-${LLVM_VERSION} \
+      llvm-${LLVM_VERSION} \
+      llvm-${LLVM_VERSION}-dev \
+      llvm-${LLVM_VERSION}-runtime \
+      libllvm${LLVM_VERSION} \
+      systemtap-sdt-dev \
+      python3 \
+      debhelper \
+      libgmock-dev \
+      curl \
+      devscripts &amp;&amp; \
+     mkdir /build/
+</code></pre>
+<div class="src-block-caption">
+  <span class="src-block-number">Code Snippet 1:</span>
+  最初用来打包的 Dockerfile
+</div>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>这是阿基米德的故事：<a href="https://en.wikipedia.org/wiki/Eureka_(word)">https://en.wikipedia.org/wiki/Eureka_(word)</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Ubuntu 等发行版的社区会维护自己的代码版本，主要是在上游代码中添加编译和打包的配置（Ubuntu 和 Debian 社区会增加一个 deiban 文件夹）。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>这个「XX主义」包括 共产主义、自由主义和女权主义。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>见 <a href="https://packages.ubuntu.com/search?keywords=bpftrace">Ubuntu packages</a> 的查询结果。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3" role="doc-endnote">
-<p>这是欲星移的梗。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>当然 dh_shilbdeps 是 debuild 调用的。可以从 debuild 的日志看到。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -316,7 +384,9 @@
       
         <div class="my-4">
     
-    <a href="/tags/log/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#log</a>
+    <a href="/tags/debian/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#debian</a>
+    
+    <a href="/tags/package/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#package</a>
     
 </div>
       
@@ -333,13 +403,11 @@
   >
     <div>
       
-        <span class="text-primary-text block font-bold"
-          >上一页</span
-        >
-        <a href="/posts/debian-package-dependency/" class="block">debian 包的依赖问题</a>
-      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/posts/yesterday-once-more/" class="block">博客迁移日记</a>
       
     </div>
   </div>
