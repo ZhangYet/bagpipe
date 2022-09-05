@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>一派胡言</title>
+<title>戒酒记 | 一派胡言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,60 +75,62 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hucbe615c96c237c6bd63974a0e5d5517c_142_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Eureka is a elegant and powerful theme for Hugo.">
-
+  content="记录一些关于戒酒的想法。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Posts",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"戒酒记",
+      "item":"/posts/sobriety/"}]
+}
+</script>
 
 
 
 <script type="application/ld+json">
 {
-    "@context":"https://schema.org",
-    "@type":"ItemList",
-    "itemListElement":[{
-            "@type":"ListItem",
-            "position":  1 ,
-            "name": "戒酒记",
-            "description": "记录一些关于戒酒的想法。",
-            "url": "/posts/sobriety/"
-        },{
-            "@type":"ListItem",
-            "position":  2 ,
-            "name": "新加坡观察：基督教后期圣徒教会(LDS)",
-            "description": "来新加坡之后跟基督教后期圣徒教会有一定接触。写一下跟他们交游的经历，挺有意思的。",
-            "url": "/posts/singapore-lds/"
-        },{
-            "@type":"ListItem",
-            "position":  3 ,
-            "name": "debian 包的依赖问题",
-            "description": "为 bpftrace 打包遇到的依赖问题以及解决方案。",
-            "url": "/posts/debian-package-dependency/"
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/sobriety/"
+    },
+    "headline": "戒酒记 | 一派胡言","datePublished": "2022-09-05T00:00:00+00:00",
+    "dateModified": "2022-09-05T14:08:12+08:00",
+    "wordCount":  779 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "Dante Zhang",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
         }
-    ]
+        },
+    "description": "记录一些关于戒酒的想法。"
 }
-</script><meta property="og:title" content="一派胡言" />
-<meta property="og:type" content="website" />
+</script><meta property="og:title" content="戒酒记 | 一派胡言" />
+<meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/posts/" />
+<meta property="og:url" content="/posts/sobriety/" />
 
 
 
-
-
-<meta property="og:description" content="Eureka is a elegant and powerful theme for Hugo." />
-
-
+<meta property="og:description" content="记录一些关于戒酒的想法。" />
 
 
 
 <meta property="og:locale" content="zh" />
-
-
-
-<meta property="og:locale:alternate" content="en" />
 
 
 
@@ -140,14 +142,27 @@
 
 
 
-<meta property="og:updated_time" content="2022-09-05T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2022-09-05T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-09-05T14:08:12&#43;08:00" />
 
 
 
 <meta property="article:section" content="posts" />
 
 
-<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="一派胡言" />
+<meta property="article:tag" content="log" />
+
+
+
+
+
+<meta property="og:see_also" content="/posts/singapore-lds/" />
+
+<meta property="og:see_also" content="/posts/yesterday-once-more/" />
+
+
 
 
   <body class="flex min-h-screen flex-col">
@@ -187,19 +202,6 @@
                     <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
                 </div>
             </div>
-            <div class="relative pt-4 ps-4 md:pt-0">
-                <div class="cursor-pointer hover:text-eureka" id="languageMode">
-                    <i class="fas fa-globe"></i>
-                    <span class="ps-1">简体中文</span>
-                </div>
-                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open-lang">
-                </div>
-                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
-                    id='languageOptions'>
-                    <a class="px-4 py-1 hover:text-eureka" href="/posts/">简体中文</a>
-                    <a class="px-4 py-1 hover:text-eureka" href="/en/posts/">English</a>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -227,7 +229,6 @@
     document.addEventListener('DOMContentLoaded', () => {
         getcolorscheme();
         switchBurger();
-        switchLanguage()
     });
 </script>
 </div>
@@ -235,28 +236,16 @@
     <main class="grow pt-16">
         <div class="pl-scrollbar">
           <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
-  <article class="prose mx-6 my-8">
-  <h1>Posts</h1>
   
-</article>
-
-  <div class="bg-secondary-bg rounded px-6">
-    <div class="overflow-hidden divide-y">
   
-  <div class="py-6">
-    <div class="flex flex-col-reverse lg:flex-row justify-between">
-  
-  <div class="w-full ">
-    <div class="prose">
-  <a href="/posts/sobriety/" class="no-underline">
-    <h3 class="mt-0">戒酒记</h3>
-  </a>
-  
-    记录一些关于戒酒的想法。
-  
-
-  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
     <div
+      class="lg:col-start-2 bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">戒酒记</h1>
+
+  <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
 >
   <div class="me-6 my-2">
@@ -284,140 +273,95 @@
   
 </div>
 
-  
-</div>
-
-  </div>
 
   
-</div>
-  </div>
-  
-  <div class="py-6">
-    <div class="flex flex-col-reverse lg:flex-row justify-between">
-  
-  <div class="w-full ">
-    <div class="prose">
-  <a href="/posts/singapore-lds/" class="no-underline">
-    <h3 class="mt-0">新加坡观察：基督教后期圣徒教会(LDS)</h3>
-  </a>
-  
-    来新加坡之后跟基督教后期圣徒教会有一定接触。写一下跟他们交游的经历，挺有意思的。
   
 
-  
-    <div
-  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
->
-  <div class="me-6 my-2">
-    <i class="fas fa-calendar me-1"></i>
-    <span
-      >2022-07-04</span
-    >
-  </div>
-  <div class="me-6 my-2">
-    <i class="fas fa-clock me-1"></i>
-    <span>8分钟阅读时长</span>
-  </div>
+  <h2 id="缘起">缘起</h2>
+<p>4月8日去 CMGS 家烧烤，喝得一谈糊涂，之后有宿醉的感觉，于是在4月12日我决心戒酒。</p>
+<p>当然这不是我第一次喝到宿醉，也不是我第一次宿醉之后下决心戒酒。不过这是目前戒酒的最长记录（146天）。</p>
+<h2 id="戒酒之后的感觉">戒酒之后的感觉</h2>
+<p>我在大三开始喝酒，最初是啤酒，后来跟陈老师一起喝伏特加。我喝酒没有什么讲究，也谈不上品酒（因为味觉迟钝）。喝醉的次数不少，
+所幸没有在喝醉的时候做过什么过分的事情。就算喝到吐也能吐到厕所里面（不过2020年初在广州喝完酒，
+回我朋友住处的时候跟门卫差点吵起来）。</p>
+<p>总的来说，戒酒之后生活没有什么变化。想喝酒的时候也有，不是很强烈。刚好在通过<a href="https://t.me/reorx_share">孟骁的 channel</a> 看到这篇文章
+<a href="https://p0werdown.com/posts/drink-alcohol">《狂卖 1400 亿的致癌饮品，每年害死 83 万中国人》</a>（非常标题党的标题）。里面说到：</p>
+<blockquote>
+<p>从数据上看，996、婚姻、育儿、房贷等压力，早就让这届年轻人无法告别酒精，大概也是同样的原因，也让他们不得已只能「微醺」。
+正如父辈们下班后喜欢小酌一杯那样，只是现在年轻人们有了更好的选择。</p>
+</blockquote>
+<p>我自己喝酒没有什么理由，高兴的时候会喝，不开心也会喝，失眠的时候会喝一点，读侦探小说读到侦探喝酒自己也会倒上一点。
+社交方面，我基本做到了「只跟朋友喝酒」，这得益于 IT 行业喝酒的人少，在餐桌上强迫别人喝酒的人更少（这可能只是我走运碰到）。
+我不觉得喝酒可以消愁，反而宿醉让我更难受。</p>
+<p>其实我也不知道为什么戒酒这么容易，可能是以为我本身酒瘾就不大。尽管如此，我还是把戒酒列入我2022年个人成就里面，
+虽然跟2021年的个人成就减肥成功相比，这个成就的含金量不高（不喝酒比节食简单得多），但多少是个成就。可能 LDS
+的传教士们会觉得是上帝引领我这个迷途的羔羊——但其实不是。</p>
+<p>正如喝酒对我的损害不明显一样，戒酒之后的生活没什么变化：我不靠喝酒社交（其实我基本没有社交）；入睡一如既往地困难且无规律。
+总体来说没啥改变——当然可能从概率来看，我死于肝癌的风险降低了。</p>
 
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-folder me-1"></i>
+</article>
+
+
       
-        <a href="/categories/log/" class="hover:text-eureka"
-          >log</a
-        >
+        <div class="my-4">
+    
+    <a href="/tags/log/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#log</a>
+    
+</div>
       
-    </div>
-  
 
-  
-</div>
-
-  
-</div>
-
-  </div>
-
-  
-</div>
-  </div>
-  
-  <div class="py-6">
-    <div class="flex flex-col-reverse lg:flex-row justify-between">
-  
-  <div class="w-full ">
-    <div class="prose">
-  <a href="/posts/debian-package-dependency/" class="no-underline">
-    <h3 class="mt-0">debian 包的依赖问题</h3>
-  </a>
-  
-    为 bpftrace 打包遇到的依赖问题以及解决方案。
-  
-
-  
-    <div
-  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
->
-  <div class="me-6 my-2">
-    <i class="fas fa-calendar me-1"></i>
-    <span
-      >2022-06-09</span
-    >
-  </div>
-  <div class="me-6 my-2">
-    <i class="fas fa-clock me-1"></i>
-    <span>3分钟阅读时长</span>
-  </div>
-
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-folder me-1"></i>
       
-        <a href="/categories/code/" class="hover:text-eureka"
-          >code</a
-        >
+
+
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
       
     </div>
-  
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/posts/singapore-lds/" class="block">新加坡观察：基督教后期圣徒教会(LDS)</a>
+      
+    </div>
+  </div>
 
-  
-</div>
 
-  
-</div>
+      
 
+
+
+    </div>
+    
+
+    
+    
+      <div
+        class="lg:col-start-2 bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="/posts/singapore-lds/" class="no-underline">新加坡观察：基督教后期圣徒教会(LDS)</a>
+          <br />
+        
+          <a href="/posts/yesterday-once-more/" class="no-underline">博客迁移日记</a>
+          <br />
+        
+      </div>
+    
   </div>
 
   
-</div>
-  </div>
-  
-</div>
-
-
-  </div>
-  
-    <ul class="pagination pagination-default">
-      <li class="page-item disabled">
-        <a aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
-      </li>
-      <li class="page-item disabled">
-        <a aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
-      </li>
-      <li class="page-item active">
-        <a aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/page/2/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
-      </li>
-    </ul>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.highlightAll();
+      });
+    </script>
 
           </div>
         </div>
