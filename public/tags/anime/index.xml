@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>anime on 一派胡言</title>
+    <link>/tags/anime/</link>
+    <description>Recent content in anime on 一派胡言</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 27 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/anime/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>不要偷懒</title>
+      <link>/posts/dont-be-lasy/</link>
+      <pubDate>Tue, 27 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/dont-be-lasy/</guid>
+      <description>缘起 这个标题来自脱口秀演员 Storm Xu 的播客2022年9月11日那一期《【脱口秀大会】能不能四年办一次》。 他在里面批评笑果的演员用太多内部梗，太偷懒了。 我很喜</description>
+    </item>
+    
+  </channel>
+</rss>
