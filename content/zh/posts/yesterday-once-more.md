@@ -3,7 +3,7 @@ title = "博客迁移日记"
 author = ["Dantezy"]
 description = "简单讲述一下博客迁移的过程。"
 date = 2022-05-19
-lastmod = 2022-05-22T02:35:40+00:00
+lastmod = 2022-09-27T14:42:00+08:00
 tags = ["log"]
 categories = ["log"]
 draft = false
@@ -64,6 +64,7 @@ draft = false
 2.  reading 读书笔记。
 3.  code 代码相关，包括源代码阅读和某些有价值写一下的 debug 过程。
 4.  game 游戏相关。
+5.  anime 动画相关。
 
 不排除以后会增加新的分类，眼下就先这样吧。
 
