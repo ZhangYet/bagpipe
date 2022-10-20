@@ -3,10 +3,10 @@ title = "个人阅读史2020"
 author = ["Dantezy"]
 description = "整理一下2020年读过的书。读过的书仿佛一根线，将记忆串联起来。"
 date = 2022-09-06
-lastmod = 2022-10-20T18:32:58+08:00
+lastmod = 2022-10-20T18:36:05+08:00
 tags = ["reading", "科幻小说", "思想史"]
 categories = ["reading"]
-draft = true
+draft = false
 +++
 
 ## 2019年的余绪 {#2019年的余绪}
