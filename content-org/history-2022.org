@@ -1,0 +1,25 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: zh/posts
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: history
+#+hugo_categories: log
+#+hugo_draft: true
+#+description: 2022年年度总结
+#+author: Dantezy
+#+date: 2022-12-06
+#+TITLE: 个人春秋2022
+* 缘起
+去年在河边散步起意背《离骚》，半途而废。倒是有意模仿春秋，写了一篇[[https://zhangyet.github.io/archivers/summary2021][《日月忽其不奄兮，春与秋其代序》]]，这是一篇总结性的文字，
+从我过去一年的日记，筛选每个月的大事（更主要是我的大事），回顾与反思。今年也写了不少日记，我决定也写一篇类似的文章。
+* 我的历史观
+我有意把我的日记作为一种史料，尽管价值不大[fn:1]。这种做法跟我的历史观有关，所以今年写正文之前，我要先谈谈我的历史观以及它如何形成。
+
+最初对历史感兴趣来自故事，在我童年，历史书就等于故事书。
+
+第一本改编我对历史看法的书是《银河英雄传说》，杨威利读军事史的嘛。我高考第一志愿最后留了一个位置给历史系。
+* 2022
+** 一月
+* 总结
+* Footnotes
+
+[fn:1] 见 https://t.me/danteslimbo/543 
