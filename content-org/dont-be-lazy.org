@@ -5,6 +5,9 @@
 #+hugo_categories: anime
 #+hugo_draft: false
 #+description: Lycoris Recoil 的影评
+:PROPERTIES:
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
+:END:
 #+author: Dantezy
 #+date: 2022-09-27
 #+TITLE: 不要偷懒

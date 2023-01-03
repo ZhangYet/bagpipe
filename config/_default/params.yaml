@@ -6,6 +6,8 @@ repoEditURL:
 
 dateFormat:
 
+
+
 titleSeparator:
 
 # Options: auto, light and dark. Default is auto.
@@ -44,29 +46,25 @@ math:
 
 comment:
   # Options: disqus, commento, valine and utterances.
-  handler:
+  handler: valine
+  valine:
+    app-Id: QPBTOv7Ab4EOySWYupG8tr3r-MdYXbMMI
+    app-Key: xgHZMAh4IoaVlkEwSMsOo7vZ
 
   # disqus:
   #   shortname:
 
-  # utterances:
+  utterances:
   #   # Browse https://utteranc.es/ to see the options available.
   #   # If you want the color scheme of utterances to follow eureka's, you can set `theme: eureka`.
-  #   repo:
-  #   issue-term:
-  #   theme:
+    repo: ZhangYet/harmonie
+    issue-term: title
+    theme: eureka
 
   # commento:
   #   # If self-hosting, please enter the url (e.g. https://commento.example.com) here. Otherwise leave empty.
   #   url:
 
-  valine:
-  #   # Browse https://valine.js.org/en/configuration.html to see the options available.
-  #   # You can list the key and value you want as below.
-  #   # Because Hugo's config params are case-insensitive, you need to add `-` or `_` before the uppercase letters.
-  #   # For example, `appId` should be written as `app-Id` or other acceptable formats.
-    app-Id: QPBTOv7Ab4EOySWYupG8tr3r-MdYXbMMI
-    app-Key: xgHZMAh4IoaVlkEwSMsOo7vZ
 
 diagram:
   handler: mermaid

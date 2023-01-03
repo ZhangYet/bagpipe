@@ -3,7 +3,7 @@
 #+hugo_auto_set_lastmod: t
 #+hugo_tags: ebpf kernel
 #+hugo_categories: code 
-#+hugo_draft: false
+#+hugo_draft: true
 :PROPERTIES:
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
 :END:

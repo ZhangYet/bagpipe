@@ -3,11 +3,14 @@ title = "个人春秋2022"
 author = ["Dantezy"]
 description = "2022年年度总结，起名春秋，不是「知我罪我，其惟春秋」，而是「春秋断烂朝服」的意思，另外也有「春秋笔法」的意思。"
 date = 2022-12-30
-lastmod = 2022-12-31T12:39:58+08:00
+lastmod = 2023-01-16T14:13:06+08:00
 tags = ["history"]
 categories = ["log"]
 draft = false
 +++
+
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
+
 
 ## 缘起 {#缘起}
 

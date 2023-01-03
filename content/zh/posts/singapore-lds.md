@@ -3,11 +3,14 @@ title = "新加坡观察：基督教后期圣徒教会(LDS)"
 author = ["Dantezy"]
 description = "来新加坡之后跟基督教后期圣徒教会有一定接触。写一下跟他们交游的经历，挺有意思的。"
 date = 2022-07-04
-lastmod = 2022-07-04T19:37:21+08:00
+lastmod = 2023-01-16T14:14:02+08:00
 tags = ["log", "religion", "singapore"]
 categories = ["log"]
 draft = false
 +++
+
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
+
 
 ## 楔子 {#楔子}
 
