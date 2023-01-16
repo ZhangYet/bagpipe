@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html
-  lang="zh"
+  lang="en"
   dir="ltr"
   
 ><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>不要偷懒 | 一派胡言</title>
+<title>Summerize network thoughput by ebpf | Bullsh*t!</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hucbe615c96c237c6bd63974a0e5d5517c_142_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Lycoris Recoil 的影评">
+  content="Use ebpf to summerize network thoughput on ipv6.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -84,11 +84,11 @@
       "@type": "ListItem",
       "position": 1 ,
       "name":"Posts",
-      "item":"/posts/"},{
+      "item":"/en/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"不要偷懒",
-      "item":"/posts/dont-be-lazy/"}]
+      "name":"Summerize network thoughput by ebpf",
+      "item":"/en/posts/ebpf-subnet-ipv6/"}]
 }
 </script>
 
@@ -100,11 +100,11 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/posts/dont-be-lazy/"
+        "@id": "/en/posts/ebpf-subnet-ipv6/"
     },
-    "headline": "不要偷懒 | 一派胡言","datePublished": "2022-09-27T00:00:00+00:00",
-    "dateModified": "2023-01-03T21:08:01+08:00",
-    "wordCount":  1624 ,
+    "headline": "Summerize network thoughput by ebpf | Bullsh*t!","datePublished": "2022-12-20T00:00:00+00:00",
+    "dateModified": "2023-01-16T14:06:01+08:00",
+    "wordCount":  458 ,
     "publisher": {
         "@type": "Person",
         "name": "Dante Zhang",
@@ -113,48 +113,48 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "Lycoris Recoil 的影评"
+    "description": "Use ebpf to summerize network thoughput on ipv6."
 }
-</script><meta property="og:title" content="不要偷懒 | 一派胡言" />
+</script><meta property="og:title" content="Summerize network thoughput by ebpf | Bullsh*t!" />
 <meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/posts/dont-be-lazy/" />
+<meta property="og:url" content="/en/posts/ebpf-subnet-ipv6/" />
 
 
 
-<meta property="og:description" content="Lycoris Recoil 的影评" />
+<meta property="og:description" content="Use ebpf to summerize network thoughput on ipv6." />
 
 
 
-<meta property="og:locale" content="zh" />
-
-
-
-
-<meta property="og:site_name" content="一派胡言" />
+<meta property="og:locale" content="en" />
 
 
 
 
+<meta property="og:site_name" content="Bullsh*t!" />
 
 
-<meta property="article:published_time" content="2022-09-27T00:00:00&#43;00:00" />
 
 
-<meta property="article:modified_time" content="2023-01-03T21:08:01&#43;08:00" />
+
+
+<meta property="article:published_time" content="2022-12-20T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2023-01-16T14:06:01&#43;08:00" />
 
 
 
 <meta property="article:section" content="posts" />
 
 
-<meta property="article:tag" content="anime" />
+<meta property="article:tag" content="ebpf" />
 
-<meta property="article:tag" content="lycoris" />
+<meta property="article:tag" content="kernel" />
 
 
 
@@ -172,7 +172,7 @@
     }
 </script>
 <nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
-    <a href="/" class="me-6 text-primary-text text-xl font-bold">一派胡言</a>
+    <a href="/en" class="me-6 text-primary-text text-xl font-bold">Bullsh*t!</a>
     <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
         <i class="fas fa-bars"></i>
     </button>
@@ -180,8 +180,8 @@
     <div id="target"
         class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
         <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
-            <a href="/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">About</a>
-            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">Posts</a>
+            <a href="/en/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">About</a>
+            <a href="/en/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">Posts</a>
         </div>
 
         <div class="flex">
@@ -193,9 +193,9 @@
                 </div>
                 <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
                     id='lightDarkOptions'>
-                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
-                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
-                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">Light</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">Dark</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">Auto</span>
                 </div>
             </div>
         </div>
@@ -239,7 +239,7 @@
       class="lg:col-start-2 bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
       <article class="prose">
-  <h1 class="mb-4">不要偷懒</h1>
+  <h1 class="mb-4">Summerize network thoughput by ebpf</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -247,20 +247,20 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2022-09-27</span
+      >2022-12-20</span
     >
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>4分钟阅读时长</span>
+    <span>3 min read</span>
   </div>
 
   
     <div class="me-6 my-2">
       <i class="fas fa-folder me-1"></i>
       
-        <a href="/categories/anime/" class="hover:text-eureka"
-          >anime</a
+        <a href="/en/categories/code/" class="hover:text-eureka"
+          >code</a
         >
       
     </div>
@@ -274,46 +274,125 @@
   
 
   <p>:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true</p>
-<h2 id="缘起">缘起</h2>
-<p>这个标题来自脱口秀演员 Storm Xu 的播客2022年9月11日那一期《【脱口秀大会】能不能四年办一次》。
-他在里面批评笑果的演员用太多内部梗，太偷懒了。</p>
-<p>我很喜欢 Lycoris 这部动画，如果不是那么喜欢，也不至于写一篇长评。写评论虽然比不上搞创作，
-但还是不能偷懒。如果要评论就认真评论，不要凭着喜恶来发泄情绪。</p>
-<h2 id="总体评价">总体评价</h2>
-<p>我最后给 Lycoris 动画打分是5分制的3.8分。在我的标准里面5分是神作，4分非常优秀，3分是平庸之作，
-2分基本就是我能忍住看完的下限（虽然往往看不完），1分是完全看不下去。Lycoris 不算很平庸，不过缺点也非常多，
-但是很多缺点我都能忍受（除了有一点我后面会说）。</p>
-<p>总的感觉就好像看《高达 Seed》（我也很喜欢），商业元素结合得很好，人物也很讨喜，但评价一部动画的多个维度，
-没有哪个维度做到极致，如果要做神作，起码要有些地方做到极致才行。</p>
-<h2 id="缺点">缺点</h2>
-<p>先来谈谈缺点。</p>
+<h2 id="problem">Problem</h2>
+<p>We have servers on differnt zones, which have differnt subnets. We want to use <a href="https://github.com/cloudflare/ebpf_exporter">ebpf_exporter</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> to monitor network thoughput from subnet1 to subnet2.
+So I need to write some <a href="https://github.com/iovisor/bcc">bcc</a> scripts.</p>
+<p>Some tcp thoughput is sending from subnet1 to subnet2 by ipv6. But the servers haven&rsquo;t got ture ipv6 address, they have ipv4 addresses embedded into ipv6<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<pre><code class="language-text">::ffff:192.168.9.255
+</code></pre>
+<div class="src-block-caption">
+  <span class="src-block-number">Code Snippet 1:</span>
+  A manual exmaple for ipv4 address embedded into ipv6
+</div>
+<p>I have two missions:</p>
 <ol>
-<li>画面。怎么说好呢，我不是特别看重画面那一类人（所以我不会对着《紫罗兰永恒花园》说“啊这光这水”），但让我都看得出画面有问题，
-那就真的有问题了。比如第5话里面，千泷带人游玩东京，很多个镜头里面背景的人物（见15:05）就是静止不动的。
-又比如12画，千泷躺在地上休息的时候，两个人都成了豆豆眼。</li>
-<li>猥琐的第四话。我很不明白日本人对内裤的执着，这从《龙珠》《蜡笔小新》时代就开始，一直延续到现在。我都想不到有啥可以说的了。</li>
-<li>逻辑问题。不要在这个时候引用阿虚的名言（这就是偷懒）。所有作品都可以挑出逻辑的问题，但有一些逻辑会影响到整个作品。
-比如说 DA 居然可以从头吃瘪到尾，我很难想象这是一个秘密机关的水平。这些逻辑问题大部分只是影响观感，大部分我都忍了，
-比如第12话，千束放着女保镖跟还在挣扎爬上来的泷奈不管，跑回去看吉松，这多少有点说不过去了呀。还有最后一话，
-千束打碎玻璃要跟真岛天地同寿这一段，我真的接受不了。人姑娘前十二话甚至愿意为不杀人牺牲自己，怎么最后一话就魔心开杀了呢？
-还是说千束觉得只要不是自己射杀的就不算自己杀人算地心引力杀的？真岛种种大难不死也是很离谱（不过我能忍受）。</li>
+<li>filter and summerize the thoughput by subnets.</li>
+<li>get the ipv4 address from the ipv6 then filter and summerize by subnets.</li>
 </ol>
-<p>我去微博翻了翻评价，有些评论那么多缺点都不在话下，反而是最后千束跟真岛喝瓶饮料让他们受不了，这是何必呢？大家出来二次元混，
-谁还每个惺惺相惜的对头。</p>
-<h2 id="优点">优点</h2>
-<p>当然 Lycoris 还是有很多优点的，比如说 Lilybell 在第六话10:47的时候就被千束提及，这也解答了我当时的疑问：Lycoris 都是女性孤儿，
-那男性孤儿去哪里了？还有真岛的能力，在前面也给出了足够多的耳部特写。这种小细节丰富了作品，比尾田画到后来才加霸气设定和尼卡果实设定合理得多
-（当然难度不可同日而语，篇幅摆在那里）。</p>
-<p>Lycoris 可以这么火，离不开它造梗的能力，片头的击股之交，第一话描边枪法，当然少不了经典的 Sa~ka~na~.这种梗，很方便传播。加上一个好玩的设定 ——
-美少女特工，还有大量的百合情节。</p>
-<p>不过话说回来，不是堆满卖点就是好作品——甚至恰恰相反，因为要迎合消费市场，要堆卖点，反而削弱了作品。举个反例就是《女子高中生的虚度日常》，
-这部动画就是先给角色贴一个标签，然后让角色去演绎整个标签，整一个以标签为中心（可能后面有改善，因为我看不下去）。</p>
-<p>Lycoris 起码成功地塑造了人物（瑞希和胡桃可能是最失败的两个）。泷奈不用说，她逐渐从 DA 的工具，回到一个真正的人，她的改变其来有自，而且有目共睹。
-其他角色像风希，出场时间不多，但是勾勒得很充分。第三集千束把泷奈举起来，她救了泷奈，倒数第三集泷奈从天而降，千束被泷奈救回来。这个对称我觉得也挺有意思。</p>
-<p>把一部动画看作文化商品不是一个问题，但动画终究还是手艺活，不是堆卖点就能卖出去的。Lycoris 就算时道家常菜，那也是王刚级别的家常菜。</p>
-<h2 id="总结">总结</h2>
-<p>其实写这么一篇动画评论，没啥用。影响不了销量也影响不了评价。某种意义上就是一篇“只堪自愉悦”的东西。</p>
-<p>但我还是想说，不要偷懒。喜欢讨厌都是自己的事情，如果要评论就要动脑子，要想请楚作品的好坏。这样评论才稍微有那么一丁点的意义。</p>
+<h2 id="development">Development</h2>
+<h3 id="copy-and-paste-stage">Copy and paste stage</h3>
+<p>epbf itself is very simple<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. To use it is difficult. The difficulty is that you have know about the probe in the kernel.
+The most important problem is where to probe.</p>
+<p>The <a href="https://github.com/iovisor/bcc/tree/master/tools">bcc/tools</a> are good example for learning(ok, it&rsquo;s copy-and-paste).</p>
+<p><a href="https://github.com/iovisor/bcc/blob/master/tools/tcpsubnet.py">tcpsubnet</a> and <a href="https://github.com/iovisor/bcc/blob/master/tools/tcptop.py">tcptop</a> are the most useful exmaples. From these two scripts, I know that:</p>
+<ol>
+<li>we need to attach kprobes to <code>tcp_sendmsg</code> and <code>tcp_cleanup_rbuf</code>.</li>
+<li>we can get the ip info from <code>struct sock</code>.</li>
+</ol>
+<p>The ipv4 mission is easy.</p>
+<pre><code class="language-yaml">programs:
+  - name: container-tcptop-by-subnet
+    metrics:
+      counters:
+	- name: ipv4_send_bytes_by_subnet
+	  help: Summarize TCP send throughput by subnet.
+	  table: ipv4_send_bytes
+	  labels:
+	    - name: subnet
+	      size: 32
+	      decoders:
+		- name: string
+	- name: ipv4_recv_bytes_by_subnet
+	  help: Summarize TCP recv throughput by subnet.
+	  table: ipv4_recv_bytes
+	  labels:
+	    - name: subnet
+	      size: 32
+	      decoders:
+		- name: string
+    kprobes:
+      tcp_sendmsg: tcp_sendmsg
+      tcp_cleanup_rbuf: tcp_cleanup_rbuf
+    code: |
+      #include &lt;linux/nsproxy.h&gt;
+      #include &lt;linux/mount.h&gt;
+      #include &lt;linux/ns_common.h&gt;
+      #include &lt;uapi/linux/ptrace.h&gt;
+      #include &lt;net/sock.h&gt;
+      #include &lt;bcc/proto.h&gt;
+      #define CONTAINER_ID_LEN 128
+      #define TARGET_IP_SUBNET 0xA90A // 10.169.0.0/16
+      #define TARGET_MASK  0xFFFF // 16
+      #define TARGET_IP_SUBNET_TAG &quot;10.169.0.0/16&quot;
+      struct subnet_key {
+	  char subnet[32];
+      };
+      BPF_HASH(ipv4_send_bytes, struct subnet_key);
+      BPF_HASH(ipv4_recv_bytes, struct subnet_key);
+
+      int tcp_sendmsg(struct pt_regs *ctx, struct sock *sk,
+	  struct msghdr *msg, size_t size)
+      {
+	  u32 pid = bpf_get_current_pid_tgid() &gt;&gt; 32;
+	  u16 family = sk-&gt;__sk_common.skc_family;
+
+	  if (family == AF_INET) {
+	      u32 dst = sk-&gt;__sk_common.skc_daddr;
+	      if ((TARGET_IP_SUBNET &amp; TARGET_MASK) == (dst &amp; TARGET_MASK)) {
+		struct subnet_key skey = {.subnet = TARGET_IP_SUBNET_TAG};
+		ipv4_send_bytes.increment(skey, size);
+	      }
+	  }
+	  // else drop
+	  return 0;
+      }
+
+      int tcp_cleanup_rbuf(struct pt_regs *ctx, struct sock *sk, int copied)
+      {
+	  u32 pid = bpf_get_current_pid_tgid() &gt;&gt; 32;
+	  u16 family = sk-&gt;__sk_common.skc_family;
+	  u64 *val, zero = 0;
+	  if (copied &lt;= 0)
+	      return 0;
+	  if (family == AF_INET) {
+	      u32 src = sk-&gt;__sk_common.skc_addr;
+	      if ((TARGET_IP_SUBNET &amp; TARGET_MASK) == (src &amp; TARGET_MASK)) {
+		struct subnet_key skey = {.subnet = TARGET_IP_SUBNET_TAG};
+		ipv4_recv_bytes.increment(skey, copied);
+	      }
+	  }
+	  // else drop
+	  return 0;
+      }
+
+</code></pre>
+<h3 id="write-a-bpftrace-script">Write a bpftrace script</h3>
+<p>check 6635e16f for detail</p>
+<h3 id="debug">Debug</h3>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The ebpf_exporter 2.0 has been migrated from BCC to libbpf, see <a href="https://github.com/cloudflare/ebpf_exporter/releases/tag/v2.0.0">the release note of ebpf_exporter 2.0</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>I don&rsquo;t know why.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>See <a href="https://man7.org/linux/man-pages/man2/bpf.2.html">the man page of bpf()</a>, only six commands for the <code>bpf()</code> syscall. I&rsquo;m going to write another blog to analyse the source code of <code>bpf()</code>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 
 </article>
 
@@ -321,9 +400,9 @@
       
         <div class="my-4">
     
-    <a href="/tags/anime/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#anime</a>
+    <a href="/en/tags/ebpf/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#ebpf</a>
     
-    <a href="/tags/lycoris/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#lycoris</a>
+    <a href="/en/tags/kernel/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#kernel</a>
     
 </div>
       
@@ -340,16 +419,11 @@
   >
     <div>
       
-        <span class="text-primary-text block font-bold"
-          >上一页</span
-        >
-        <a href="/posts/ghost-in-the-shell-again/" class="block">再看 Ghost in the Shell</a>
-      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
-        <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/posts/personal-reading-history-2020/" class="block">个人阅读史2020</a>
+        <span class="text-primary-text block font-bold">Next</span>
+        <a href="/en/posts/where-does-my-thought-come-from/" class="block">Where Does My Thought Come From</a>
       
     </div>
   </div>

@@ -103,8 +103,8 @@
         "@id": "/posts/debian-package-dependency/"
     },
     "headline": "debian 包的依赖问题 | 一派胡言","datePublished": "2022-06-09T00:00:00+00:00",
-    "dateModified": "2022-06-10T15:22:51+08:00",
-    "wordCount":  1236 ,
+    "dateModified": "2023-01-03T21:08:01+08:00",
+    "wordCount":  1239 ,
     "publisher": {
         "@type": "Person",
         "name": "Dante Zhang",
@@ -145,7 +145,7 @@
 <meta property="article:published_time" content="2022-06-09T00:00:00&#43;00:00" />
 
 
-<meta property="article:modified_time" content="2022-06-10T15:22:51&#43;08:00" />
+<meta property="article:modified_time" content="2023-01-03T21:08:01&#43;08:00" />
 
 
 
@@ -273,7 +273,8 @@
   
   
 
-  <h2 id="背景">背景</h2>
+  <p>:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true</p>
+<h2 id="背景">背景</h2>
 <p>最近我要把 Ubuntu 社区的 bpftrace 包迁移到公司内部发版，所以我从社区将 bpftrace 的<a href="https://salsa.debian.org/debian/bpftrace.git">源代码</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>挪到公司内部的 gitlab 开始自己打包。</p>
 <p>目前公司使用的主流 Linux 发行版本是 Ubuntu 20.04，所以我也是从 bpfttrace 0.9.4 版本着手编译<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
 <h2 id="问题">问题</h2>
@@ -436,6 +437,17 @@ RUN apt-get update &amp;&amp; apt-get install -y \
       
 
 
+
+  <div id="valine-comments" class="mt-4"></div>
+<script defer src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js" 
+  integrity="sha384-e0&#43;DNUCJo75aOAzHQbFWYBCM9/S4f0BhRJXvEgbE3mMS85RM20MSSGStHuNdY2QK"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Valine({
+      el: "#valine-comments",appId:"QPBTOv7Ab4EOySWYupG8tr3r-MdYXbMMI",appKey:"xgHZMAh4IoaVlkEwSMsOo7vZ",
+    })
+  });
+</script>
 
     </div>
     

@@ -13,7 +13,7 @@
       <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>/posts/history-2022/</guid>
-      <description>缘起 去年在河边散步起意背《离骚》，半途而废。倒是有意模仿春秋，写了一篇《日月忽其不奄兮，春与秋其代序》，这是一篇总结性的文字， 从我过去一年的日记，筛选</description>
+      <description>:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true 缘起 去年在河边散步起意背《离骚》，半途而废。倒是有意模仿春秋，写了一篇《日月忽其不奄兮，春与秋其代序》，这是一篇总结性的文字， 从我过去一年的日记</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Tue, 27 Sep 2022 00:00:00 +0000</pubDate>
       
       <guid>/posts/dont-be-lazy/</guid>
-      <description>缘起 这个标题来自脱口秀演员 Storm Xu 的播客2022年9月11日那一期《【脱口秀大会】能不能四年办一次》。 他在里面批评笑果的演员用太多内部梗，太偷懒了。 我很喜</description>
+      <description>:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true 缘起 这个标题来自脱口秀演员 Storm Xu 的播客2022年9月11日那一期《【脱口秀大会】能不能四年办一次》。 他在里面批评笑果的演员用太多内部梗，太偷懒了。</description>
     </item>
     
     <item>
@@ -40,7 +40,7 @@
       <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
       
       <guid>/posts/personal-reading-history-2020/</guid>
-      <description>2019年的余绪 2020年开始的时候，我所在的公司 SMI 倒闭了1，我留在深圳的出租屋里面。有点不安，但也没有很恐慌2，按部就班开始计划找工作。春节临近，我</description>
+      <description>:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true 2019年的余绪 2020年开始的时候，我所在的公司 SMI 倒闭了1，我留在深圳的出租屋里面。有点不安，但也没有很恐慌2，按部就班开始计划找工作。春节临</description>
     </item>
     
     <item>
@@ -49,7 +49,7 @@
       <pubDate>Mon, 05 Sep 2022 00:00:00 +0000</pubDate>
       
       <guid>/posts/sobriety/</guid>
-      <description>缘起 4月8日去 CMGS 家烧烤，喝得一塌糊涂，之后有宿醉的感觉，于是在4月12日我决心戒酒。 当然这不是我第一次喝到宿醉，也不是我第一次宿醉之后下决心戒酒。不过</description>
+      <description>:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true 缘起 4月8日去 CMGS 家烧烤，喝得一塌糊涂，之后有宿醉的感觉，于是在4月12日我决心戒酒。 当然这不是我第一次喝到宿醉，也不是我第一次宿醉之后下决心戒酒</description>
     </item>
     
     <item>
@@ -58,7 +58,7 @@
       <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>/posts/singapore-lds/</guid>
-      <description>楔子 新加坡实在太中国了，一点都没有出国的感觉1。你让我买纪念品，我都不知道买什么好。 刚到新加坡时，我就想好好了解这个国家，当时找了很多新加坡的书来看，</description>
+      <description>:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true 楔子 新加坡实在太中国了，一点都没有出国的感觉1。你让我买纪念品，我都不知道买什么好。 刚到新加坡时，我就想好好了解这个国家，当时找了很多新加坡的书</description>
     </item>
     
     <item>
@@ -67,7 +67,7 @@
       <pubDate>Thu, 09 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>/posts/debian-package-dependency/</guid>
-      <description>背景 最近我要把 Ubuntu 社区的 bpftrace 包迁移到公司内部发版，所以我从社区将 bpftrace 的源代码1挪到公司内部的 gitlab 开始自己打包。 目前公司使用的主流 Linux 发行版本是 Ubuntu 20.04，所以</description>
+      <description>:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true 背景 最近我要把 Ubuntu 社区的 bpftrace 包迁移到公司内部发版，所以我从社区将 bpftrace 的源代码1挪到公司内部的 gitlab 开始自己打包。 目前公司使用的主流 Linux 发行版本是 Ubuntu 20.04</description>
     </item>
     
     <item>

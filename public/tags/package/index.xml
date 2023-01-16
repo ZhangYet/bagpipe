@@ -13,7 +13,7 @@
       <pubDate>Thu, 09 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>/posts/debian-package-dependency/</guid>
-      <description>背景 最近我要把 Ubuntu 社区的 bpftrace 包迁移到公司内部发版，所以我从社区将 bpftrace 的源代码1挪到公司内部的 gitlab 开始自己打包。 目前公司使用的主流 Linux 发行版本是 Ubuntu 20.04，所以</description>
+      <description>:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true 背景 最近我要把 Ubuntu 社区的 bpftrace 包迁移到公司内部发版，所以我从社区将 bpftrace 的源代码1挪到公司内部的 gitlab 开始自己打包。 目前公司使用的主流 Linux 发行版本是 Ubuntu 20.04</description>
     </item>
     
   </channel>
