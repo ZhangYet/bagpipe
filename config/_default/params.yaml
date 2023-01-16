@@ -46,7 +46,7 @@ math:
 
 comment:
   # Options: disqus, commento, valine and utterances.
-  handler: valine
+  handler: utterances
   valine:
     app-Id: QPBTOv7Ab4EOySWYupG8tr3r-MdYXbMMI
     app-Key: xgHZMAh4IoaVlkEwSMsOo7vZ
