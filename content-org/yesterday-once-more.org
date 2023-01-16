@@ -4,12 +4,13 @@
 #+hugo_tags: log
 #+hugo_categories: log
 #+description: 简单讲述一下博客迁移的过程。
-:PROPERTIES:
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
-:END:
 #+author: Dantezy
 #+date: 2022-05-19
 #+TITLE: 博客迁移日记
+
+:PROPERTIES:
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
+:END:
 
 * 缘起
 我的[[https://zhangyet.github.io/][博客]]原来用 git-page 部署。 因为去年我转岗到了新加坡，所以我有了方便的支付手段，于是我买了虚拟机和域名，把博客迁移到现在的域名上。

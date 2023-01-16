@@ -3,14 +3,11 @@ title = "debian 包的依赖问题"
 author = ["Dantezy"]
 description = "为 bpftrace 打包遇到的依赖问题以及解决方案。"
 date = 2022-06-09
-lastmod = 2023-01-16T14:11:22+08:00
+lastmod = 2023-01-16T14:28:06+08:00
 tags = ["debian", "package"]
 categories = ["code"]
 draft = false
 +++
-
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
-
 
 ## 背景 {#背景}
 

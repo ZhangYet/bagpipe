@@ -4,9 +4,6 @@
 #+hugo_tags: ebpf kernel
 #+hugo_categories: code 
 #+hugo_draft: true
-:PROPERTIES:
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
-:END:
 #+description: Use ebpf to summerize network thoughput on ipv6. 
 #+author: Dantezy
 #+date: 2022-12-20

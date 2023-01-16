@@ -3,12 +3,11 @@ title = "博客迁移日记"
 author = ["Dantezy"]
 description = "简单讲述一下博客迁移的过程。"
 date = 2022-05-19
-lastmod = 2022-09-27T14:42:00+08:00
+lastmod = 2023-01-16T14:24:38+08:00
 tags = ["log"]
 categories = ["log"]
 draft = false
 +++
-
 ## 缘起 {#缘起}
 
 我的[博客](https://zhangyet.github.io/)原来用 git-page 部署。 因为去年我转岗到了新加坡，所以我有了方便的支付手段，于是我买了虚拟机和域名，把博客迁移到现在的域名上。
@@ -33,6 +32,8 @@ draft = false
 <span class="timestamp-wrapper"><span class="timestamp">[2022-05-19 Thu] </span></span> 写这篇迁移日记
 
 <span class="timestamp-wrapper"><span class="timestamp">[2022-05-22 Sun] </span></span> 用 [Let's Encrypt](https://letsencrypt.org/) 开启了 https 支持。
+
+<span class="timestamp-wrapper"><span class="timestamp">[2023-01-16 Mon] </span></span> 配置了评论系统，用的是 valine。
 
 
 ## 旧文存档 {#旧文存档}

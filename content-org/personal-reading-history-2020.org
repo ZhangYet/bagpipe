@@ -5,9 +5,6 @@
 #+hugo_categories: reading
 #+hugo_draft: false
 #+description: 整理一下2020年读过的书。读过的书仿佛一根线，将记忆串联起来。
-:PROPERTIES:
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
-:END:
 #+author: Dantezy
 #+date: 2022-09-06
 #+TITLE: 个人阅读史2020

@@ -4,9 +4,6 @@
 #+hugo_tags: sci-fiction 
 #+hugo_categories: fiction
 #+description: 设想一个人愉快地生活在 the Matrix 里面的世界。
-:PROPERTIES:
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
-:END:
 #+author: Dantezy
 #+date: 2022-11-10
 #+TITLE: 逍遥游（一）

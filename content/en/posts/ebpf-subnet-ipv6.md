@@ -3,14 +3,11 @@ title = "Summerize network thoughput by ebpf"
 author = ["Dantezy"]
 description = "Use ebpf to summerize network thoughput on ipv6."
 date = 2022-12-20
-lastmod = 2023-01-16T12:17:11+08:00
+lastmod = 2023-01-16T14:28:39+08:00
 tags = ["ebpf", "kernel"]
 categories = ["code"]
-draft = false
+draft = true
 +++
-
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
-
 
 ## Problem {#problem}
 

@@ -5,9 +5,6 @@
 #+hugo_categories: log
 #+hugo_draft: false
 #+description: 2022年年度总结，起名春秋，不是「知我罪我，其惟春秋」，而是「春秋断烂朝服」的意思，另外也有「春秋笔法」的意思。
-:PROPERTIES:
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
-:END:
 #+author: Dantezy
 #+date: 2022-12-30
 #+TITLE: 个人春秋2022

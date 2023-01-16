@@ -4,9 +4,6 @@
 #+hugo_tags: debian package 
 #+hugo_categories: code
 #+description: 为 bpftrace 打包遇到的依赖问题以及解决方案。
-:PROPERTIES:
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
-:END:
 #+author: Dantezy
 #+date: 2022-06-09
 #+TITLE: debian 包的依赖问题

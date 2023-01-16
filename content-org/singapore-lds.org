@@ -4,9 +4,6 @@
 #+hugo_tags: log religion singapore
 #+hugo_categories: log
 #+description: 来新加坡之后跟基督教后期圣徒教会有一定接触。写一下跟他们交游的经历，挺有意思的。
-:PROPERTIES:
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
-:END:
 #+author: Dantezy
 #+date: 2022-07-04
 #+TITLE: 新加坡观察：基督教后期圣徒教会(LDS)
