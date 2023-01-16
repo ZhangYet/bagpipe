@@ -15,7 +15,7 @@
 * 缘起
 我的[[https://zhangyet.github.io/][博客]]原来用 git-page 部署。 因为去年我转岗到了新加坡，所以我有了方便的支付手段，于是我买了虚拟机和域名，把博客迁移到现在的域名上。
 
-选择 [[https://gohugo.io/][hugo]] 生成网页是受[[https://zilongshanren.com/post/move-from-hexo-to-hugo/][《博客从 hexo 迁移到 hugo》]]，主要考虑的是因为有 [[https://ox-hugo.scripter.co/][ox-hugo]] 可以让我用 org-mode 写博客。博客的主题是 [[https://github.com/wangchucheng/hugo-eureka][eureka]]，选这个主题的原因一是它比较简洁，二是因为它的名字[fn:1]。
+选择 [[https://gohugo.io/][hugo]] 生成网页是受[[https://zilongshanren.com/post/move-from-hexo-to-hugo/][《博客从 hexo 迁移到 hugo》]]影响，主要因为 [[https://ox-hugo.scripter.co/][ox-hugo]] 可以让我用 org-mode 写博客。博客的主题是 [[https://github.com/wangchucheng/hugo-eureka][eureka]]，选这个主题的原因一是它比较简洁，二是因为它的名字[fn:1]。
 * 进度
 
 [2022-03-18] 在 DigitalOcean 上购买了服务器。
@@ -35,6 +35,8 @@
 [2022-05-22] 用 [[https://letsencrypt.org/][Let's Encrypt]] 开启了 https 支持。
 
 [2023-01-16] 配置了评论系统，用的是 valine。
+
+[2023-01-17] 改用 utterances 作为评论系统，因为 valine 评论发不出去。
 * 旧文存档
 古人云：「愧其少作」。我本来想把过去的一些旧文迁移过来，但是翻了一下以前的文章，着实没有太多好的。所以在这里列一下就算了。当然有少数文章我写的时候还是动了脑子的，所以可能会修改一下，重新在这里发布。
 

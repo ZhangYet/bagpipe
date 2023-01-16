@@ -3,16 +3,20 @@ title = "博客迁移日记"
 author = ["Dantezy"]
 description = "简单讲述一下博客迁移的过程。"
 date = 2022-05-19
-lastmod = 2023-01-16T14:24:38+08:00
+lastmod = 2023-01-17T02:06:26+08:00
 tags = ["log"]
 categories = ["log"]
 draft = false
 +++
+
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
+
+
 ## 缘起 {#缘起}
 
 我的[博客](https://zhangyet.github.io/)原来用 git-page 部署。 因为去年我转岗到了新加坡，所以我有了方便的支付手段，于是我买了虚拟机和域名，把博客迁移到现在的域名上。
 
-选择 [hugo](https://gohugo.io/) 生成网页是受[《博客从 hexo 迁移到 hugo》](https://zilongshanren.com/post/move-from-hexo-to-hugo/)，主要考虑的是因为有 [ox-hugo](https://ox-hugo.scripter.co/) 可以让我用 org-mode 写博客。博客的主题是 [eureka](https://github.com/wangchucheng/hugo-eureka)，选这个主题的原因一是它比较简洁，二是因为它的名字[^fn:1]。
+选择 [hugo](https://gohugo.io/) 生成网页是受[《博客从 hexo 迁移到 hugo》](https://zilongshanren.com/post/move-from-hexo-to-hugo/)影响，主要因为 [ox-hugo](https://ox-hugo.scripter.co/) 可以让我用 org-mode 写博客。博客的主题是 [eureka](https://github.com/wangchucheng/hugo-eureka)，选这个主题的原因一是它比较简洁，二是因为它的名字[^fn:1]。
 
 
 ## 进度 {#进度}
@@ -34,6 +38,8 @@ draft = false
 <span class="timestamp-wrapper"><span class="timestamp">[2022-05-22 Sun] </span></span> 用 [Let's Encrypt](https://letsencrypt.org/) 开启了 https 支持。
 
 <span class="timestamp-wrapper"><span class="timestamp">[2023-01-16 Mon] </span></span> 配置了评论系统，用的是 valine。
+
+<span class="timestamp-wrapper"><span class="timestamp">[2023-01-17 Tue] </span></span> 改用 utterances 作为评论系统，因为 valine 评论发不出去。
 
 
 ## 旧文存档 {#旧文存档}
