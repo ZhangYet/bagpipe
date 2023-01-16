@@ -3,11 +3,14 @@ title = "戒酒记"
 author = ["Dantezy"]
 description = "记录一些关于戒酒的想法。"
 date = 2022-09-05
-lastmod = 2022-09-06T00:26:28+08:00
+lastmod = 2023-01-16T14:14:14+08:00
 tags = ["log"]
 categories = ["log"]
 draft = false
 +++
+
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
+
 
 ## 缘起 {#缘起}
 

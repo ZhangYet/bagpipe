@@ -4,6 +4,9 @@
 #+hugo_tags: log 
 #+hugo_categories: log
 #+description: 记录一些关于戒酒的想法。
+:PROPERTIES:
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
+:END:
 #+author: Dantezy
 #+date: 2022-09-05
 #+TITLE: 戒酒记

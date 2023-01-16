@@ -3,11 +3,14 @@ title = "不要偷懒"
 author = ["Dantezy"]
 description = "Lycoris Recoil 的影评"
 date = 2022-09-27
-lastmod = 2022-10-03T23:59:10+08:00
+lastmod = 2023-01-16T14:11:44+08:00
 tags = ["anime", "lycoris"]
 categories = ["anime"]
 draft = false
 +++
+
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
+
 
 ## 缘起 {#缘起}
 

@@ -5,6 +5,9 @@
 #+hugo_categories: anime
 #+hugo_draft: false
 #+description: 重新看了一遍 Ghost in the Shell 有一些新的胡思乱想。
+:PROPERTIES:
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
+:END:
 #+author: Dantezy
 #+date: 2022-10-25
 #+TITLE: 再看 Ghost in the Shell
