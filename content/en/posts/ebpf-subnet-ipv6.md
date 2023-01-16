@@ -1,0 +1,142 @@
++++
+title = "Summerize network thoughput by ebpf"
+author = ["Dantezy"]
+description = "Use ebpf to summerize network thoughput on ipv6."
+date = 2022-12-20
+lastmod = 2023-01-16T12:17:11+08:00
+tags = ["ebpf", "kernel"]
+categories = ["code"]
+draft = false
++++
+
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true
+
+
+## Problem {#problem}
+
+We have servers on differnt zones, which have differnt subnets. We want to use [ebpf_exporter](https://github.com/cloudflare/ebpf_exporter)[^fn:1] to monitor network thoughput from subnet1 to subnet2.
+So I need to write some [bcc](https://github.com/iovisor/bcc) scripts.
+
+Some tcp thoughput is sending from subnet1 to subnet2 by ipv6. But the servers haven't got ture ipv6 address, they have ipv4 addresses embedded into ipv6[^fn:2].
+
+```text
+::ffff:192.168.9.255
+```
+
+<div class="src-block-caption">
+  <span class="src-block-number">Code Snippet 1:</span>
+  A manual exmaple for ipv4 address embedded into ipv6
+</div>
+
+I have two missions:
+
+1.  filter and summerize the thoughput by subnets.
+2.  get the ipv4 address from the ipv6 then filter and summerize by subnets.
+
+
+## Development {#development}
+
+
+### Copy and paste stage {#copy-and-paste-stage}
+
+epbf itself is very simple[^fn:3]. To use it is difficult. The difficulty is that you have know about the probe in the kernel.
+The most important problem is where to probe.
+
+The [bcc/tools](https://github.com/iovisor/bcc/tree/master/tools) are good example for learning(ok, it's copy-and-paste).
+
+[tcpsubnet](https://github.com/iovisor/bcc/blob/master/tools/tcpsubnet.py) and [tcptop](https://github.com/iovisor/bcc/blob/master/tools/tcptop.py) are the most useful exmaples. From these two scripts, I know that:
+
+1.  we need to attach kprobes to `tcp_sendmsg` and `tcp_cleanup_rbuf`.
+2.  we can get the ip info from `struct sock`.
+
+The ipv4 mission is easy.
+
+```yaml
+programs:
+  - name: container-tcptop-by-subnet
+    metrics:
+      counters:
+	- name: ipv4_send_bytes_by_subnet
+	  help: Summarize TCP send throughput by subnet.
+	  table: ipv4_send_bytes
+	  labels:
+	    - name: subnet
+	      size: 32
+	      decoders:
+		- name: string
+	- name: ipv4_recv_bytes_by_subnet
+	  help: Summarize TCP recv throughput by subnet.
+	  table: ipv4_recv_bytes
+	  labels:
+	    - name: subnet
+	      size: 32
+	      decoders:
+		- name: string
+    kprobes:
+      tcp_sendmsg: tcp_sendmsg
+      tcp_cleanup_rbuf: tcp_cleanup_rbuf
+    code: |
+      #include <linux/nsproxy.h>
+      #include <linux/mount.h>
+      #include <linux/ns_common.h>
+      #include <uapi/linux/ptrace.h>
+      #include <net/sock.h>
+      #include <bcc/proto.h>
+      #define CONTAINER_ID_LEN 128
+      #define TARGET_IP_SUBNET 0xA90A // 10.169.0.0/16
+      #define TARGET_MASK  0xFFFF // 16
+      #define TARGET_IP_SUBNET_TAG "10.169.0.0/16"
+      struct subnet_key {
+	  char subnet[32];
+      };
+      BPF_HASH(ipv4_send_bytes, struct subnet_key);
+      BPF_HASH(ipv4_recv_bytes, struct subnet_key);
+
+      int tcp_sendmsg(struct pt_regs *ctx, struct sock *sk,
+	  struct msghdr *msg, size_t size)
+      {
+	  u32 pid = bpf_get_current_pid_tgid() >> 32;
+	  u16 family = sk->__sk_common.skc_family;
+
+	  if (family == AF_INET) {
+	      u32 dst = sk->__sk_common.skc_daddr;
+	      if ((TARGET_IP_SUBNET & TARGET_MASK) == (dst & TARGET_MASK)) {
+		struct subnet_key skey = {.subnet = TARGET_IP_SUBNET_TAG};
+		ipv4_send_bytes.increment(skey, size);
+	      }
+	  }
+	  // else drop
+	  return 0;
+      }
+
+      int tcp_cleanup_rbuf(struct pt_regs *ctx, struct sock *sk, int copied)
+      {
+	  u32 pid = bpf_get_current_pid_tgid() >> 32;
+	  u16 family = sk->__sk_common.skc_family;
+	  u64 *val, zero = 0;
+	  if (copied <= 0)
+	      return 0;
+	  if (family == AF_INET) {
+	      u32 src = sk->__sk_common.skc_addr;
+	      if ((TARGET_IP_SUBNET & TARGET_MASK) == (src & TARGET_MASK)) {
+		struct subnet_key skey = {.subnet = TARGET_IP_SUBNET_TAG};
+		ipv4_recv_bytes.increment(skey, copied);
+	      }
+	  }
+	  // else drop
+	  return 0;
+      }
+
+```
+
+
+### Write a bpftrace script {#write-a-bpftrace-script}
+
+check 6635e16f for detail
+
+
+### Debug {#debug}
+
+[^fn:1]: The ebpf_exporter 2.0 has been migrated from BCC to libbpf, see [the release note of ebpf_exporter 2.0](https://github.com/cloudflare/ebpf_exporter/releases/tag/v2.0.0).
+[^fn:2]: I don't know why.
+[^fn:3]: See [the man page of bpf()](https://man7.org/linux/man-pages/man2/bpf.2.html), only six commands for the `bpf()` syscall. I'm going to write another blog to analyse the source code of `bpf()`.
