@@ -1,0 +1,16 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: zh/posts
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: history
+#+hugo_categories: reading
+#+hugo_draft: true
+#+description: 罗定还真自古就是穷山恶水出刁民啊。
+#+author: Dantezy
+#+date: 2022-01-15
+#+TITLE: 同光之间的罗定——《晚清官场镜像》读书笔记
+* 杜凤治——其人、其日记
+* 杜凤治日记中的罗定
+** 经济、政治
+** 民生、刑事
+** 其他
+
