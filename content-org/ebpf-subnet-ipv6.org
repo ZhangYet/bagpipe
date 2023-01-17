@@ -4,15 +4,15 @@
 #+hugo_tags: ebpf kernel
 #+hugo_categories: code 
 #+hugo_draft: true
-#+description: Use ebpf to summerize network thoughput on ipv6. 
+#+description: Use ebpf to summerize network throughput on ipv6. 
 #+author: Dantezy
 #+date: 2022-12-20
-#+TITLE: Summerize network thoughput by ebpf
+#+TITLE: Summerize network throughput by ebpf
 * Problem
-We have servers on differnt zones, which have differnt subnets. We want to use [[https://github.com/cloudflare/ebpf_exporter][ebpf_exporter]][fn:3] to monitor network thoughput from subnet1 to subnet2.
+We have servers on different zones, which have different subnets. We want to use [[https://github.com/cloudflare/ebpf_exporter][ebpf_exporter]][fn:3] to monitor network throughput from subnet1 to subnet2.
 So I need to write some [[https://github.com/iovisor/bcc][bcc]] scripts.
 
-Some tcp thoughput is sending from subnet1 to subnet2 by ipv6. But the servers haven't got ture ipv6 address, they have ipv4 addresses embedded into ipv6[fn:1].
+Some tcp throughput is sending from subnet1 to subnet2 by ipv6. But the servers haven't got ture ipv6 address, they have ipv4 addresses embedded into ipv6[fn:1].
 #+CAPTION: A manual exmaple for ipv4 address embedded into ipv6
 #+BEGIN_EXAMPLE
 ::ffff:192.168.9.255
@@ -20,7 +20,7 @@ Some tcp thoughput is sending from subnet1 to subnet2 by ipv6. But the servers h
 
 I have two missions:
 
-1. filter and summerize the thoughput by subnets.
+1. filter and summerize the throughput by subnets.
 2. get the ipv4 address from the ipv6 then filter and summerize by subnets.
 * Development
 ** Copy and paste stage
@@ -113,9 +113,179 @@ programs:
       }
 
 #+END_SRC
+
+Following this idea, I wrote the code for the ipv6 part.
+#+BEGIN_SRC c
+  if (family == AF_INET6) {
+    u8 remote_ip[2];
+    remote_ip[0] = sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[12];
+    if ((remote_ip[0] & MASK0_FOR_IPV6) != SUBNET0) {
+      return 0;
+    }
+    remote_ip[1] = sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[13];
+    if ((remote_ip[1] & MASK1_FOR_IPV6) != SUBNET1) {
+      return 0;
+    }
+    struct subnet_key skey = {.subnet = TARGET_IP_SUBNET_TAG};
+    ipv6_send_bytes.increment(skey, size);
+  }
+#+END_SRC
+
+But when I testing, I didn't get any data for ipv6 throughput. But once I delete the if part, the test server did have ipv6 throughput.
+
+What happened?
 ** Write a bpftrace script
-check 6635e16f for detail
+Since we cannot use [[https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#1-bpf_trace_printk][bpf_trace_printk()]] in ebpf_exporter, I don't know what happend in the if statment ~if ((remote_ip[0] & MASK0_FOR_IPV6) != SUBNET0)~.
+I decided to write a bpftrace script to test it.
+
+#+BEGIN_SRC
+#!/usr/bin/env bpftrace
+
+#include <net/sock.h>
+#include <net/sock.h>
+
+kprobe:tcp_sendmsg
+{
+  $sk = (struct sock *)arg0;
+  $dst = $sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8;
+
+  $fm = $sk->__sk_common.skc_family;
+  if ( $1 > 0 ) {
+    if ( pid != $1 ) {
+      return;
+    }
+  }
+  
+  if ( $fm == AF_INET6) {
+    if (( ($dst[12] & 255) == 192 ) && ( ($dst[13] & 255) == 168 )) {
+	printf("dst12: %d, dst13: %d\n", $dst[12] & 255, $dst[13] & 255);
+	printf("pid %d, dst: %d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d \n", pid,
+	   $dst[0],$dst[1],$dst[2],$dst[3],$dst[4],$dst[5],$dst[6],$dst[7], 
+	   $dst[8],$dst[9],$dst[10],$dst[11],$dst[12],$dst[13],$dst[14],$dst[15]);
+      }
+  }
+}
+
+kprobe:tcp_cleanup_rbuf
+{
+  $sk = (struct sock *)arg0;
+  $dst = $sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8;
+
+  $fm = $sk->__sk_common.skc_family;
+  if ( $1 > 0 ) {
+    if ( pid != $1 ) {
+      return;
+    }
+  }
+
+  if ( $fm == AF_INET6 ) {
+    if (( ($dst[12] & 255) == 192 ) && ( ($dst[13] & 255) == 168 )) {
+	printf("dst12: %d, dst13: %d\n", $dst[12] & 255, $dst[13] & 255);
+	printf("pid %d, dst: %d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d \n", pid,
+	   $dst[0],$dst[1],$dst[2],$dst[3],$dst[4],$dst[5],$dst[6],$dst[7], 
+	   $dst[8],$dst[9],$dst[10],$dst[11],$dst[12],$dst[13],$dst[14],$dst[15]);
+    }
+  }
+}
+  
+#+END_SRC
+
+To my suprice, this script show normal ipv6 address!
 ** Debug
+Why bpftrace and ebpf_exporter gave different results with the same logic? I don't know why. But it occured to me that even though ~bpf_trace_printk()~ is no use in ebpf_exporter,
+why not write a bcc script to check the result?
+
+#+BEGIN_SRC python
+#!/usr/bin/python
+from bcc import BPF
+
+src = '''
+#include <net/sock.h>
+int kprobe__tcp_sendmsg(struct pt_regs *ctx, struct sock *sk,
+          struct msghdr *msg, size_t size)
+{
+    u16 family = sk->__sk_common.skc_family;
+    if (family == AF_INET6) {
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[0]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[1]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[2]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[3]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[4]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[5]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[6]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[7]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[8]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[9]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[10]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[11]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[12]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[13]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[14]);
+        bpf_trace_printk("Debug %d \\n", sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[15]);
+
+        bpf_trace_printk("rcvDebug %d \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[0]);
+        bpf_trace_printk("rcvDebug %d \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[1]);
+        bpf_trace_printk("rcvDebug %d \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[2]);
+        bpf_trace_printk("rcvDebug %d \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[3]);
+        bpf_trace_printk("rcvDebug %d \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[4]);
+        bpf_trace_printk("rcvDebug %d \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[5]);
+        bpf_trace_printk("rcvDebug %d \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[6]);
+        bpf_trace_printk("rcvDebug %d \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[7]);
+        bpf_trace_printk("rcvDebug %d \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[8]);
+        bpf_trace_printk("rcvDebug %d \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[9]);
+        bpf_trace_printk("rcvDebug %d \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[10]);
+        bpf_trace_printk("rcvDebug %d \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[11]);
+        bpf_trace_printk("rcvDebug %d \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[12]);
+        bpf_trace_printk("rcvDebug %d \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[13]);
+        bpf_trace_printk("rcvDebug %u \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[14]);
+        bpf_trace_printk("rcvDebug %u \\n", sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[15]);
+
+    }
+    return 0;
+}
+'''
+# This may not work for 4.17 on x64, you need replace kprobe__sys_clone with kprobe____x64_sys_clone
+BPF(text=src).trace_print()
+
+#+END_SRC
+
+Use ~nc -6 -l ::1 10096~ to set a server and ~nc -6 localhost 10096~ to connect the server and send data through ipv6. What I got is as below:
+
+#+BEGIN_SRC shell
+b'              nc-401206  [003] .... 33610.016579: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016614: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016614: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016615: 0: Debug 133'
+b'              nc-401206  [003] .... 33610.016615: 0: Debug 255'
+b'              nc-401206  [003] .... 33610.016615: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016616: 0: Debug 152'
+b'              nc-401206  [003] .... 33610.016616: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016616: 0: Debug 176'
+b'              nc-401206  [003] .... 33610.016617: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016618: 0: Debug 208'
+b'              nc-401206  [003] .... 33610.016618: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016618: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016618: 0: Debug 4'
+b'              nc-401206  [003] .... 33610.016619: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016619: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016619: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016620: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016620: 0: rcvDebug 133'
+b'              nc-401206  [003] .... 33610.016621: 0: rcvDebug 255'
+b'              nc-401206  [003] .... 33610.016621: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016621: 0: rcvDebug 152'
+b'              nc-401206  [003] .... 33610.016622: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016622: 0: rcvDebug 176'
+b'              nc-401206  [003] .... 33610.016622: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016623: 0: rcvDebug 208'
+b'              nc-401206  [003] .... 33610.016623: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016623: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016624: 0: rcvDebug 4'
+b'              nc-401206  [003] .... 33610.016624: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016624: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016625: 0: rcvDebug 0'
+#+END_SRC
+Wait, what is it? I suppose to get something standing for ::1!
 
 * Footnotes
 
