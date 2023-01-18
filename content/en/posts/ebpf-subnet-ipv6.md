@@ -3,8 +3,8 @@ title = "Summerize network throughput by ebpf"
 author = ["Dantezy"]
 description = "Use ebpf to summerize network throughput on ipv6."
 date = 2022-01-18
-lastmod = 2023-01-18T14:52:30+08:00
-tags = ["ebpf", "kernel"]
+lastmod = 2023-01-18T14:55:48+08:00
+tags = ["ebpf", "kernel", "ipv6"]
 categories = ["code"]
 draft = false
 +++

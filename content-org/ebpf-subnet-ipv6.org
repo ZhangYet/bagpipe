@@ -1,7 +1,7 @@
 #+HUGO_BASE_DIR: ../
 #+HUGO_SECTION: en/posts
 #+hugo_auto_set_lastmod: t
-#+hugo_tags: ebpf kernel
+#+hugo_tags: ebpf kernel ipv6
 #+hugo_categories: code 
 #+hugo_draft: false
 #+description: Use ebpf to summerize network throughput on ipv6. 
