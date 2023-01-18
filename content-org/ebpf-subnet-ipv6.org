@@ -6,8 +6,11 @@
 #+hugo_draft: true
 #+description: Use ebpf to summerize network throughput on ipv6. 
 #+author: Dantezy
-#+date: 2022-12-20
+#+date: 2022-01-18
 #+TITLE: Summerize network throughput by ebpf
+* TL;DR
+1. use ~bpf_probe_read_kernel()~ to read structs in kernel.
+2. in some sense, debuging it to insert ~print~. Writing a bcc script to testify your ebpf_exporter script is a good debug method.
 * Problem
 We have servers on different zones, which have different subnets. We want to use [[https://github.com/cloudflare/ebpf_exporter][ebpf_exporter]][fn:3] to monitor network throughput from subnet1 to subnet2.
 So I need to write some [[https://github.com/iovisor/bcc][bcc]] scripts.
@@ -285,7 +288,51 @@ b'              nc-401206  [003] .... 33610.016624: 0: rcvDebug 0'
 b'              nc-401206  [003] .... 33610.016624: 0: rcvDebug 0'
 b'              nc-401206  [003] .... 33610.016625: 0: rcvDebug 0'
 #+END_SRC
-Wait, what is it? I suppose to get something standing for ::1!
+Wait, what is it? I suppose to get something standing for ::1! After observing this output, I understood that my problem was not in the if statement, but
+in ~remote_ip[0] = sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[12];~ ! Check the struct of ~__sk_common~ in kernel source code:
+
+#+BEGIN_SRC c
+    struct sock_common {
+	  /* skc_daddr and skc_rcv_saddr must be grouped on a 8 bytes aligned
+	   ,* address on 64bit arches : cf INET_MATCH()
+	   ,*/
+	  union {
+		  __addrpair	skc_addrpair;
+		  struct {
+			  __be32	skc_daddr;
+			  __be32	skc_rcv_saddr;
+		  };
+	  };
+      // ...
+
+  #if IS_ENABLED(CONFIG_IPV6)
+	  struct in6_addr		skc_v6_daddr;
+	  struct in6_addr		skc_v6_rcv_saddr;
+      // ...
+      }
+#+END_SRC
+
+The ~skc_daddr~ is a value but ~skc_v6_dadder~ is a struct. We should use [[https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#1-bpf_probe_read_kernel][bpf_probe_read_kernel()]] to read it. So the final solution is as blow:
+
+#+BEGIN_SRC c
+  if (family == AF_INET6) {
+    u8 ip1, ip2, ipv6[16];
+    bpf_probe_read_kernel(&ipv6, sizeof(ipv6),
+			  sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8);
+    ip1 = ipv6[12], ip2 = ipv6[13];
+    if ((ip1 == SUBNET0) && (ip2 == SUBNET1)) {
+	  struct subnet_key skey = {.subnet = TARGET_IP_V6_SUBNET_TAG, .pid = pid};
+	  u64 *val, zero = 0, s = (u64)size;
+	  val = ipv6_send_bytes.lookup_or_try_init(&skey, &zero);
+	  if (val) {
+	    (*val) += s;
+	  }
+    }
+  }
+#+END_SRC
+
+Test passed.
+
 
 * Footnotes
 
