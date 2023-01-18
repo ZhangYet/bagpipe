@@ -113,6 +113,16 @@
   </url><url>
     <loc>/categories/code/</loc>
     <lastmod>2023-01-16T14:38:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/categories/code/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="/categories/code/"
+                />
   </url><url>
     <loc>/tags/debian/</loc>
     <lastmod>2023-01-16T14:38:00+08:00</lastmod>

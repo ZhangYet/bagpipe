@@ -7,11 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>Summerize network thoughput by ebpf | Bullsh*t!</title>
+<title>Summerize network throughput by ebpf | Bullsh*t!</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
-<script defer src="/js/eureka.min.e30461307d4134a93cbbd7301a29631abc285b8d3df327389368cd910c20926df5759064caf0f8ba686f65edcbdff5ee.js"></script>
+<script defer src="/js/eureka.min.c9397561036ecdb150468028e7807081e0823ad4b7207798ac3c0cdf9742e4300265511b6b457026c9a0e7b663e44683.js"></script>
 
 
 
@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hucbe615c96c237c6bd63974a0e5d5517c_142_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Use ebpf to summerize network thoughput on ipv6.">
+  content="Use ebpf to summerize network throughput on ipv6.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -87,7 +87,7 @@
       "item":"/en/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"Summerize network thoughput by ebpf",
+      "name":"Summerize network throughput by ebpf",
       "item":"/en/posts/ebpf-subnet-ipv6/"}]
 }
 </script>
@@ -102,9 +102,9 @@
         "@type": "WebPage",
         "@id": "/en/posts/ebpf-subnet-ipv6/"
     },
-    "headline": "Summerize network thoughput by ebpf | Bullsh*t!","datePublished": "2022-12-20T00:00:00+00:00",
-    "dateModified": "2023-01-16T14:06:01+08:00",
-    "wordCount":  458 ,
+    "headline": "Summerize network throughput by ebpf | Bullsh*t!","datePublished": "2022-01-18T00:00:00+00:00",
+    "dateModified": "2023-01-18T14:55:59+08:00",
+    "wordCount":  1440 ,
     "publisher": {
         "@type": "Person",
         "name": "Dante Zhang",
@@ -113,9 +113,9 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "Use ebpf to summerize network thoughput on ipv6."
+    "description": "Use ebpf to summerize network throughput on ipv6."
 }
-</script><meta property="og:title" content="Summerize network thoughput by ebpf | Bullsh*t!" />
+</script><meta property="og:title" content="Summerize network throughput by ebpf | Bullsh*t!" />
 <meta property="og:type" content="article" />
 
 
@@ -126,7 +126,7 @@
 
 
 
-<meta property="og:description" content="Use ebpf to summerize network thoughput on ipv6." />
+<meta property="og:description" content="Use ebpf to summerize network throughput on ipv6." />
 
 
 
@@ -142,10 +142,10 @@
 
 
 
-<meta property="article:published_time" content="2022-12-20T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2022-01-18T00:00:00&#43;00:00" />
 
 
-<meta property="article:modified_time" content="2023-01-16T14:06:01&#43;08:00" />
+<meta property="article:modified_time" content="2023-01-18T14:55:59&#43;08:00" />
 
 
 
@@ -155,6 +155,8 @@
 <meta property="article:tag" content="ebpf" />
 
 <meta property="article:tag" content="kernel" />
+
+<meta property="article:tag" content="ipv6" />
 
 
 
@@ -239,7 +241,7 @@
       class="lg:col-start-2 bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
       <article class="prose">
-  <h1 class="mb-4">Summerize network thoughput by ebpf</h1>
+  <h1 class="mb-4">Summerize network throughput by ebpf</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -247,12 +249,12 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2022-12-20</span
+      >2022-01-18</span
     >
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>3 min read</span>
+    <span>7 min read</span>
   </div>
 
   
@@ -273,11 +275,15 @@
   
   
 
-  <p>:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :show_comments true</p>
+  <h2 id="tl-dr">TL;DR</h2>
+<ol>
+<li>use <code>bpf_probe_read_kernel()</code> to read structs in kernel.</li>
+<li>in some sense, debuging it to insert <code>print</code>. Writing a bcc script to testify your ebpf_exporter script is a good debug method.</li>
+</ol>
 <h2 id="problem">Problem</h2>
-<p>We have servers on differnt zones, which have differnt subnets. We want to use <a href="https://github.com/cloudflare/ebpf_exporter">ebpf_exporter</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> to monitor network thoughput from subnet1 to subnet2.
+<p>We have servers on different zones, which have different subnets. We want to use <a href="https://github.com/cloudflare/ebpf_exporter">ebpf_exporter</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> to monitor network throughput from subnet1 to subnet2.
 So I need to write some <a href="https://github.com/iovisor/bcc">bcc</a> scripts.</p>
-<p>Some tcp thoughput is sending from subnet1 to subnet2 by ipv6. But the servers haven&rsquo;t got ture ipv6 address, they have ipv4 addresses embedded into ipv6<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p>Some tcp throughput is sending from subnet1 to subnet2 by ipv6. But the servers haven&rsquo;t got ture ipv6 address, they have ipv4 addresses embedded into ipv6<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
 <pre><code class="language-text">::ffff:192.168.9.255
 </code></pre>
 <div class="src-block-caption">
@@ -286,7 +292,7 @@ So I need to write some <a href="https://github.com/iovisor/bcc">bcc</a> scripts
 </div>
 <p>I have two missions:</p>
 <ol>
-<li>filter and summerize the thoughput by subnets.</li>
+<li>filter and summerize the throughput by subnets.</li>
 <li>get the ipv4 address from the ipv6 then filter and summerize by subnets.</li>
 </ol>
 <h2 id="development">Development</h2>
@@ -376,9 +382,204 @@ The most important problem is where to probe.</p>
       }
 
 </code></pre>
+<p>Following this idea, I wrote the code for the ipv6 part.</p>
+<pre><code class="language-c">if (family == AF_INET6) {
+  u8 remote_ip[2];
+  remote_ip[0] = sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[12];
+  if ((remote_ip[0] &amp; MASK0_FOR_IPV6) != SUBNET0) {
+    return 0;
+  }
+  remote_ip[1] = sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[13];
+  if ((remote_ip[1] &amp; MASK1_FOR_IPV6) != SUBNET1) {
+    return 0;
+  }
+  struct subnet_key skey = {.subnet = TARGET_IP_SUBNET_TAG};
+  ipv6_send_bytes.increment(skey, size);
+}
+</code></pre>
+<p>But when I testing, I didn&rsquo;t get any data for ipv6 throughput. But once I delete the if part, the test server did have ipv6 throughput.</p>
+<p>What happened?</p>
 <h3 id="write-a-bpftrace-script">Write a bpftrace script</h3>
-<p>check 6635e16f for detail</p>
+<p>Since we cannot use <a href="https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#1-bpf_trace_printk">bpf_trace_printk()</a> in ebpf_exporter, I don&rsquo;t know what happend in the if statment <code>if ((remote_ip[0] &amp; MASK0_FOR_IPV6) != SUBNET0)</code>.
+I decided to write a bpftrace script to test it.</p>
+<pre><code class="language-nil">#!/usr/bin/env bpftrace
+
+#include &lt;net/sock.h&gt;
+#include &lt;net/sock.h&gt;
+
+kprobe:tcp_sendmsg
+{
+  $sk = (struct sock *)arg0;
+  $dst = $sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8;
+
+  $fm = $sk-&gt;__sk_common.skc_family;
+  if ( $1 &gt; 0 ) {
+    if ( pid != $1 ) {
+      return;
+    }
+  }
+
+  if ( $fm == AF_INET6) {
+    if (( ($dst[12] &amp; 255) == 192 ) &amp;&amp; ( ($dst[13] &amp; 255) == 168 )) {
+	printf(&quot;dst12: %d, dst13: %d\n&quot;, $dst[12] &amp; 255, $dst[13] &amp; 255);
+	printf(&quot;pid %d, dst: %d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d \n&quot;, pid,
+	   $dst[0],$dst[1],$dst[2],$dst[3],$dst[4],$dst[5],$dst[6],$dst[7],
+	   $dst[8],$dst[9],$dst[10],$dst[11],$dst[12],$dst[13],$dst[14],$dst[15]);
+      }
+  }
+}
+
+kprobe:tcp_cleanup_rbuf
+{
+  $sk = (struct sock *)arg0;
+  $dst = $sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8;
+
+  $fm = $sk-&gt;__sk_common.skc_family;
+  if ( $1 &gt; 0 ) {
+    if ( pid != $1 ) {
+      return;
+    }
+  }
+
+  if ( $fm == AF_INET6 ) {
+    if (( ($dst[12] &amp; 255) == 192 ) &amp;&amp; ( ($dst[13] &amp; 255) == 168 )) {
+	printf(&quot;dst12: %d, dst13: %d\n&quot;, $dst[12] &amp; 255, $dst[13] &amp; 255);
+	printf(&quot;pid %d, dst: %d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d \n&quot;, pid,
+	   $dst[0],$dst[1],$dst[2],$dst[3],$dst[4],$dst[5],$dst[6],$dst[7],
+	   $dst[8],$dst[9],$dst[10],$dst[11],$dst[12],$dst[13],$dst[14],$dst[15]);
+    }
+  }
+}
+
+</code></pre>
+<p>To my suprice, this script show normal ipv6 address!</p>
 <h3 id="debug">Debug</h3>
+<p>Why bpftrace and ebpf_exporter gave different results with the same logic? I don&rsquo;t know why. But it occured to me that even though <code>bpf_trace_printk()</code> is no use in ebpf_exporter,
+why not write a bcc script to check the result?</p>
+<pre><code class="language-python">#!/usr/bin/python
+from bcc import BPF
+
+src = '''
+#include &lt;net/sock.h&gt;
+int kprobe__tcp_sendmsg(struct pt_regs *ctx, struct sock *sk,
+	  struct msghdr *msg, size_t size)
+{
+    u16 family = sk-&gt;__sk_common.skc_family;
+    if (family == AF_INET6) {
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[0]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[1]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[2]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[3]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[4]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[5]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[6]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[7]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[8]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[9]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[10]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[11]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[12]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[13]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[14]);
+	bpf_trace_printk(&quot;Debug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[15]);
+
+	bpf_trace_printk(&quot;rcvDebug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[0]);
+	bpf_trace_printk(&quot;rcvDebug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[1]);
+	bpf_trace_printk(&quot;rcvDebug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[2]);
+	bpf_trace_printk(&quot;rcvDebug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[3]);
+	bpf_trace_printk(&quot;rcvDebug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[4]);
+	bpf_trace_printk(&quot;rcvDebug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[5]);
+	bpf_trace_printk(&quot;rcvDebug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[6]);
+	bpf_trace_printk(&quot;rcvDebug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[7]);
+	bpf_trace_printk(&quot;rcvDebug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[8]);
+	bpf_trace_printk(&quot;rcvDebug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[9]);
+	bpf_trace_printk(&quot;rcvDebug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[10]);
+	bpf_trace_printk(&quot;rcvDebug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[11]);
+	bpf_trace_printk(&quot;rcvDebug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[12]);
+	bpf_trace_printk(&quot;rcvDebug %d \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[13]);
+	bpf_trace_printk(&quot;rcvDebug %u \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[14]);
+	bpf_trace_printk(&quot;rcvDebug %u \\n&quot;, sk-&gt;__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr8[15]);
+
+    }
+    return 0;
+}
+'''
+# This may not work for 4.17 on x64, you need replace kprobe__sys_clone with kprobe____x64_sys_clone
+BPF(text=src).trace_print()
+
+</code></pre>
+<p>Use <code>nc -6 -l ::1 10096</code> to set a server and <code>nc -6 localhost 10096</code> to connect the server and send data through ipv6. What I got is as below:</p>
+<pre><code class="language-shell">b'              nc-401206  [003] .... 33610.016579: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016614: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016614: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016615: 0: Debug 133'
+b'              nc-401206  [003] .... 33610.016615: 0: Debug 255'
+b'              nc-401206  [003] .... 33610.016615: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016616: 0: Debug 152'
+b'              nc-401206  [003] .... 33610.016616: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016616: 0: Debug 176'
+b'              nc-401206  [003] .... 33610.016617: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016618: 0: Debug 208'
+b'              nc-401206  [003] .... 33610.016618: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016618: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016618: 0: Debug 4'
+b'              nc-401206  [003] .... 33610.016619: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016619: 0: Debug 0'
+b'              nc-401206  [003] .... 33610.016619: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016620: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016620: 0: rcvDebug 133'
+b'              nc-401206  [003] .... 33610.016621: 0: rcvDebug 255'
+b'              nc-401206  [003] .... 33610.016621: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016621: 0: rcvDebug 152'
+b'              nc-401206  [003] .... 33610.016622: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016622: 0: rcvDebug 176'
+b'              nc-401206  [003] .... 33610.016622: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016623: 0: rcvDebug 208'
+b'              nc-401206  [003] .... 33610.016623: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016623: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016624: 0: rcvDebug 4'
+b'              nc-401206  [003] .... 33610.016624: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016624: 0: rcvDebug 0'
+b'              nc-401206  [003] .... 33610.016625: 0: rcvDebug 0'
+</code></pre>
+<p>Wait, what is it? I suppose to get something standing for ::1! After observing this output, I understood that my problem was not in the if statement, but
+in <code>remote_ip[0] = sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8[12];</code> ! Check the struct of <code>__sk_common</code> in kernel source code:</p>
+<pre><code class="language-c">  struct sock_common {
+	/* skc_daddr and skc_rcv_saddr must be grouped on a 8 bytes aligned
+	 * address on 64bit arches : cf INET_MATCH()
+	 */
+	union {
+		__addrpair	skc_addrpair;
+		struct {
+			__be32	skc_daddr;
+			__be32	skc_rcv_saddr;
+		};
+	};
+    // ...
+
+#if IS_ENABLED(CONFIG_IPV6)
+	struct in6_addr		skc_v6_daddr;
+	struct in6_addr		skc_v6_rcv_saddr;
+    // ...
+    }
+</code></pre>
+<p>The <code>skc_daddr</code> is a value but <code>skc_v6_dadder</code> is a struct. We should use <a href="https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#1-bpf_probe_read_kernel">bpf_probe_read_kernel()</a> to read it. So the final solution is as blow:</p>
+<pre><code class="language-c">if (family == AF_INET6) {
+  u8 ip1, ip2, ipv6[16];
+  bpf_probe_read_kernel(&amp;ipv6, sizeof(ipv6),
+			sk-&gt;__sk_common.skc_v6_daddr.in6_u.u6_addr8);
+  ip1 = ipv6[12], ip2 = ipv6[13];
+  if ((ip1 == SUBNET0) &amp;&amp; (ip2 == SUBNET1)) {
+	struct subnet_key skey = {.subnet = TARGET_IP_V6_SUBNET_TAG, .pid = pid};
+	u64 *val, zero = 0, s = (u64)size;
+	val = ipv6_send_bytes.lookup_or_try_init(&amp;skey, &amp;zero);
+	if (val) {
+	  (*val) += s;
+	}
+  }
+}
+</code></pre>
+<p>Test passed.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -403,6 +604,8 @@ The most important problem is where to probe.</p>
     <a href="/en/tags/ebpf/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#ebpf</a>
     
     <a href="/en/tags/kernel/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#kernel</a>
+    
+    <a href="/en/tags/ipv6/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#ipv6</a>
     
 </div>
       
@@ -433,15 +636,19 @@ The most important problem is where to probe.</p>
 
 
 
-  <div id="valine-comments" class="mt-4"></div>
-<script defer src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js" 
-  integrity="sha384-e0&#43;DNUCJo75aOAzHQbFWYBCM9/S4f0BhRJXvEgbE3mMS85RM20MSSGStHuNdY2QK"  crossorigin></script>
+  <script id="utterances" src="https://utteranc.es/client.js"
+            issue-term=title
+            repo=ZhangYet/harmonie
+              theme=preferred-color-scheme
+        crossorigin="anonymous"
+        async>
+</script>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    new Valine({
-      el: "#valine-comments",appId:"QPBTOv7Ab4EOySWYupG8tr3r-MdYXbMMI",appKey:"xgHZMAh4IoaVlkEwSMsOo7vZ",
-    })
-  });
+    if (storageColorScheme == "Light") {
+      document.getElementById('utterances').setAttribute('theme', 'github-light')
+    } else if (storageColorScheme == "Dark") {
+      document.getElementById('utterances').setAttribute('theme', 'github-dark')
+    }
 </script>
 
     </div>

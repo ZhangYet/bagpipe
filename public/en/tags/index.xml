@@ -5,6 +5,34 @@
     <link>/en/tags/</link>
     <description>Recent content in Tags on Bullsh*t!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Tue, 18 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ebpf</title>
+      <link>/en/tags/ebpf/</link>
+      <pubDate>Tue, 18 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/en/tags/ebpf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ipv6</title>
+      <link>/en/tags/ipv6/</link>
+      <pubDate>Tue, 18 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/en/tags/ipv6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kernel</title>
+      <link>/en/tags/kernel/</link>
+      <pubDate>Tue, 18 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/en/tags/kernel/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
