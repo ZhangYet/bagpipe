@@ -3,7 +3,7 @@
 #+hugo_auto_set_lastmod: t
 #+hugo_tags: ebpf kernel
 #+hugo_categories: code 
-#+hugo_draft: true
+#+hugo_draft: false
 #+description: Use ebpf to summerize network throughput on ipv6. 
 #+author: Dantezy
 #+date: 2022-01-18
