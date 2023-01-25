@@ -3,7 +3,7 @@ title = "Summerize network throughput by ebpf"
 author = ["Dantezy"]
 description = "Use ebpf to summerize network throughput on ipv6."
 date = 2022-01-18
-lastmod = 2023-01-18T14:55:48+08:00
+lastmod = 2023-01-25T18:05:30+08:00
 tags = ["ebpf", "kernel", "ipv6"]
 categories = ["code"]
 draft = false
@@ -11,16 +11,16 @@ draft = false
 
 ## TL;DR {#tl-dr}
 
-1.  use `bpf_probe_read_kernel()` to read structs in kernel.
-2.  in some sense, debuging it to insert `print`. Writing a bcc script to testify your ebpf_exporter script is a good debug method.
+1.  use `bpf_probe_read_kernel()` to read structs in the kernel.
+2.  in a sense, debuging it to printing. Writing a bcc script to test your ebpf_exporter script is a good debugging method.
 
 
-## Problem {#problem}
+## The problem {#the-problem}
 
-We have servers on different zones, which have different subnets. We want to use [ebpf_exporter](https://github.com/cloudflare/ebpf_exporter)[^fn:1] to monitor network throughput from subnet1 to subnet2.
-So I need to write some [bcc](https://github.com/iovisor/bcc) scripts.
+We have servers in different zones, which have different subnets. We want to use [ebpf_exporter](https://github.com/cloudflare/ebpf_exporter)[^fn:1] to monitor network throughput from subnet1 to subnet2.
+So I have to write some [bcc](https://github.com/iovisor/bcc) scripts.
 
-Some tcp throughput is sending from subnet1 to subnet2 by ipv6. But the servers haven't got ture ipv6 address, they have ipv4 addresses embedded into ipv6[^fn:2].
+Some tcp throughput is sent from subnet1 to subnet2 using ipv6. But the servers don't have real ipv6 addresses, they have ipv4 addresses embedded in ipv6[^fn:2].
 
 ```text
 ::ffff:192.168.9.255
@@ -28,31 +28,31 @@ Some tcp throughput is sending from subnet1 to subnet2 by ipv6. But the servers 
 
 <div class="src-block-caption">
   <span class="src-block-number">Code Snippet 1:</span>
-  A manual exmaple for ipv4 address embedded into ipv6
+  A manual exmaple of an ipv4 address embedded in ipv6
 </div>
 
 I have two missions:
 
-1.  filter and summerize the throughput by subnets.
-2.  get the ipv4 address from the ipv6 then filter and summerize by subnets.
+1.  filter and summerise the throughput by subnets.
+2.  get the ipv4 address from the ipv6 then filter and summerise by subnets.
 
 
-## Development {#development}
+## Development phase {#development-phase}
 
 
-### Copy and paste stage {#copy-and-paste-stage}
+### Copy and paste phase {#copy-and-paste-phase}
 
-epbf itself is very simple[^fn:3]. To use it is difficult. The difficulty is that you have know about the probe in the kernel.
-The most important problem is where to probe.
+epbf itself is very simple[^fn:3]. Using it is difficult. The difficulty is that you have know about the probe in the kernel.
+The main problem is where to probe.
 
-The [bcc/tools](https://github.com/iovisor/bcc/tree/master/tools) are good example for learning(ok, it's copy-and-paste).
+The [bcc/tools](https://github.com/iovisor/bcc/tree/master/tools) is a good example to learn(ok, it's copy-and-paste).
 
-[tcpsubnet](https://github.com/iovisor/bcc/blob/master/tools/tcpsubnet.py) and [tcptop](https://github.com/iovisor/bcc/blob/master/tools/tcptop.py) are the most useful exmaples. From these two scripts, I know that:
+[tcpsubnet](https://github.com/iovisor/bcc/blob/master/tools/tcpsubnet.py) and [tcptop](https://github.com/iovisor/bcc/blob/master/tools/tcptop.py) are the most useful examples. From these two scripts, I know that:
 
 1.  we need to attach kprobes to `tcp_sendmsg` and `tcp_cleanup_rbuf`.
 2.  we can get the ip info from `struct sock`.
 
-The ipv4 mission is easy.
+The ipv4 mission is simple.
 
 ```yaml
 programs:
@@ -150,15 +150,15 @@ if (family == AF_INET6) {
 }
 ```
 
-But when I testing, I didn't get any data for ipv6 throughput. But once I delete the if part, the test server did have ipv6 throughput.
+But when I tested, I didn't get any data for ipv6 throughput. But when I deleted the if part, the test server did have ipv6 throughput.
 
 What happened?
 
 
 ### Write a bpftrace script {#write-a-bpftrace-script}
 
-Since we cannot use [bpf_trace_printk()](https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#1-bpf_trace_printk) in ebpf_exporter, I don't know what happend in the if statment `if ((remote_ip[0] & MASK0_FOR_IPV6) != SUBNET0)`.
-I decided to write a bpftrace script to test it.
+Since we cannot use [bpf_trace_printk()](https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#1-bpf_trace_printk) in ebpf_exporter, I don't know what happened in the if statement `if ((remote_ip[0] & MASK0_FOR_IPV6) != SUBNET0)`.
+I decided to write a bpftrace script to test this.
 
 ```nil
 #!/usr/bin/env bpftrace
@@ -212,12 +212,13 @@ kprobe:tcp_cleanup_rbuf
 
 ```
 
-To my suprice, this script show normal ipv6 address!
+To my suprise, this script showed a normal ipv6 address!
 
 
 ### Debug {#debug}
 
-Why bpftrace and ebpf_exporter gave different results with the same logic? I don't know why. But it occured to me that even though `bpf_trace_printk()` is no use in ebpf_exporter,
+Why did bpftrace and ebpf_exporter give different results using the same logic?
+I don't know why. But it occurred to me that even though `bpf_trace_printk()` is of no use in ebpf_exporter,
 why not write a bcc script to check the result?
 
 ```python
@@ -274,7 +275,7 @@ BPF(text=src).trace_print()
 
 ```
 
-Use `nc -6 -l ::1 10096` to set a server and `nc -6 localhost 10096` to connect the server and send data through ipv6. What I got is as below:
+Use `nc -6 -l ::1 10096` to set a server and `nc -6 localhost 10096` to connect the server and send data over ipv6. What I got is shown as below:
 
 ```shell
 b'              nc-401206  [003] .... 33610.016579: 0: Debug 0'
@@ -311,7 +312,7 @@ b'              nc-401206  [003] .... 33610.016624: 0: rcvDebug 0'
 b'              nc-401206  [003] .... 33610.016625: 0: rcvDebug 0'
 ```
 
-Wait, what is it? I suppose to get something standing for ::1! After observing this output, I understood that my problem was not in the if statement, but
+Wait, what is that? I suppose to get something that stands for ::1! After looking at this output, I understood that my problem was not in the if statement, but
 in `remote_ip[0] = sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[12];` ! Check the struct of `__sk_common` in kernel source code:
 
 ```c
@@ -335,7 +336,7 @@ in `remote_ip[0] = sk->__sk_common.skc_v6_daddr.in6_u.u6_addr8[12];` ! Check the
     }
 ```
 
-The `skc_daddr` is a value but `skc_v6_dadder` is a struct. We should use [bpf_probe_read_kernel()](https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#1-bpf_probe_read_kernel) to read it. So the final solution is as blow:
+The `skc_daddr` is a value but `skc_v6_dadder` is a struct. We should use [bpf_probe_read_kernel()](https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#1-bpf_probe_read_kernel) to read it. So the final solution is as follows:
 
 ```c
 if (family == AF_INET6) {
