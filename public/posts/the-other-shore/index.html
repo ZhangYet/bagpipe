@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>一派胡言</title>
+<title>彼岸人生 | 一派胡言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,60 +75,62 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hucbe615c96c237c6bd63974a0e5d5517c_142_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Eureka is a elegant and powerful theme for Hugo.">
-
+  content="我对生活有一种名为彼岸感的感觉。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Posts",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"彼岸人生",
+      "item":"/posts/the-other-shore/"}]
+}
+</script>
 
 
 
 <script type="application/ld+json">
 {
-    "@context":"https://schema.org",
-    "@type":"ItemList",
-    "itemListElement":[{
-            "@type":"ListItem",
-            "position":  1 ,
-            "name": "戒酒记",
-            "description": "记录一些关于戒酒的想法。",
-            "url": "/posts/sobriety/"
-        },{
-            "@type":"ListItem",
-            "position":  2 ,
-            "name": "新加坡观察：基督教后期圣徒教会(LDS)",
-            "description": "来新加坡之后跟基督教后期圣徒教会有一定接触。写一下跟他们交游的经历，挺有意思的。",
-            "url": "/posts/singapore-lds/"
-        },{
-            "@type":"ListItem",
-            "position":  3 ,
-            "name": "debian 包的依赖问题",
-            "description": "为 bpftrace 打包遇到的依赖问题以及解决方案。",
-            "url": "/posts/debian-package-dependency/"
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/the-other-shore/"
+    },
+    "headline": "彼岸人生 | 一派胡言","datePublished": "2023-03-22T00:00:00+00:00",
+    "dateModified": "2023-04-29T16:43:00+08:00",
+    "wordCount":  658 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "Dante Zhang",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
         }
-    ]
+        },
+    "description": "我对生活有一种名为彼岸感的感觉。"
 }
-</script><meta property="og:title" content="一派胡言" />
-<meta property="og:type" content="website" />
+</script><meta property="og:title" content="彼岸人生 | 一派胡言" />
+<meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/posts/" />
+<meta property="og:url" content="/posts/the-other-shore/" />
 
 
 
-
-
-<meta property="og:description" content="Eureka is a elegant and powerful theme for Hugo." />
-
-
+<meta property="og:description" content="我对生活有一种名为彼岸感的感觉。" />
 
 
 
 <meta property="og:locale" content="zh" />
-
-
-
-<meta property="og:locale:alternate" content="en" />
 
 
 
@@ -140,14 +142,33 @@
 
 
 
-<meta property="og:updated_time" content="2023-03-22T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2023-03-22T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2023-04-29T16:43:00&#43;08:00" />
 
 
 
 <meta property="article:section" content="posts" />
 
 
-<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="一派胡言" />
+<meta property="article:tag" content="log" />
+
+<meta property="article:tag" content="suzume" />
+
+<meta property="article:tag" content="yourname" />
+
+
+
+
+
+<meta property="og:see_also" content="/posts/sobriety/" />
+
+<meta property="og:see_also" content="/posts/singapore-lds/" />
+
+<meta property="og:see_also" content="/posts/yesterday-once-more/" />
+
+
 
 
   <body class="flex min-h-screen flex-col">
@@ -187,19 +208,6 @@
                     <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
                 </div>
             </div>
-            <div class="relative pt-4 ps-4 md:pt-0">
-                <div class="cursor-pointer hover:text-eureka" id="languageMode">
-                    <i class="fas fa-globe"></i>
-                    <span class="ps-1">简体中文</span>
-                </div>
-                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open-lang">
-                </div>
-                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
-                    id='languageOptions'>
-                    <a class="px-4 py-1 hover:text-eureka" href="/posts/">简体中文</a>
-                    <a class="px-4 py-1 hover:text-eureka" href="/en/posts/">English</a>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -227,7 +235,6 @@
     document.addEventListener('DOMContentLoaded', () => {
         getcolorscheme();
         switchBurger();
-        switchLanguage()
     });
 </script>
 </div>
@@ -235,34 +242,22 @@
     <main class="grow pt-16">
         <div class="pl-scrollbar">
           <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
-  <article class="prose mx-6 my-8">
-  <h1>Posts</h1>
   
-</article>
-
-  <div class="bg-secondary-bg rounded px-6">
-    <div class="overflow-hidden divide-y">
   
-  <div class="py-6">
-    <div class="flex flex-col-reverse lg:flex-row justify-between">
-  
-  <div class="w-full ">
-    <div class="prose">
-  <a href="/posts/sobriety/" class="no-underline">
-    <h3 class="mt-0">戒酒记</h3>
-  </a>
-  
-    记录一些关于戒酒的想法。
-  
-
-  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
     <div
+      class="lg:col-start-2 bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">彼岸人生</h1>
+
+  <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
 >
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2022-09-05</span
+      >2023-03-22</span
     >
   </div>
   <div class="me-6 my-2">
@@ -284,146 +279,111 @@
   
 </div>
 
-  
-</div>
-
-  </div>
 
   
-</div>
-  </div>
-  
-  <div class="py-6">
-    <div class="flex flex-col-reverse lg:flex-row justify-between">
-  
-  <div class="w-full ">
-    <div class="prose">
-  <a href="/posts/singapore-lds/" class="no-underline">
-    <h3 class="mt-0">新加坡观察：基督教后期圣徒教会(LDS)</h3>
-  </a>
-  
-    来新加坡之后跟基督教后期圣徒教会有一定接触。写一下跟他们交游的经历，挺有意思的。
   
 
-  
-    <div
-  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
->
-  <div class="me-6 my-2">
-    <i class="fas fa-calendar me-1"></i>
-    <span
-      >2022-07-04</span
-    >
-  </div>
-  <div class="me-6 my-2">
-    <i class="fas fa-clock me-1"></i>
-    <span>8分钟阅读时长</span>
-  </div>
+  <p>其实，大一时候读到张生的小说《<a href="https://book.douban.com/subject/1430523/">十年灯</a>》对我影响挺大的。</p>
+<blockquote>
+<p>我将惴惴不安地生活在这个世界上，因为我始终无法实实在在地抓住一些东西，每一天都在模棱两可中挣扎。我为过去哭泣，也为将来彷徨，因为，我找不到一条回到过去的路，更找不到一条通往将来的路。我只能停留在现在。我只能漂浮在半空，像个游魂。别无选择。</p>
+</blockquote>
+<p>我一直认为这段话比较精确地描述了我的困境。后来我又读了张生的《白云千里万里》，里面提到海德格尔「此在」的概念，如果我没有记错，里面还用了河流两岸的比喻。</p>
+<p>再后来我读了《坛经》。</p>
+<blockquote>
+<p>何名&rsquo;波罗蜜&rsquo;？此是西国语，唐言到彼岸，解义离生灭。著境生灭起，如水有波浪，即名于此岸。离境无生灭，如水常流通，即名为彼岸，故号&rsquo;波罗蜜&rsquo;。</p>
+</blockquote>
+<p>「彼岸」这个概念在我脑海里面生根。</p>
+<p>之所以忽然想起这个话题，是因为前不久去看了《铃芽之旅》。因为《铃芽之旅》想起《你的名字。》。</p>
+<p>《你的名字。》是很久之前在北京跟两个朋友一起看的。当时觉得这个故事也稀松平常，但是男主和女主那种和朋友嬉戏玩闹、放学之后打工、穿梭在东京大都市里面的生活令我着迷。
+每每回想起来我都会想如果我也能过上这种生活那该多好。但其实我很明白如果我真的过上这种生活，我会很快厌烦，并看着另一个故事，想「如果我能过上这种生活多好」。</p>
+<p>这就是我所说的「彼岸感」：很多东西让我产生一种临渊羡鱼般的感觉，但我会想即使我得到了这种东西，我的期盼和渴望会迅速消退。坐这山望那山。
+但是随着年岁渐长，我觉得这不是坏事——明白可望而不可即是好事，不强求彼岸也是放弃执着。</p>
 
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-folder me-1"></i>
+</article>
+
+
       
-        <a href="/categories/log/" class="hover:text-eureka"
-          >log</a
-        >
+        <div class="my-4">
+    
+    <a href="/tags/log/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#log</a>
+    
+    <a href="/tags/suzume/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#suzume</a>
+    
+    <a href="/tags/yourname/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#yourname</a>
+    
+</div>
       
-    </div>
-  
 
-  
-</div>
-
-  
-</div>
-
-  </div>
-
-  
-</div>
-  </div>
-  
-  <div class="py-6">
-    <div class="flex flex-col-reverse lg:flex-row justify-between">
-  
-  <div class="w-full ">
-    <div class="prose">
-  <a href="/posts/debian-package-dependency/" class="no-underline">
-    <h3 class="mt-0">debian 包的依赖问题</h3>
-  </a>
-  
-    为 bpftrace 打包遇到的依赖问题以及解决方案。
-  
-
-  
-    <div
-  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
->
-  <div class="me-6 my-2">
-    <i class="fas fa-calendar me-1"></i>
-    <span
-      >2022-06-09</span
-    >
-  </div>
-  <div class="me-6 my-2">
-    <i class="fas fa-clock me-1"></i>
-    <span>3分钟阅读时长</span>
-  </div>
-
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-folder me-1"></i>
       
-        <a href="/categories/code/" class="hover:text-eureka"
-          >code</a
-        >
+
+
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
       
     </div>
-  
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/posts/luoding-in-tongguang/" class="block">同光之间的罗定——《晚清官场镜像》读书笔记</a>
+      
+    </div>
+  </div>
 
-  
-</div>
 
-  
-</div>
+      
 
+
+
+  <script id="utterances" src="https://utteranc.es/client.js"
+            issue-term=title
+            repo=ZhangYet/harmonie
+              theme=preferred-color-scheme
+        crossorigin="anonymous"
+        async>
+</script>
+<script>
+    if (storageColorScheme == "Light") {
+      document.getElementById('utterances').setAttribute('theme', 'github-light')
+    } else if (storageColorScheme == "Dark") {
+      document.getElementById('utterances').setAttribute('theme', 'github-dark')
+    }
+</script>
+
+    </div>
+    
+
+    
+    
+      <div
+        class="lg:col-start-2 bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="/posts/sobriety/" class="no-underline">戒酒记</a>
+          <br />
+        
+          <a href="/posts/singapore-lds/" class="no-underline">新加坡观察：基督教后期圣徒教会(LDS)</a>
+          <br />
+        
+          <a href="/posts/yesterday-once-more/" class="no-underline">博客迁移日记</a>
+          <br />
+        
+      </div>
+    
   </div>
 
   
-</div>
-  </div>
-  
-</div>
-
-
-  </div>
-  
-    <ul class="pagination pagination-default">
-      <li class="page-item">
-        <a href="/posts/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/page/2/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/" aria-label="Page 1" class="page-link" role="button">1</a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
-      </li>
-      <li class="page-item active">
-        <a aria-current="page" aria-label="Page 3" class="page-link" role="button">3</a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/page/4/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/page/4/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
-      </li>
-    </ul>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.highlightAll();
+      });
+    </script>
 
           </div>
         </div>
