@@ -1,0 +1,16 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: zh/posts
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: log
+#+hugo_categories: log
+#+hugo_draft: false
+#+description: 3月底回了趟家，有些有趣的观察和感想。
+#+author: Dantezy
+#+date: 2023-04-30
+#+TITLE: 回乡偶书2023
+* 去机场
+* 回罗定
+* 漫长的假期
+* 深圳是一个大工地
+* 回新加坡
+
