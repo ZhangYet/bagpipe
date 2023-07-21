@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>procfs on 一派胡言</title>
+    <link>/tags/procfs/</link>
+    <description>Recent content in procfs on 一派胡言</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 21 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/procfs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Linux Kernel Module Programming Guide 读书笔记</title>
+      <link>/posts/lkmpg/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/lkmpg/</guid>
+      <description>在 https://sysprog21.github.io/lkmpg/ 上有新版，示例代码至少在 5.15 版本内核上可以成功编译1。 内容梗概 一到五章介绍如何写一个 Hello world module。 第六章介绍如何实现一个字符设备驱动。 实现一个设</description>
+    </item>
+    
+  </channel>
+</rss>

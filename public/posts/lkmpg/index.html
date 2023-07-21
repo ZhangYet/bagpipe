@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>彼岸人生 | 一派胡言</title>
+<title>The Linux Kernel Module Programming Guide 读书笔记 | 一派胡言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hucbe615c96c237c6bd63974a0e5d5517c_142_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="我对生活有一种名为彼岸感的感觉。">
+  content="The Linux Kernel Module Programming Guide 读书笔记">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -87,8 +87,8 @@
       "item":"/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"彼岸人生",
-      "item":"/posts/the-other-shore/"}]
+      "name":"The Linux Kernel Module Programming Guide 读书笔记",
+      "item":"/posts/lkmpg/"}]
 }
 </script>
 
@@ -100,11 +100,11 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/posts/the-other-shore/"
+        "@id": "/posts/lkmpg/"
     },
-    "headline": "彼岸人生 | 一派胡言","datePublished": "2023-03-22T00:00:00+00:00",
-    "dateModified": "2023-04-29T16:43:00+08:00",
-    "wordCount":  658 ,
+    "headline": "The Linux Kernel Module Programming Guide 读书笔记 | 一派胡言","datePublished": "2023-07-21T00:00:00+00:00",
+    "dateModified": "2023-07-21T19:06:22+08:00",
+    "wordCount":  1273 ,
     "publisher": {
         "@type": "Person",
         "name": "Dante Zhang",
@@ -113,20 +113,20 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "我对生活有一种名为彼岸感的感觉。"
+    "description": "The Linux Kernel Module Programming Guide 读书笔记"
 }
-</script><meta property="og:title" content="彼岸人生 | 一派胡言" />
+</script><meta property="og:title" content="The Linux Kernel Module Programming Guide 读书笔记 | 一派胡言" />
 <meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/posts/the-other-shore/" />
+<meta property="og:url" content="/posts/lkmpg/" />
 
 
 
-<meta property="og:description" content="我对生活有一种名为彼岸感的感觉。" />
+<meta property="og:description" content="The Linux Kernel Module Programming Guide 读书笔记" />
 
 
 
@@ -142,31 +142,25 @@
 
 
 
-<meta property="article:published_time" content="2023-03-22T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2023-07-21T00:00:00&#43;00:00" />
 
 
-<meta property="article:modified_time" content="2023-04-29T16:43:00&#43;08:00" />
+<meta property="article:modified_time" content="2023-07-21T19:06:22&#43;08:00" />
 
 
 
 <meta property="article:section" content="posts" />
 
 
-<meta property="article:tag" content="log" />
+<meta property="article:tag" content="kernel" />
 
-<meta property="article:tag" content="suzume" />
+<meta property="article:tag" content="module" />
 
-<meta property="article:tag" content="yourname" />
+<meta property="article:tag" content="procfs" />
+
+<meta property="article:tag" content="sysfs" />
 
 
-
-
-
-<meta property="og:see_also" content="/posts/sobriety/" />
-
-<meta property="og:see_also" content="/posts/singapore-lds/" />
-
-<meta property="og:see_also" content="/posts/yesterday-once-more/" />
 
 
 
@@ -249,7 +243,7 @@
       class="lg:col-start-2 bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
       <article class="prose">
-  <h1 class="mb-4">彼岸人生</h1>
+  <h1 class="mb-4">The Linux Kernel Module Programming Guide 读书笔记</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -257,20 +251,20 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2023-03-22</span
+      >2023-07-21</span
     >
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>2分钟阅读时长</span>
+    <span>3分钟阅读时长</span>
   </div>
 
   
     <div class="me-6 my-2">
       <i class="fas fa-folder me-1"></i>
       
-        <a href="/categories/log/" class="hover:text-eureka"
-          >log</a
+        <a href="/categories/reading/" class="hover:text-eureka"
+          >reading</a
         >
       
     </div>
@@ -283,21 +277,54 @@
   
   
 
-  <p>其实，大一时候读到张生的小说《<a href="https://book.douban.com/subject/1430523/">十年灯</a>》对我影响挺大的。</p>
+  <p>在 <a href="https://sysprog21.github.io/lkmpg/">https://sysprog21.github.io/lkmpg/</a> 上有新版，示例代码至少在 5.15 版本内核上可以成功编译<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。</p>
+<h2 id="内容梗概">内容梗概</h2>
+<p>一到五章介绍如何写一个 Hello world module。</p>
+<p>第六章介绍如何实现一个字符设备驱动。
+实现一个设备驱动，其实就是注册一个设备号(MAJOR)，创建一个设备文件，为这个文件实现文件操作(file_operation)。</p>
+<p>第七章介绍实现 procfs ，第八章介绍实现 sysfs 。
+内核在5.6.0改变了 procfs 的实现方式。在这之前，procfs 也是通过文件操作实现的。
+在此之后，procfs 由 proc_ops 实现。这个<a href="https://unix.stackexchange.com/a/382315">回答</a>里面认为 procfs 和 sysfs 的不同就在于 procfs 是通过文件操作实现的，
+sysfs 只有两个接口<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>: <code>show</code> 和 <code>store</code> 。</p>
+<p>第八章介绍实现一个 ioctl 来改变设备行为。在用户态看来，只有一个复杂的 <a href="https://man7.org/linux/man-pages/man2/ioctl.2.html">ioctl</a> 接口，在内核看来，就是无数的 *_ioctl 接口。</p>
+<p>第九章非常有趣，它讲述如何绕开内核保护改写 system call. 这涉及到：如何找 system call 地址、绕开写保护以及多个 module 改写 system call 的情况（非常危险）。</p>
+<p>十一章和十二章介绍了内核的同步机制。这两张非常潦草。第十二章可以看成内核锁的简单示例。</p>
+<p>十三章介绍如何利用 tty 进行输出以及 timer api。里面的示例是操作键盘，让键盘的 LED 灯闪烁。这个示例挺有意思的。</p>
+<p>十四章介绍 tasklet 和 work_queue 。十五章介绍中断处理，十六章介绍内核加密接口。这三章都很一般。</p>
+<p>十七章实现了一个虚拟输入设备。十八章介绍了标准设备模型。十九章介绍了 <code>(un)likely</code> 宏以及 static key，这两个工具可以优化代码性能。
+二十章简单说两件事：module programming 里面不能用标准库的函数以及关了中断赶紧干活重新把中断打开。</p>
+<h2 id="简要评论">简要评论</h2>
+<p>本书对做过一点内核工作的人（比如我）帮助很大（对内核专家来回说太浅）。</p>
+<ol>
+<li>如何实现一个 module (一至五章)。</li>
+<li>如何通过 module 实现设备驱动（第六章、第八章、十七章和十八章）。</li>
+<li>如何实现 procfs 和 sysfs （第七章和第八章）。</li>
+<li>如何 monkey patch 系统调用（第九章）。</li>
+</ol>
+<p>以上四个主题本书都写得很清楚。</p>
+<p>module programming 很有用，它可以调用 /sys/kallsyms 里面的函数，所以写一个 module 可以很方便地创建内核函数的实例（实际上也不简单）。实际本书也是用 module
+串起来讲了很多内核的 api。</p>
+<p>当然编程这种东西，光看书是没有用，这本书也不例外，要把示例跑起来（设计到内核编译，本书也有说），尤其重要的是，要明白「这有什么用」。</p>
+<p>module 主流用途是写驱动、实现 procfs 和 sysfs 。因为工作原因，我看了一些驱动的代码，如果我之前读了这本书，我会更理解一个驱动的结构，阅读代码会更方便。
+procfs 和 sysfs 是很多内核功能的入口，很多功能比如 node-exporter 就是读 procfs 下面的数据，如果要探究 procfs 暴露的系统数据含义，还得顺着 procfs
+的实现去找对应的实现。第八章讲 ioctl 的内容对我理解 blktrace 工具的源码帮助也很多大（当然部分原因也是因为我之前不太熟 ioctl）。</p>
+<p>此外还需要准备内核代码，比如第六章提到：</p>
 <blockquote>
-<p>我将惴惴不安地生活在这个世界上，因为我始终无法实实在在地抓住一些东西，每一天都在模棱两可中挣扎。我为过去哭泣，也为将来彷徨，因为，我找不到一条回到过去的路，更找不到一条通往将来的路。我只能停留在现在。我只能漂浮在半空，像个游魂。别无选择。</p>
+<p>However, register_chrdev() would occupy a range of minor numbers associated with the given major.</p>
 </blockquote>
-<p>我一直认为这段话比较精确地描述了我的困境。后来我又读了张生的《白云千里万里》，里面提到海德格尔「此在」的概念，如果我没有记错，里面还用了河流两岸的比喻。</p>
-<p>再后来我读了《坛经》。</p>
-<blockquote>
-<p>何名&rsquo;波罗蜜&rsquo;？此是西国语，唐言到彼岸，解义离生灭。著境生灭起，如水有波浪，即名于此岸。离境无生灭，如水常流通，即名为彼岸，故号&rsquo;波罗蜜&rsquo;。</p>
-</blockquote>
-<p>「彼岸」这个概念在我脑海里面生根。</p>
-<p>之所以忽然想起这个话题，是因为前不久去看了《铃芽之旅》。因为《铃芽之旅》想起《你的名字。》。</p>
-<p>《你的名字。》是很久之前在北京跟两个朋友一起看的。当时觉得这个故事也稀松平常，但是男主和女主那种和朋友嬉戏玩闹、放学之后打工、穿梭在东京大都市里面的生活令我着迷。
-每每回想起来我都会想如果我也能过上这种生活那该多好。但其实我很明白如果我真的过上这种生活，我会很快厌烦，并看着另一个故事，想「如果我能过上这种生活多好」。</p>
-<p>这就是我所说的「彼岸感」：很多东西让我产生一种临渊羡鱼般的感觉，但我会想即使我得到了这种东西，我的期盼和渴望会迅速消退。坐这山望那山。
-但是随着年岁渐长，我觉得这不是坏事——明白可望而不可即是好事，不强求彼岸也是放弃执着。</p>
+<p>单纯看书不会明白这里为什么这样说，要看源代码才知道 <code>register_chrdev</code> 最终调用 <code>__register_chrdev_region</code> 并占用256个 minor number。</p>
+<p>这本书对内核开发菜鸟和 SRE 都有所裨益。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>「示例代码可以编译」是很重要的。这一方面说明书籍更新了，另一方面降低入门者的门槛。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>不过 cgroup 接口也是在 sysfs 下面，cgroup 的 ctype 可不止这一堆接口啊。cgroup 的文件最后是用 <code>__kernfs_create_file</code> 创建的。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 
 </article>
 
@@ -305,11 +332,13 @@
       
         <div class="my-4">
     
-    <a href="/tags/log/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#log</a>
+    <a href="/tags/kernel/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#kernel</a>
     
-    <a href="/tags/suzume/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#suzume</a>
+    <a href="/tags/module/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#module</a>
     
-    <a href="/tags/yourname/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#yourname</a>
+    <a href="/tags/procfs/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#procfs</a>
+    
+    <a href="/tags/sysfs/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#sysfs</a>
     
 </div>
       
@@ -326,16 +355,11 @@
   >
     <div>
       
-        <span class="text-primary-text block font-bold"
-          >上一页</span
-        >
-        <a href="/posts/lkmpg/" class="block">The Linux Kernel Module Programming Guide 读书笔记</a>
-      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/posts/luoding-in-tongguang/" class="block">同光之间的罗定——《晚清官场镜像》读书笔记</a>
+        <a href="/posts/the-other-shore/" class="block">彼岸人生</a>
       
     </div>
   </div>
@@ -364,22 +388,6 @@
     
 
     
-    
-      <div
-        class="lg:col-start-2 bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
-      >
-        <h3>相关</h3>
-        
-          <a href="/posts/sobriety/" class="no-underline">戒酒记</a>
-          <br />
-        
-          <a href="/posts/singapore-lds/" class="no-underline">新加坡观察：基督教后期圣徒教会(LDS)</a>
-          <br />
-        
-          <a href="/posts/yesterday-once-more/" class="no-underline">博客迁移日记</a>
-          <br />
-        
-      </div>
     
   </div>
 
