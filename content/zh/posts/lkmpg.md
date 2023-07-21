@@ -1,0 +1,70 @@
++++
+title = "The Linux Kernel Module Programming Guide 读书笔记"
+author = ["Dantezy"]
+description = "The Linux Kernel Module Programming Guide 读书笔记"
+date = 2023-07-21
+lastmod = 2023-07-21T19:06:16+08:00
+tags = ["kernel", "module", "procfs", "sysfs"]
+categories = ["reading"]
+draft = false
++++
+
+在 <https://sysprog21.github.io/lkmpg/> 上有新版，示例代码至少在 5.15 版本内核上可以成功编译[^fn:1]。
+
+
+## 内容梗概 {#内容梗概}
+
+一到五章介绍如何写一个 Hello world module。
+
+第六章介绍如何实现一个字符设备驱动。
+实现一个设备驱动，其实就是注册一个设备号(MAJOR)，创建一个设备文件，为这个文件实现文件操作(file_operation)。
+
+第七章介绍实现 procfs ，第八章介绍实现 sysfs 。
+内核在5.6.0改变了 procfs 的实现方式。在这之前，procfs 也是通过文件操作实现的。
+在此之后，procfs 由 proc_ops 实现。这个[回答](https://unix.stackexchange.com/a/382315)里面认为 procfs 和 sysfs 的不同就在于 procfs 是通过文件操作实现的，
+sysfs 只有两个接口[^fn:2]: `show` 和 `store` 。
+
+第八章介绍实现一个 ioctl 来改变设备行为。在用户态看来，只有一个复杂的 [ioctl](https://man7.org/linux/man-pages/man2/ioctl.2.html) 接口，在内核看来，就是无数的 \*_ioctl 接口。
+
+第九章非常有趣，它讲述如何绕开内核保护改写 system call. 这涉及到：如何找 system call 地址、绕开写保护以及多个 module 改写 system call 的情况（非常危险）。
+
+十一章和十二章介绍了内核的同步机制。这两张非常潦草。第十二章可以看成内核锁的简单示例。
+
+十三章介绍如何利用 tty 进行输出以及 timer api。里面的示例是操作键盘，让键盘的 LED 灯闪烁。这个示例挺有意思的。
+
+十四章介绍 tasklet 和 work_queue 。十五章介绍中断处理，十六章介绍内核加密接口。这三章都很一般。
+
+十七章实现了一个虚拟输入设备。十八章介绍了标准设备模型。十九章介绍了 `(un)likely` 宏以及 static key，这两个工具可以优化代码性能。
+二十章简单说两件事：module programming 里面不能用标准库的函数以及关了中断赶紧干活重新把中断打开。
+
+
+## 简要评论 {#简要评论}
+
+本书对做过一点内核工作的人（比如我）帮助很大（对内核专家来回说太浅）。
+
+1.  如何实现一个 module (一至五章)。
+2.  如何通过 module 实现设备驱动（第六章、第八章、十七章和十八章）。
+3.  如何实现 procfs 和 sysfs （第七章和第八章）。
+4.  如何 monkey patch 系统调用（第九章）。
+
+以上四个主题本书都写得很清楚。
+
+module programming 很有用，它可以调用 /sys/kallsyms 里面的函数，所以写一个 module 可以很方便地创建内核函数的实例（实际上也不简单）。实际本书也是用 module
+串起来讲了很多内核的 api。
+
+当然编程这种东西，光看书是没有用，这本书也不例外，要把示例跑起来（设计到内核编译，本书也有说），尤其重要的是，要明白「这有什么用」。
+
+module 主流用途是写驱动、实现 procfs 和 sysfs 。因为工作原因，我看了一些驱动的代码，如果我之前读了这本书，我会更理解一个驱动的结构，阅读代码会更方便。
+procfs 和 sysfs 是很多内核功能的入口，很多功能比如 node-exporter 就是读 procfs 下面的数据，如果要探究 procfs 暴露的系统数据含义，还得顺着 procfs
+的实现去找对应的实现。第八章讲 ioctl 的内容对我理解 blktrace 工具的源码帮助也很多大（当然部分原因也是因为我之前不太熟 ioctl）。
+
+此外还需要准备内核代码，比如第六章提到：
+
+> However, register_chrdev() would occupy a range of minor numbers associated with the given major.
+
+单纯看书不会明白这里为什么这样说，要看源代码才知道 `register_chrdev` 最终调用 `__register_chrdev_region` 并占用256个 minor number。
+
+这本书对内核开发菜鸟和 SRE 都有所裨益。
+
+[^fn:1]: 「示例代码可以编译」是很重要的。这一方面说明书籍更新了，另一方面降低入门者的门槛。
+[^fn:2]: 不过 cgroup 接口也是在 sysfs 下面，cgroup 的 ctype 可不止这一堆接口啊。cgroup 的文件最后是用 `__kernfs_create_file` 创建的。
