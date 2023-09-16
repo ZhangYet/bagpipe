@@ -7,7 +7,7 @@ title: 一派胡言
 theme: wangchucheng.com/hugo-eureka
 # If you cannot access the Github mirror, you can also use the Gitee mirror: gitee.com/wangchucheng/hugo-eureka
 
-paginate: 3
+paginate: 5
 enableEmoji: true
 enableGitInfo: true
 summaryLength: 75
