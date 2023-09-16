@@ -6,7 +6,7 @@
 #+hugo_draft: false
 #+description: ebpf 札记第一篇。讲讲 linux/bpf_types.h 这个文件。
 #+author: Dantezy
-#+date: 2023-09-17
+#+date: 2023-09-16
 #+TITLE: ebpf 札记(1): bpf_types.h
 
 本文以 5.15 版本内核为例。

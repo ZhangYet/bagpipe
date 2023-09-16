@@ -2,8 +2,8 @@
 title = "ebpf 札记(1): bpf_types.h"
 author = ["Dantezy"]
 description = "ebpf 札记第一篇。讲讲 linux/bpf_types.h 这个文件。"
-date = 2023-09-17
-lastmod = 2023-09-17T01:05:18+08:00
+date = 2023-09-16
+lastmod = 2023-09-17T01:11:05+08:00
 tags = ["ebpf", "kernel"]
 categories = ["code"]
 draft = false
