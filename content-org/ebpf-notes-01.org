@@ -3,6 +3,7 @@
 #+hugo_auto_set_lastmod: t
 #+hugo_tags: ebpf kernel
 #+hugo_categories: code
+#+hugo_draft: false
 #+description: ebpf 札记第一篇。讲讲 linux/bpf_types.h 这个文件。
 #+author: Dantezy
 #+date: 2023-09-17
