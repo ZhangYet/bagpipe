@@ -1,0 +1,61 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: zh/posts
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: ebpf kernel
+#+hugo_categories: code
+#+description: ebpf 札记第一篇。讲讲 linux/bpf_types.h 这个文件。
+#+author: Dantezy
+#+date: 2023-09-17
+#+TITLE: ebpf 札记(1): bpf_types.h
+
+本文以 5.15 版本内核为例。
+* 概述
+include/linux/bpf_types.h 这个头文件有且仅有三种宏指令：
+
+1. ~BPF_PROG_TYPE~;
+2. ~BPF_MAP_TYPE~;
+3. ~BPF_LINK_TYPE~;
+
+以 ~BPF_PROG_TYPE~ 为例，查找它的定义，发现它出现在
+
+1. include/linux/bpf.h;
+2. kernel/bpf/btf.h;
+3. kernel/bpf/syscall.c;
+4. kernel/bpf/verifier.c;
+* bpf.h
+这个文件里面定义了一系列的 ~bpf_prog_ops~, ~bpf_verifier_ops~ 和 ~bpf_map_ops~:
+#+BEGIN_SRC c
+#define BPF_PROG_TYPE(_id, _name, prog_ctx_type, kern_ctx_type) \
+	extern const struct bpf_prog_ops _name ## _prog_ops; \
+	extern const struct bpf_verifier_ops _name ## _verifier_ops;
+#define BPF_MAP_TYPE(_id, _ops) \
+	extern const struct bpf_map_ops _ops;
+#define BPF_LINK_TYPE(_id, _name)
+#include <linux/bpf_types.h>
+#undef BPF_PROG_TYPE
+#undef BPF_MAP_TYPE
+#undef BPF_LINK_TYPE
+#+END_SRC
+
+这里用到先 ~#define~ 再 ~#undefine~ 的技巧在 [[https://lwn.net/Articles/383362/][Using the TRACE_EVENT() macro (Part 3)]] 里面有介绍。
+
+像 ~#define BPF_LINK_TYPE(_id, _name)~ 这种宏定义就是把 ~BPF_LINK_TYPE~ 定义为空，
+后面 ~#include <linux/bpf_types.h>~ 时，~BPF_LINK_TYPE~ 部分就会被替换成空行。
+* btf.h
+这个文件里面定义了几个不同的结构体：
+1. ~bpf_ctx_convert~ 这个 union 用到 ~BPF_PROG_TYPE~ 里面的 ~prog_ctx_type~ 和 ~kern_ctx_type~ ；
+2. ~__ctx_convert##id~ 枚举；
+3. ~bpf_ctx_convert_map~ 这其实是一个数组，但是它的 index 就是 ~BPF_PROG_TYPE~ 里面的 ~_id~ 所以把它看作 map 也无不可；
+* syscall.c
+这个文件用 linux/bpf_types.h 定义了: ~bpf_progs_types~ 。
+和 ~bpf_ctx_convert_map~ 一样，这也是用 ~_id~ 作为 key，存储了所有的 ~bpf_prog_ops~ 跟 prog id 的对应关系。
+* verifier.c
+这个文件用 linux/bpf_types.h 定义了 ~bpf_verifier_ops~ 。
+* 总结
+linux/bpf_types.h 本质上就是一个大列表，定义了所有的 bpf prog, map 和 link 。
+
+通过定义这个大列表，内核开发者借助预处理的技巧避免了写 boilerplate code, 了解这些技巧方便会我们找一些函数的定义。
+比如要找 ~BPF_PROG_TYPE_KPROBE~ 相关的 prog_ops, 我们应该搜 kprobe_prog_ops 。
+   
+
+
