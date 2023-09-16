@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html
-  lang="en"
+  lang="zh"
   dir="ltr"
   
 ><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>ebpf | Bullsh*t!</title>
+<title>ebpf 札记(1): bpf_types.h | 一派胡言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hucbe615c96c237c6bd63974a0e5d5517c_142_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Eureka is a elegant and powerful theme for Hugo.">
+  content="ebpf 札记第一篇。讲讲 linux/bpf_types.h 这个文件。">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -83,74 +83,86 @@
   "itemListElement": [{
       "@type": "ListItem",
       "position": 1 ,
-      "name":"Tags",
-      "item":"/en/tags/"},{
+      "name":"Posts",
+      "item":"/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"ebpf",
-      "item":"/en/tags/ebpf/"}]
+      "name":"ebpf 札记(1): bpf_types.h",
+      "item":"/posts/ebpf-notes-01/"}]
 }
 </script>
 
 
 
-
 <script type="application/ld+json">
 {
-    "@context":"https://schema.org",
-    "@type":"ItemList",
-    "itemListElement":[{
-            "@type":"ListItem",
-            "position":  1 ,
-            "name": "Summerize network throughput by ebpf",
-            "description": "Use ebpf to summerize network throughput on ipv6.",
-            "url": "/en/posts/ebpf-subnet-ipv6/"
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/ebpf-notes-01/"
+    },
+    "headline": "ebpf 札记(1): bpf_types.h | 一派胡言","datePublished": "2023-09-16T00:00:00+00:00",
+    "dateModified": "2023-09-17T01:05:32+08:00",
+    "wordCount":  406 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "Dante Zhang",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
         }
-    ]
+        },
+    "description": "ebpf 札记第一篇。讲讲 linux\/bpf_types.h 这个文件。"
 }
-</script><meta property="og:title" content="ebpf | Bullsh*t!" />
-<meta property="og:type" content="website" />
+</script><meta property="og:title" content="ebpf 札记(1): bpf_types.h | 一派胡言" />
+<meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/en/tags/ebpf/" />
+<meta property="og:url" content="/posts/ebpf-notes-01/" />
+
+
+
+<meta property="og:description" content="ebpf 札记第一篇。讲讲 linux/bpf_types.h 这个文件。" />
+
+
+
+<meta property="og:locale" content="zh" />
 
 
 
 
-
-<meta property="og:description" content="Eureka is a elegant and powerful theme for Hugo." />
-
-
-
-
-
-<meta property="og:locale" content="en" />
-
-
-
-<meta property="og:locale:alternate" content="zh" />
-
-
-
-
-<meta property="og:site_name" content="Bullsh*t!" />
+<meta property="og:site_name" content="一派胡言" />
 
 
 
 
 
 
-<meta property="og:updated_time" content="2022-01-18T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2023-09-16T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2023-09-17T01:05:32&#43;08:00" />
 
 
 
-<meta property="article:section" content="tags" />
+<meta property="article:section" content="posts" />
 
 
-<link rel="alternate" type="application/rss+xml" href="/en/tags/ebpf/index.xml" title="Bullsh*t!" />
+<meta property="article:tag" content="ebpf" />
+
+<meta property="article:tag" content="kernel" />
+
+
+
+
+
+<meta property="og:see_also" content="/posts/lkmpg/" />
+
+
 
 
   <body class="flex min-h-screen flex-col">
@@ -164,7 +176,7 @@
     }
 </script>
 <nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
-    <a href="/en/" class="me-6 text-primary-text text-xl font-bold">Bullsh*t!</a>
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">一派胡言</a>
     <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
         <i class="fas fa-bars"></i>
     </button>
@@ -172,8 +184,8 @@
     <div id="target"
         class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
         <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
-            <a href="/en/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">About</a>
-            <a href="/en/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">Posts</a>
+            <a href="/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">About</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">Posts</a>
         </div>
 
         <div class="flex">
@@ -185,22 +197,9 @@
                 </div>
                 <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
                     id='lightDarkOptions'>
-                    <span class="px-4 py-1 hover:text-eureka" name="Light">Light</span>
-                    <span class="px-4 py-1 hover:text-eureka" name="Dark">Dark</span>
-                    <span class="px-4 py-1 hover:text-eureka" name="Auto">Auto</span>
-                </div>
-            </div>
-            <div class="relative pt-4 ps-4 md:pt-0">
-                <div class="cursor-pointer hover:text-eureka" id="languageMode">
-                    <i class="fas fa-globe"></i>
-                    <span class="ps-1">English</span>
-                </div>
-                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open-lang">
-                </div>
-                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
-                    id='languageOptions'>
-                    <a class="px-4 py-1 hover:text-eureka" href="/en/tags/ebpf/">English</a>
-                    <a class="px-4 py-1 hover:text-eureka" href="/tags/ebpf/">简体中文</a>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
                 </div>
             </div>
         </div>
@@ -230,7 +229,6 @@
     document.addEventListener('DOMContentLoaded', () => {
         getcolorscheme();
         switchBurger();
-        switchLanguage()
     });
 </script>
 </div>
@@ -238,46 +236,34 @@
     <main class="grow pt-16">
         <div class="pl-scrollbar">
           <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
-  <article class="prose mx-6 my-8">
-  <h1>ebpf</h1>
   
-</article>
-
-  <div class="bg-secondary-bg rounded px-6">
-    <div class="overflow-hidden divide-y">
   
-  <div class="py-6">
-    <div class="flex flex-col-reverse lg:flex-row justify-between">
-  
-  <div class="w-full ">
-    <div class="prose">
-  <a href="/en/posts/ebpf-subnet-ipv6/" class="no-underline">
-    <h3 class="mt-0">Summerize network throughput by ebpf</h3>
-  </a>
-  
-    Use ebpf to summerize network throughput on ipv6.
-  
-
-  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
     <div
+      class="lg:col-start-2 bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">ebpf 札记(1): bpf_types.h</h1>
+
+  <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
 >
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2022-01-18</span
+      >2023-09-16</span
     >
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>7 min read</span>
+    <span>1分钟阅读时长</span>
   </div>
 
   
     <div class="me-6 my-2">
       <i class="fas fa-folder me-1"></i>
       
-        <a href="/en/categories/code/" class="hover:text-eureka"
+        <a href="/categories/code/" class="hover:text-eureka"
           >code</a
         >
       
@@ -287,20 +273,135 @@
   
 </div>
 
-  
-</div>
 
+  
+  
+
+  <p>本文以 5.15 版本内核为例。</p>
+<h2 id="概述">概述</h2>
+<p>include/linux/bpf_types.h 这个头文件有且仅有三种宏指令：</p>
+<ol>
+<li><code>BPF_PROG_TYPE</code>;</li>
+<li><code>BPF_MAP_TYPE</code>;</li>
+<li><code>BPF_LINK_TYPE</code>;</li>
+</ol>
+<p>以 <code>BPF_PROG_TYPE</code> 为例，查找它的定义，发现它出现在</p>
+<ol>
+<li>include/linux/bpf.h;</li>
+<li>kernel/bpf/btf.h;</li>
+<li>kernel/bpf/syscall.c;</li>
+<li>kernel/bpf/verifier.c;</li>
+</ol>
+<h2 id="bpf-dot-h">bpf.h</h2>
+<p>这个文件里面定义了一系列的 <code>bpf_prog_ops</code>, <code>bpf_verifier_ops</code> 和 <code>bpf_map_ops</code>:</p>
+<pre><code class="language-c">#define BPF_PROG_TYPE(_id, _name, prog_ctx_type, kern_ctx_type) \
+	extern const struct bpf_prog_ops _name ## _prog_ops; \
+	extern const struct bpf_verifier_ops _name ## _verifier_ops;
+#define BPF_MAP_TYPE(_id, _ops) \
+	extern const struct bpf_map_ops _ops;
+#define BPF_LINK_TYPE(_id, _name)
+#include &lt;linux/bpf_types.h&gt;
+#undef BPF_PROG_TYPE
+#undef BPF_MAP_TYPE
+#undef BPF_LINK_TYPE
+</code></pre>
+<p>这里用到先 <code>#define</code> 再 <code>#undefine</code> 的技巧在 <a href="https://lwn.net/Articles/383362/">Using the TRACE_EVENT() macro (Part 3)</a> 里面有介绍。</p>
+<p>像 <code>#define BPF_LINK_TYPE(_id, _name)</code> 这种宏定义就是把 <code>BPF_LINK_TYPE</code> 定义为空，
+后面 <code>#include &lt;linux/bpf_types.h&gt;</code> 时，~BPF_LINK_TYPE~ 部分就会被替换成空行。</p>
+<h2 id="btf-dot-h">btf.h</h2>
+<p>这个文件里面定义了几个不同的结构体：</p>
+<ol>
+<li><code>bpf_ctx_convert</code> 这个 union 用到 <code>BPF_PROG_TYPE</code> 里面的 <code>prog_ctx_type</code> 和 <code>kern_ctx_type</code> ；</li>
+<li><code>__ctx_convert##id</code> 枚举；</li>
+<li><code>bpf_ctx_convert_map</code> 这其实是一个数组，但是它的 index 就是 <code>BPF_PROG_TYPE</code> 里面的 <code>_id</code> 所以把它看作 map 也无不可；</li>
+</ol>
+<h2 id="syscall-dot-c">syscall.c</h2>
+<p>这个文件用 linux/bpf_types.h 定义了: <code>bpf_progs_types</code> 。
+和 <code>bpf_ctx_convert_map</code> 一样，这也是用 <code>_id</code> 作为 key，存储了所有的 <code>bpf_prog_ops</code> 跟 prog id 的对应关系。</p>
+<h2 id="verifier-dot-c">verifier.c</h2>
+<p>这个文件用 linux/bpf_types.h 定义了 <code>bpf_verifier_ops</code> 。</p>
+<h2 id="总结">总结</h2>
+<p>linux/bpf_types.h 本质上就是一个大列表，定义了所有的 bpf prog, map 和 link 。</p>
+<p>通过定义这个大列表，内核开发者借助预处理的技巧避免了写 boilerplate code, 了解这些技巧方便会我们找一些函数的定义。
+比如要找 <code>BPF_PROG_TYPE_KPROBE</code> 相关的 prog_ops, 我们应该搜 kprobe_prog_ops 。</p>
+
+</article>
+
+
+      
+        <div class="my-4">
+    
+    <a href="/tags/ebpf/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#ebpf</a>
+    
+    <a href="/tags/kernel/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#kernel</a>
+    
+</div>
+      
+
+      
+
+
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/posts/lkmpg/" class="block">The Linux Kernel Module Programming Guide 读书笔记</a>
+      
+    </div>
+  </div>
+
+
+      
+
+
+
+  <script id="utterances" src="https://utteranc.es/client.js"
+            issue-term=title
+            repo=ZhangYet/harmonie
+              theme=preferred-color-scheme
+        crossorigin="anonymous"
+        async>
+</script>
+<script>
+    if (storageColorScheme == "Light") {
+      document.getElementById('utterances').setAttribute('theme', 'github-light')
+    } else if (storageColorScheme == "Dark") {
+      document.getElementById('utterances').setAttribute('theme', 'github-dark')
+    }
+</script>
+
+    </div>
+    
+
+    
+    
+      <div
+        class="lg:col-start-2 bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="/posts/lkmpg/" class="no-underline">The Linux Kernel Module Programming Guide 读书笔记</a>
+          <br />
+        
+      </div>
+    
   </div>
 
   
-</div>
-  </div>
-  
-</div>
-
-
-  </div>
-  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.highlightAll();
+      });
+    </script>
 
           </div>
         </div>

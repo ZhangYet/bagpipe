@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kernel on 一派胡言</title>
-    <link>/tags/kernel/</link>
-    <description>Recent content in kernel on 一派胡言</description>
+    <title>ebpf on 一派胡言</title>
+    <link>/tags/ebpf/</link>
+    <description>Recent content in ebpf on 一派胡言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 16 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/ebpf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ebpf 札记(1): bpf_types.h</title>
       <link>/posts/ebpf-notes-01/</link>
@@ -14,15 +14,6 @@
       
       <guid>/posts/ebpf-notes-01/</guid>
       <description>本文以 5.15 版本内核为例。 概述 include/linux/bpf_types.h 这个头文件有且仅有三种宏指令： BPF_PROG_TYPE; BPF_MAP_TYPE; BPF_LINK_TYPE; 以 BPF_PROG_TYPE 为例，查找它的定义，发现它出现在 include/linux/bpf.h; kernel/bpf/btf.h; kernel/bpf/syscall.c; kernel/bpf/verifier.c; bpf.h 这个文件里面定义了一系列的 bpf_prog_ops, bpf_verifier_ops 和 bpf_map_ops: #define BPF_PROG_TYPE(_id, _name,</description>
-    </item>
-    
-    <item>
-      <title>The Linux Kernel Module Programming Guide 读书笔记</title>
-      <link>/posts/lkmpg/</link>
-      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/lkmpg/</guid>
-      <description>在 https://sysprog21.github.io/lkmpg/ 上有新版，示例代码至少在 5.15 版本内核上可以成功编译1。 内容梗概 一到五章介绍如何写一个 Hello world module。 第六章介绍如何实现一个字符设备驱动。 实现一个设</description>
     </item>
     
   </channel>

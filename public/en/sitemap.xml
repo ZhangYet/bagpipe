@@ -43,6 +43,16 @@
   </url><url>
     <loc>/en/tags/ebpf/</loc>
     <lastmod>2023-01-25T17:45:53+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="/tags/ebpf/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/ebpf/"
+                />
   </url><url>
     <loc>/en/tags/ipv6/</loc>
     <lastmod>2023-01-25T17:45:53+08:00</lastmod>

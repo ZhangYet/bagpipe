@@ -6,7 +6,16 @@
     <description>Recent content in code on 一派胡言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 09 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/code/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ebpf 札记(1): bpf_types.h</title>
+      <link>/posts/ebpf-notes-01/</link>
+      <pubDate>Sat, 16 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ebpf-notes-01/</guid>
+      <description>本文以 5.15 版本内核为例。 概述 include/linux/bpf_types.h 这个头文件有且仅有三种宏指令： BPF_PROG_TYPE; BPF_MAP_TYPE; BPF_LINK_TYPE; 以 BPF_PROG_TYPE 为例，查找它的定义，发现它出现在 include/linux/bpf.h; kernel/bpf/btf.h; kernel/bpf/syscall.c; kernel/bpf/verifier.c; bpf.h 这个文件里面定义了一系列的 bpf_prog_ops, bpf_verifier_ops 和 bpf_map_ops: #define BPF_PROG_TYPE(_id, _name,</description>
+    </item>
+    
     <item>
       <title>debian 包的依赖问题</title>
       <link>/posts/debian-package-dependency/</link>
