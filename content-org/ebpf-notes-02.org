@@ -1,0 +1,61 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: zh/posts
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: ebpf kernel
+#+hugo_categories: code
+#+hugo_draft: false
+#+description: ebpf 札记第二篇。从 samples/bpf 下 cpustat 例子开始讲起。本篇主要讲 ebpf 程序的载入。
+#+author: Dantezy
+#+date: 2023-09-24
+#+TITLE: ebpf 札记(2): samples/bpf/cpustat(WIP)
+linux kernel 源代码下提供了 samples/bpf ，这个目录下有种类繁多的 ebpf 示例，足以作为学习者入门的好教材。
+* 编译
+在 samples/bpf/Makefile 中有详细的编译过程。如果缺乏头文件，先执行 ~make headers_install~.
+
+值得注意的是，如下报错可以通过使用 clang-11 或更新版本编译器解决：
+#+BEGIN_QUOTE
+libbpf: map 'rx_cnt': unexpected def kind var.
+#+END_QUOTE
+
+见[[https://lore.kernel.org/bpf/YtEkosDJ2O0CXlL%2F@krava/][邮件列表的讨论]]或者[[https://t.me/danteslimbo/2238][我频道的笔记]]。
+* 源代码
+cpustat 程序的代码由两部分构成。
+cpustat_kern.c 是 ebpf 脚本，实现了 cpu 相关的计数。它把 ~bpf_prog1~ 这个函数挂载到了 "tracepoint/power/cpu_idle" 这个 tracepoint 上面。
+编译过程中，cpustat_kern.c 会被 clang 工具编译成 elf 对象文件，并生成对应的 *.skel.h 头文件。
+
+cpustat_user.c 是用户态程序，负责读取编译出来 elf 对象。
+
+本示例中，主要进行了如下步骤：
+
+#+BEGIN_SRC c
+  /* 打开 elf 文件，构造 bpf_object. */
+  obj = bpf_object__open_file(filename, NULL);
+  /* 找到 bpf_prog1, prog 是一个 bpf_program 指针，将会用于 attach。*/
+  prog = bpf_object__find_program_by_name(obj, "bpf_prog1");
+  /* 载入 bpf_object。*/
+  bpf_object__load(obj) // 载入 bpf_object
+  /* attach prog */
+  link = bpf_program__attach(prog);
+  /*
+   * 寻找在 cpustat_kern.c 中定义的两个 map 对应的 map_id,
+   * 用户态代码会通过这两个 map_id 从内核中读取数据。
+   */
+  cstate_map_fd = bpf_object__find_map_fd_by_name(obj, "cstate_duration");
+  pstate_map_fd = bpf_object__find_map_fd_by_name(obj, "pstate_duration");
+  /* 关闭资源。*/
+  bpf_link__destroy(link);
+  bpf_object__close(obj);
+#+END_SRC
+
+主要的过程如上，其中 ~bpf_object__open_file/load/find_program_by_name/find_map_fd_by_name~ 这一系列函数都只是在用户态打开读入 elf 文件。
+要了解相关源代码，对 elf 格式的了解更为重要。
+
+~bpf_program__attach~ 这个函数比较特别，它首先会调用 ~find_sec_def~ 找到对应的 section 定义。这个 section 定义在
+libbpf 中实现为一个大列表，最重要的是为每个 section 定义了 ~attach_fn~.
+
+对应本示例(tracepoint)的 ~attach_fn~ 是 ~attach_tp~, 这个函数经过一系列的 switch 之后，会调用 ~sys_bpf(BPF_LINK_CREATE)~, 是以上一系列库函数中，
+唯一调用 BPF 相关的 syscall 的。
+* TBD
+1. 为什么 libbpf 不在 open_file 的时候把 load bpf_object 的工作也做了。
+2. 展开分析 ~BPF_LINK_CREATE~ 对应的内核函数 ~link_create~.
+3. attach 过程中，有一个逻辑分支 ~kernel_support(prog->obj, FEA_PERF_LINK)~, 把这部分说清楚。
