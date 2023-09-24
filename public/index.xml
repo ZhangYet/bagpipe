@@ -6,7 +6,16 @@
     <description>Recent content on 一派胡言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 16 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ebpf 札记(2): samples/bpf/cpustat(WIP)</title>
+      <link>/posts/ebpf-notes-02/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ebpf-notes-02/</guid>
+      <description>linux kernel 源代码下提供了 samples/bpf ，这个目录下有种类繁多的 ebpf 示例，足以作为学习者入门的好教材。 编译 在 samples/bpf/Makefile 中有详细的编译过程。如果缺乏头文件，先执行 make headers_install. 值得注意的是，如</description>
+    </item>
+    
     <item>
       <title>ebpf 札记(1): bpf_types.h</title>
       <link>/posts/ebpf-notes-01/</link>
