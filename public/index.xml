@@ -6,7 +6,16 @@
     <description>Recent content on 一派胡言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 04 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ebpf 札记(3): 一个跟踪 kernel I/O request 生命周期的脚本</title>
+      <link>/posts/ebpf-notes-03/</link>
+      <pubDate>Wed, 04 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ebpf-notes-03/</guid>
+      <description>上周睡眠一直有问题，没有继续看 samples 里面的代码。写点别的来充数。 现在在追踪 kernel I/O request ，一个 request 被创建出来之后，会在多个函数中传递，直到被释放。 这个过程中它被那些</description>
+    </item>
+    
     <item>
       <title>ebpf 札记(2): samples/bpf/cpustat(WIP)</title>
       <link>/posts/ebpf-notes-02/</link>
