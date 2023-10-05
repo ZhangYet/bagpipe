@@ -64,7 +64,7 @@ kprobe:blk_mq_free_request
 现在 bpftrace 的 kprobe section 不支持更复杂的匹配方式，倒是挺遗憾的。我想
 「匹配所有 blk_ 开头的 kprobe 但是 blk_mq_free_request 除外」，但是没有找到方法实现。
 
-我还糊了一个 python 脚本解释拿到的栈：
+我还糊了一个 [[https://github.com/ZhangYet/passenger/blob/master/notes/io/parse_io_log.py][python 脚本]]解释拿到的栈：
 
 #+BEGIN_EXAMPLE
 (root): entry_SYSCALL_64_after_hwframe

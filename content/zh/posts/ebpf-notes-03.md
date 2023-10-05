@@ -3,7 +3,7 @@ title = "ebpf 札记(3): 一个跟踪 kernel I/O request 生命周期的脚本"
 author = ["Dantezy"]
 description = "ebpf 札记第三篇。跟踪 kernel I/O request 的生命周期。"
 date = 2023-10-04
-lastmod = 2023-10-05T16:17:19+08:00
+lastmod = 2023-10-05T16:57:31+08:00
 tags = ["ebpf", "kernel"]
 categories = ["code"]
 draft = false
@@ -66,7 +66,7 @@ kprobe:blk_mq_free_request
 现在 bpftrace 的 kprobe section 不支持更复杂的匹配方式，倒是挺遗憾的。我想
 「匹配所有 blk\_ 开头的 kprobe 但是 blk_mq_free_request 除外」，但是没有找到方法实现。
 
-我还糊了一个 python 脚本解释拿到的栈：
+我还糊了一个 [python 脚本](https://github.com/ZhangYet/passenger/blob/master/notes/io/parse_io_log.py)解释拿到的栈：
 
 ```text
 (root): entry_SYSCALL_64_after_hwframe
