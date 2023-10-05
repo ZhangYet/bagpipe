@@ -3,7 +3,7 @@ title = "ebpf 札记(3): 一个跟踪 kernel I/O request 生命周期的脚本"
 author = ["Dantezy"]
 description = "ebpf 札记第三篇。跟踪 kernel I/O request 的生命周期。"
 date = 2023-10-04
-lastmod = 2023-10-04T11:17:34+08:00
+lastmod = 2023-10-05T16:17:19+08:00
 tags = ["ebpf", "kernel"]
 categories = ["code"]
 draft = false
@@ -19,6 +19,10 @@ draft = false
 
 ```shell
 #!/usr/bin/env bpftrace
+
+BEGIN {
+  @count = 0;
+}
 
 kretprobe:blk_mq_alloc_request
 {
@@ -41,28 +45,122 @@ kprobe:blk_*
 	$rid = arg1
       }
       printf("%llu, %s\n", (struct request *)$rid, probe);
-    }
-  }
-}
-
-kprobe:blk_mq_get_driver_tag, k:blk_mq_start_request, k:blk_add_timer, k:blk_mq_complete_request,
-     k:blk_update_request, k:blk_stat_add, k:blk_account_io_done, k:blk_put_request, k:blk_mq_free_request
-{
-  if (@req != 0) {
-    if (arg1 == @req || arg0 == @req) {
-      print("%llu, %s\n%s\n", @req, probe, kstack);
+      printf("%llu, %s\n%s\n", @req, probe, kstack);
     }
   }
 }
 
 kprobe:blk_mq_free_request
+/ @req > 0 /
 {
-  @req = 0;
+  if (@req == arg0) {
+    @count += 1;
+    if (@count > 3) {
+      exit();
+    }
+    @req = 0;
+  }
 }
 ```
 
 现在 bpftrace 的 kprobe section 不支持更复杂的匹配方式，倒是挺遗憾的。我想
 「匹配所有 blk\_ 开头的 kprobe 但是 blk_mq_free_request 除外」，但是没有找到方法实现。
+
+我还糊了一个 python 脚本解释拿到的栈：
+
+```text
+(root): entry_SYSCALL_64_after_hwframe
+|
+\-entry_SYSCALL_64_after_hwframe
+ |
+ \-do_syscall_64
+  |
+  \-__x64_sys_ioctl
+   |
+   \-sg_ioctl
+    |
+    \-sg_ioctl_common
+     |
+     \-sg_new_write.isra.0
+      |
+      \-sg_common_write.isra.0
+       |
+       \-kretprobe_trampoline
+       |
+       \-blk_rq_map_user_iov
+       |
+       \-blk_account_io_start
+       |
+       \-blk_mq_sched_insert_request
+        |
+        \-blk_mq_run_hw_queue
+         |
+         \-__blk_mq_delay_run_hw_queue
+          |
+          \-__blk_mq_run_hw_queue
+           |
+           \-blk_mq_sched_dispatch_requests
+            |
+            \-__blk_mq_sched_dispatch_requests
+             |
+             \-blk_mq_get_driver_tag
+             |
+             \-blk_mq_dispatch_rq_list
+              |
+              \-blk_mq_start_request
+              |
+              \-scsi_queue_rq
+               |
+               \-blk_add_timer
+      |
+      \-blk_rq_map_user
+       |
+       \-blk_rq_append_bio
+      |
+      \-blk_execute_rq_nowait
+       |
+       \-blk_mq_request_bypass_insert
+
+(root): secondary_startup_64_no_verify
+|
+\-secondary_startup_64_no_verify
+ |
+ \-start_secondary
+  |
+  \-cpu_startup_entry
+   |
+   \-do_idle
+    |
+    \-flush_smp_call_function_from_idle
+     |
+     \-do_softirq
+      |
+      \-__softirqentry_text_start
+       |
+       \-blk_done_softirq
+        |
+        \-blk_complete_reqs
+         |
+         \-scsi_complete
+          |
+          \-scsi_finish_command
+           |
+           \-scsi_io_completion
+            |
+            \-scsi_end_request
+             |
+             \-blk_stat_add
+             |
+             \-blk_account_io_done
+             |
+             \-__blk_mq_end_request
+              |
+              \-blk_put_request
+              |
+              \-sg_rq_end_io
+               |
+               \-blk_mq_free_request
+```
 
 TODO:
 
