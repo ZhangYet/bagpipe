@@ -103,8 +103,8 @@
         "@id": "/posts/ebpf-notes-03/"
     },
     "headline": "ebpf 札记(3): 一个跟踪 kernel I\/O request 生命周期的脚本 | 一派胡言","datePublished": "2023-10-04T00:00:00+00:00",
-    "dateModified": "2023-10-04T11:17:48+08:00",
-    "wordCount":  324 ,
+    "dateModified": "2023-10-05T16:17:31+08:00",
+    "wordCount":  432 ,
     "publisher": {
         "@type": "Person",
         "name": "Dante Zhang",
@@ -145,7 +145,7 @@
 <meta property="article:published_time" content="2023-10-04T00:00:00&#43;00:00" />
 
 
-<meta property="article:modified_time" content="2023-10-04T11:17:48&#43;08:00" />
+<meta property="article:modified_time" content="2023-10-05T16:17:31&#43;08:00" />
 
 
 
@@ -288,6 +288,10 @@
 <p>同样的思路我还用来跟踪 nginx 里面的运行过程。</p>
 <pre><code class="language-shell">#!/usr/bin/env bpftrace
 
+BEGIN {
+  @count = 0;
+}
+
 kretprobe:blk_mq_alloc_request
 {
   if (@req == 0) {
@@ -309,27 +313,118 @@ kprobe:blk_*
 	$rid = arg1
       }
       printf(&quot;%llu, %s\n&quot;, (struct request *)$rid, probe);
-    }
-  }
-}
-
-kprobe:blk_mq_get_driver_tag, k:blk_mq_start_request, k:blk_add_timer, k:blk_mq_complete_request,
-     k:blk_update_request, k:blk_stat_add, k:blk_account_io_done, k:blk_put_request, k:blk_mq_free_request
-{
-  if (@req != 0) {
-    if (arg1 == @req || arg0 == @req) {
-      print(&quot;%llu, %s\n%s\n&quot;, @req, probe, kstack);
+      printf(&quot;%llu, %s\n%s\n&quot;, @req, probe, kstack);
     }
   }
 }
 
 kprobe:blk_mq_free_request
+/ @req &gt; 0 /
 {
-  @req = 0;
+  if (@req == arg0) {
+    @count += 1;
+    if (@count &gt; 3) {
+      exit();
+    }
+    @req = 0;
+  }
 }
 </code></pre>
 <p>现在 bpftrace 的 kprobe section 不支持更复杂的匹配方式，倒是挺遗憾的。我想
 「匹配所有 blk_ 开头的 kprobe 但是 blk_mq_free_request 除外」，但是没有找到方法实现。</p>
+<p>我还糊了一个 python 脚本解释拿到的栈：</p>
+<pre><code class="language-text">(root): entry_SYSCALL_64_after_hwframe
+|
+\-entry_SYSCALL_64_after_hwframe
+ |
+ \-do_syscall_64
+  |
+  \-__x64_sys_ioctl
+   |
+   \-sg_ioctl
+    |
+    \-sg_ioctl_common
+     |
+     \-sg_new_write.isra.0
+      |
+      \-sg_common_write.isra.0
+       |
+       \-kretprobe_trampoline
+       |
+       \-blk_rq_map_user_iov
+       |
+       \-blk_account_io_start
+       |
+       \-blk_mq_sched_insert_request
+        |
+        \-blk_mq_run_hw_queue
+         |
+         \-__blk_mq_delay_run_hw_queue
+          |
+          \-__blk_mq_run_hw_queue
+           |
+           \-blk_mq_sched_dispatch_requests
+            |
+            \-__blk_mq_sched_dispatch_requests
+             |
+             \-blk_mq_get_driver_tag
+             |
+             \-blk_mq_dispatch_rq_list
+              |
+              \-blk_mq_start_request
+              |
+              \-scsi_queue_rq
+               |
+               \-blk_add_timer
+      |
+      \-blk_rq_map_user
+       |
+       \-blk_rq_append_bio
+      |
+      \-blk_execute_rq_nowait
+       |
+       \-blk_mq_request_bypass_insert
+
+(root): secondary_startup_64_no_verify
+|
+\-secondary_startup_64_no_verify
+ |
+ \-start_secondary
+  |
+  \-cpu_startup_entry
+   |
+   \-do_idle
+    |
+    \-flush_smp_call_function_from_idle
+     |
+     \-do_softirq
+      |
+      \-__softirqentry_text_start
+       |
+       \-blk_done_softirq
+        |
+        \-blk_complete_reqs
+         |
+         \-scsi_complete
+          |
+          \-scsi_finish_command
+           |
+           \-scsi_io_completion
+            |
+            \-scsi_end_request
+             |
+             \-blk_stat_add
+             |
+             \-blk_account_io_done
+             |
+             \-__blk_mq_end_request
+              |
+              \-blk_put_request
+              |
+              \-sg_rq_end_io
+               |
+               \-blk_mq_free_request
+</code></pre>
 <p>TODO:</p>
 <ol>
 <li>为什么 <code>blk_mq_alloc_request</code> 会重入？</li>
