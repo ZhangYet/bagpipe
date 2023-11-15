@@ -3,7 +3,7 @@ title = "ebpf 札记(3): 一个跟踪 kernel I/O request 生命周期的脚本"
 author = ["Dantezy"]
 description = "ebpf 札记第三篇。跟踪 kernel I/O request 的生命周期。"
 date = 2023-10-04
-lastmod = 2023-10-05T16:57:31+08:00
+lastmod = 2023-11-15T10:26:37+08:00
 tags = ["ebpf", "kernel"]
 categories = ["code"]
 draft = false
@@ -85,7 +85,7 @@ kprobe:blk_mq_free_request
       |
       \-sg_common_write.isra.0
        |
-       \-kretprobe_trampoline
+       \-kretprobe_trampoline(blk_mq_alloc_request)
        |
        \-blk_rq_map_user_iov
        |

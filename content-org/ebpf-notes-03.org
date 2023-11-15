@@ -83,7 +83,7 @@ kprobe:blk_mq_free_request
       |
       \-sg_common_write.isra.0
        |
-       \-kretprobe_trampoline
+       \-kretprobe_trampoline(blk_mq_alloc_request)
        |
        \-blk_rq_map_user_iov
        |
