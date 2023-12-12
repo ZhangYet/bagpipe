@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>ebpf 札记(3): 一个跟踪 kernel I/O request 生命周期的脚本 | 一派胡言</title>
+<title>ebpf 札记(4): 用 ebpf 侦测函数内部的状态 | 一派胡言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hucbe615c96c237c6bd63974a0e5d5517c_142_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="ebpf 札记第三篇。跟踪 kernel I/O request 的生命周期。">
+  content="ebpf 札记第四篇。这个系列停更了好久啊。讨论一下如何用 ebpf 侦测函数内部的状态。">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -87,8 +87,8 @@
       "item":"/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"ebpf 札记(3): 一个跟踪 kernel I/O request 生命周期的脚本",
-      "item":"/posts/ebpf-notes-03/"}]
+      "name":"ebpf 札记(4): 用 ebpf 侦测函数内部的状态",
+      "item":"/posts/ebpf-notes-04/"}]
 }
 </script>
 
@@ -100,11 +100,11 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/posts/ebpf-notes-03/"
+        "@id": "/posts/ebpf-notes-04/"
     },
-    "headline": "ebpf 札记(3): 一个跟踪 kernel I\/O request 生命周期的脚本 | 一派胡言","datePublished": "2023-10-04T00:00:00+00:00",
-    "dateModified": "2023-11-15T10:26:48+08:00",
-    "wordCount":  432 ,
+    "headline": "ebpf 札记(4): 用 ebpf 侦测函数内部的状态 | 一派胡言","datePublished": "2023-12-12T00:00:00+00:00",
+    "dateModified": "2023-12-12T17:18:37+08:00",
+    "wordCount":  744 ,
     "publisher": {
         "@type": "Person",
         "name": "Dante Zhang",
@@ -113,20 +113,20 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "ebpf 札记第三篇。跟踪 kernel I\/O request 的生命周期。"
+    "description": "ebpf 札记第四篇。这个系列停更了好久啊。讨论一下如何用 ebpf 侦测函数内部的状态。"
 }
-</script><meta property="og:title" content="ebpf 札记(3): 一个跟踪 kernel I/O request 生命周期的脚本 | 一派胡言" />
+</script><meta property="og:title" content="ebpf 札记(4): 用 ebpf 侦测函数内部的状态 | 一派胡言" />
 <meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/posts/ebpf-notes-03/" />
+<meta property="og:url" content="/posts/ebpf-notes-04/" />
 
 
 
-<meta property="og:description" content="ebpf 札记第三篇。跟踪 kernel I/O request 的生命周期。" />
+<meta property="og:description" content="ebpf 札记第四篇。这个系列停更了好久啊。讨论一下如何用 ebpf 侦测函数内部的状态。" />
 
 
 
@@ -142,10 +142,10 @@
 
 
 
-<meta property="article:published_time" content="2023-10-04T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2023-12-12T00:00:00&#43;00:00" />
 
 
-<meta property="article:modified_time" content="2023-11-15T10:26:48&#43;08:00" />
+<meta property="article:modified_time" content="2023-12-12T17:18:37&#43;08:00" />
 
 
 
@@ -159,6 +159,8 @@
 
 
 
+
+<meta property="og:see_also" content="/posts/ebpf-notes-03/" />
 
 <meta property="og:see_also" content="/posts/ebpf-notes-02/" />
 
@@ -247,7 +249,7 @@
       class="lg:col-start-2 bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
       <article class="prose">
-  <h1 class="mb-4">ebpf 札记(3): 一个跟踪 kernel I/O request 生命周期的脚本</h1>
+  <h1 class="mb-4">ebpf 札记(4): 用 ebpf 侦测函数内部的状态</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -255,12 +257,12 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2023-10-04</span
+      >2023-12-12</span
     >
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>1分钟阅读时长</span>
+    <span>2分钟阅读时长</span>
   </div>
 
   
@@ -281,154 +283,122 @@
   
   
 
-  <p>上周睡眠一直有问题，没有继续看 samples 里面的代码。写点别的来充数。</p>
-<p>现在在追踪 kernel I/O request ，一个 request 被创建出来之后，会在多个函数中传递，直到被释放。
-这个过程中它被那些内核函数调用？这是一个复杂的问题。幸好很多处理 request 的函数都是以 <code>struct request*</code> 作为入参，
-这给我们一个跟踪 request 的思路。</p>
-<p>同样的思路我还用来跟踪 nginx 里面的运行过程。</p>
-<pre><code class="language-shell">#!/usr/bin/env bpftrace
-
-BEGIN {
-  @count = 0;
-}
-
-kretprobe:blk_mq_alloc_request
-{
-  if (@req == 0) {
-    @req = retval;
-    printf(&quot;%llu, %d,  %s\n&quot;, (struct request *)@req, pid, probe);
-    printf(&quot;comm: %s, kstack: \n%s\n&quot;, comm, kstack);
-  }
-  if (retval == @req) {
-    printf(&quot;duplicated req: %d, %llu\n&quot;, pid, @req);
-  }
-}
-
-kprobe:blk_*
-{
-  if (@req != 0) {
-    if (arg1 == @req || arg0 == @req) {
-      $rid = arg0;
-      if (arg1 == @req) {
-	$rid = arg1
-      }
-      printf(&quot;%llu, %s\n&quot;, (struct request *)$rid, probe);
-      printf(&quot;%llu, %s\n%s\n&quot;, @req, probe, kstack);
-    }
-  }
-}
-
-kprobe:blk_mq_free_request
-/ @req &gt; 0 /
-{
-  if (@req == arg0) {
-    @count += 1;
-    if (@count &gt; 3) {
-      exit();
-    }
-    @req = 0;
-  }
-}
-</code></pre>
-<p>现在 bpftrace 的 kprobe section 不支持更复杂的匹配方式，倒是挺遗憾的。我想
-「匹配所有 blk_ 开头的 kprobe 但是 blk_mq_free_request 除外」，但是没有找到方法实现。</p>
-<p>我还糊了一个 <a href="https://github.com/ZhangYet/passenger/blob/master/notes/io/parse_io_log.py">python 脚本</a>解释拿到的栈：</p>
-<pre><code class="language-text">(root): entry_SYSCALL_64_after_hwframe
-|
-\-entry_SYSCALL_64_after_hwframe
- |
- \-do_syscall_64
-  |
-  \-__x64_sys_ioctl
-   |
-   \-sg_ioctl
-    |
-    \-sg_ioctl_common
-     |
-     \-sg_new_write.isra.0
-      |
-      \-sg_common_write.isra.0
-       |
-       \-kretprobe_trampoline(blk_mq_alloc_request)
-       |
-       \-blk_rq_map_user_iov
-       |
-       \-blk_account_io_start
-       |
-       \-blk_mq_sched_insert_request
-        |
-        \-blk_mq_run_hw_queue
-         |
-         \-__blk_mq_delay_run_hw_queue
-          |
-          \-__blk_mq_run_hw_queue
-           |
-           \-blk_mq_sched_dispatch_requests
-            |
-            \-__blk_mq_sched_dispatch_requests
-             |
-             \-blk_mq_get_driver_tag
-             |
-             \-blk_mq_dispatch_rq_list
-              |
-              \-blk_mq_start_request
-              |
-              \-scsi_queue_rq
-               |
-               \-blk_add_timer
-      |
-      \-blk_rq_map_user
-       |
-       \-blk_rq_append_bio
-      |
-      \-blk_execute_rq_nowait
-       |
-       \-blk_mq_request_bypass_insert
-
-(root): secondary_startup_64_no_verify
-|
-\-secondary_startup_64_no_verify
- |
- \-start_secondary
-  |
-  \-cpu_startup_entry
-   |
-   \-do_idle
-    |
-    \-flush_smp_call_function_from_idle
-     |
-     \-do_softirq
-      |
-      \-__softirqentry_text_start
-       |
-       \-blk_done_softirq
-        |
-        \-blk_complete_reqs
-         |
-         \-scsi_complete
-          |
-          \-scsi_finish_command
-           |
-           \-scsi_io_completion
-            |
-            \-scsi_end_request
-             |
-             \-blk_stat_add
-             |
-             \-blk_account_io_done
-             |
-             \-__blk_mq_end_request
-              |
-              \-blk_put_request
-              |
-              \-sg_rq_end_io
-               |
-               \-blk_mq_free_request
-</code></pre>
-<p>TODO:</p>
+  <h2 id="introduction">Introduction</h2>
+<p>为了行文方便，probe 这个词我就翻译为侦测了。</p>
+<p>使用 ebpf 可以很方便地获取被侦测函数的入参（当然大于6个的时候还是有麻烦）和返回值。但如果我们需要获知函数内部的状态呢？</p>
+<p>如果我们需要知道函数内部的临时变量，还有函数调用别的函数时候的入参，ebpf 还是可以做到的。主要思路如下：</p>
 <ol>
-<li>为什么 <code>blk_mq_alloc_request</code> 会重入？</li>
+<li>ebpf 可以挂载到函数的某个 offset;</li>
+<li>ebpf 可以读到寄存器；</li>
+<li>如果我们知道函数某个 offset 的时候，变量保存在哪个寄存器或者在栈的某个位置，那么我们可以通过寄存器拿到变量的值；</li>
 </ol>
+<p>下面通过一个具体的例子来说明如何侦测函数内部状态。</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;string.h&gt;
+
+struct exp_s {
+  int num;
+  char name[35];
+};
+
+void accept_exp(struct exp_s *t) {
+  char name[35];
+  memcpy(name, t-&gt;name, 35);
+  printf(&quot;num: %d, name %s\n&quot;, t-&gt;num, name);
+}
+
+int main() {
+  struct exp_s s = {
+    .num = 1,
+    .name = &quot;keqing&quot;,
+  };
+
+  while(1) {
+    s.num ++;
+    accept_exp(&amp;s);
+    sleep(5);
+  }
+
+  return 0;
+}
+</code></pre>
+<p>假设我想知道 <code>name</code> 在函数 <code>accept_exp</code> 中的值，那么我可以这样做：</p>
+<p>首先，disas <code>accept_exp</code> 函数。</p>
+<pre><code class="language-bash">gdb -batch -ex 'disas accept_exp' exp
+Dump of assembler code for function accept_exp:
+   0x0000000000001189 &lt;+0&gt;:     endbr64
+   0x000000000000118d &lt;+4&gt;:     push   %rbp
+   0x000000000000118e &lt;+5&gt;:     mov    %rsp,%rbp
+   0x0000000000001191 &lt;+8&gt;:     push   %rbx
+   0x0000000000001192 &lt;+9&gt;:     sub    $0x48,%rsp
+   0x0000000000001196 &lt;+13&gt;:    mov    %rdi,-0x48(%rbp)
+   0x000000000000119a &lt;+17&gt;:    mov    %fs:0x28,%rax
+   0x00000000000011a3 &lt;+26&gt;:    mov    %rax,-0x18(%rbp)
+   0x00000000000011a7 &lt;+30&gt;:    xor    %eax,%eax
+   0x00000000000011a9 &lt;+32&gt;:    mov    -0x48(%rbp),%rax
+   0x00000000000011ad &lt;+36&gt;:    add    $0x4,%rax
+   0x00000000000011b1 &lt;+40&gt;:    mov    (%rax),%rcx
+   0x00000000000011b4 &lt;+43&gt;:    mov    0x8(%rax),%rbx
+   0x00000000000011b8 &lt;+47&gt;:    mov    %rcx,-0x40(%rbp)
+   0x00000000000011bc &lt;+51&gt;:    mov    %rbx,-0x38(%rbp)
+   0x00000000000011c0 &lt;+55&gt;:    mov    0x10(%rax),%rcx
+   0x00000000000011c4 &lt;+59&gt;:    mov    0x18(%rax),%rbx
+   0x00000000000011c8 &lt;+63&gt;:    mov    %rcx,-0x30(%rbp)
+   0x00000000000011cc &lt;+67&gt;:    mov    %rbx,-0x28(%rbp)
+   0x00000000000011d0 &lt;+71&gt;:    movzwl 0x20(%rax),%edx
+   0x00000000000011d4 &lt;+75&gt;:    mov    %dx,-0x20(%rbp)
+   0x00000000000011d8 &lt;+79&gt;:    movzbl 0x22(%rax),%eax
+   0x00000000000011dc &lt;+83&gt;:    mov    %al,-0x1e(%rbp)
+   0x00000000000011df &lt;+86&gt;:    mov    -0x48(%rbp),%rax
+   0x00000000000011e3 &lt;+90&gt;:    mov    (%rax),%eax
+   0x00000000000011e5 &lt;+92&gt;:    lea    -0x40(%rbp),%rdx
+   0x00000000000011e9 &lt;+96&gt;:    mov    %eax,%esi
+   0x00000000000011eb &lt;+98&gt;:    lea    0xe12(%rip),%rdi        # 0x2004
+   0x00000000000011f2 &lt;+105&gt;:   mov    $0x0,%eax
+   0x00000000000011f7 &lt;+110&gt;:   callq  0x1080 &lt;printf@plt&gt;
+   0x00000000000011fc &lt;+115&gt;:   nop
+   0x00000000000011fd &lt;+116&gt;:   mov    -0x18(%rbp),%rax
+   0x0000000000001201 &lt;+120&gt;:   xor    %fs:0x28,%rax
+   0x000000000000120a &lt;+129&gt;:   je     0x1211 &lt;accept_exp+136&gt;
+   0x000000000000120c &lt;+131&gt;:   callq  0x1070 &lt;__stack_chk_fail@plt&gt;
+   0x0000000000001211 &lt;+136&gt;:   add    $0x48,%rsp
+   0x0000000000001215 &lt;+140&gt;:   pop    %rbx
+   0x0000000000001216 &lt;+141&gt;:   pop    %rbp
+   0x0000000000001217 &lt;+142&gt;:   retq
+End of assembler dump.
+</code></pre>
+<p>可以看到 <code>0x00000000000011f7 &lt;+110&gt;:   callq  0x1080 &lt;printf@plt&gt;</code> 在这里， <code>name</code> 会作为第三个参数传入 <code>printf</code> 里面。
+所以我们可以知道，需要看 <code>%rdx</code> 寄存器<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。</p>
+<pre><code class="language-bpftrace">#!/usr/bin/env bpftrace
+
+uprobe:./exp:accept_exp+110
+{
+  $di = reg(&quot;di&quot;);
+  $char_di = (uint8 *)$di;
+  $dx = reg(&quot;dx&quot;);
+  $char_dx = (uint8 *)$dx;
+  if ($di &gt; 0) {
+    printf(&quot;di: %lu, pointer: %lu, str: %s\n&quot;, $di, $char_di, str($char_di));
+    printf(&quot;dx: %lu, pointer: %lu, str: %s\n&quot;, $dx, $char_dx, str($char_dx));
+  } else {
+    print(&quot;no ax value get&quot;);
+  }
+}
+</code></pre>
+<p>这样我们可以知道 <code>name</code> 的值了。</p>
+<h2 id="epilogue">Epilogue</h2>
+<p>当然这个例子很取巧，因为这个临时变量作为某个函数的参数，我们很容易会知道它在哪个寄存器，如果是栈上，那么会费一点功夫，
+因为时间关系这样的例子我之后再补。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>注意 bpftrace 支持的 x86 寄存器名字不是常规的 eax, rdx 等，而是 ax, dx 这样的。见<a href="https://github.com/iovisor/bpftrace/blob/45617cd40d5314cd98fa74560d8c980e4a417463/src/arch/x86_64.cpp">源码</a>。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 
 </article>
 
@@ -455,16 +425,11 @@ kprobe:blk_mq_free_request
   >
     <div>
       
-        <span class="text-primary-text block font-bold"
-          >上一页</span
-        >
-        <a href="/posts/ebpf-notes-04/" class="block">ebpf 札记(4): 用 ebpf 侦测函数内部的状态</a>
-      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/posts/ebpf-notes-02/" class="block">ebpf 札记(2): samples/bpf/cpustat(WIP)</a>
+        <a href="/posts/ebpf-notes-03/" class="block">ebpf 札记(3): 一个跟踪 kernel I/O request 生命周期的脚本</a>
       
     </div>
   </div>
@@ -498,6 +463,9 @@ kprobe:blk_mq_free_request
         class="lg:col-start-2 bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
       >
         <h3>相关</h3>
+        
+          <a href="/posts/ebpf-notes-03/" class="no-underline">ebpf 札记(3): 一个跟踪 kernel I/O request 生命周期的脚本</a>
+          <br />
         
           <a href="/posts/ebpf-notes-02/" class="no-underline">ebpf 札记(2): samples/bpf/cpustat(WIP)</a>
           <br />

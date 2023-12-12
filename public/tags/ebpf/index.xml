@@ -6,7 +6,16 @@
     <description>Recent content in ebpf on 一派胡言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 04 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/ebpf/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/ebpf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ebpf 札记(4): 用 ebpf 侦测函数内部的状态</title>
+      <link>/posts/ebpf-notes-04/</link>
+      <pubDate>Tue, 12 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ebpf-notes-04/</guid>
+      <description>Introduction 为了行文方便，probe 这个词我就翻译为侦测了。 使用 ebpf 可以很方便地获取被侦测函数的入参（当然大于6个的时候还是有麻烦）和返回值。但如果我们需要获知函</description>
+    </item>
+    
     <item>
       <title>ebpf 札记(3): 一个跟踪 kernel I/O request 生命周期的脚本</title>
       <link>/posts/ebpf-notes-03/</link>
