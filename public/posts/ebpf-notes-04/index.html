@@ -103,8 +103,8 @@
         "@id": "/posts/ebpf-notes-04/"
     },
     "headline": "ebpf 札记(4): 用 ebpf 侦测函数内部的状态 | 一派胡言","datePublished": "2023-12-12T00:00:00+00:00",
-    "dateModified": "2023-12-12T17:18:37+08:00",
-    "wordCount":  744 ,
+    "dateModified": "2023-12-12T23:23:41+08:00",
+    "wordCount":  918 ,
     "publisher": {
         "@type": "Person",
         "name": "Dante Zhang",
@@ -145,7 +145,7 @@
 <meta property="article:published_time" content="2023-12-12T00:00:00&#43;00:00" />
 
 
-<meta property="article:modified_time" content="2023-12-12T17:18:37&#43;08:00" />
+<meta property="article:modified_time" content="2023-12-12T23:23:41&#43;08:00" />
 
 
 
@@ -305,8 +305,11 @@ struct exp_s {
 
 void accept_exp(struct exp_s *t) {
   char name[35];
+  int a;
   memcpy(name, t-&gt;name, 35);
   printf(&quot;num: %d, name %s\n&quot;, t-&gt;num, name);
+  a = t-&gt;num;
+  printf(&quot;a: %d\n&quot;, a);
 }
 
 int main() {
@@ -324,7 +327,8 @@ int main() {
   return 0;
 }
 </code></pre>
-<p>假设我想知道 <code>name</code> 在函数 <code>accept_exp</code> 中的值，那么我可以这样做：</p>
+<p>假设我想知道变量 <code>name</code> 和 <code>a</code> 在函数 <code>accept_exp</code> 中的值（当然实际上 <code>name</code> 在这里是一个地址，但为了行文简便我就这么说了），
+那么我可以这样做：</p>
 <p>首先，disas <code>accept_exp</code> 函数。</p>
 <pre><code class="language-bash">gdb -batch -ex 'disas accept_exp' exp
 Dump of assembler code for function accept_exp:
@@ -332,12 +336,12 @@ Dump of assembler code for function accept_exp:
    0x000000000000118d &lt;+4&gt;:     push   %rbp
    0x000000000000118e &lt;+5&gt;:     mov    %rsp,%rbp
    0x0000000000001191 &lt;+8&gt;:     push   %rbx
-   0x0000000000001192 &lt;+9&gt;:     sub    $0x48,%rsp
-   0x0000000000001196 &lt;+13&gt;:    mov    %rdi,-0x48(%rbp)
+   0x0000000000001192 &lt;+9&gt;:     sub    $0x58,%rsp
+   0x0000000000001196 &lt;+13&gt;:    mov    %rdi,-0x58(%rbp)
    0x000000000000119a &lt;+17&gt;:    mov    %fs:0x28,%rax
    0x00000000000011a3 &lt;+26&gt;:    mov    %rax,-0x18(%rbp)
    0x00000000000011a7 &lt;+30&gt;:    xor    %eax,%eax
-   0x00000000000011a9 &lt;+32&gt;:    mov    -0x48(%rbp),%rax
+   0x00000000000011a9 &lt;+32&gt;:    mov    -0x58(%rbp),%rax
    0x00000000000011ad &lt;+36&gt;:    add    $0x4,%rax
    0x00000000000011b1 &lt;+40&gt;:    mov    (%rax),%rcx
    0x00000000000011b4 &lt;+43&gt;:    mov    0x8(%rax),%rbx
@@ -351,26 +355,35 @@ Dump of assembler code for function accept_exp:
    0x00000000000011d4 &lt;+75&gt;:    mov    %dx,-0x20(%rbp)
    0x00000000000011d8 &lt;+79&gt;:    movzbl 0x22(%rax),%eax
    0x00000000000011dc &lt;+83&gt;:    mov    %al,-0x1e(%rbp)
-   0x00000000000011df &lt;+86&gt;:    mov    -0x48(%rbp),%rax
+   0x00000000000011df &lt;+86&gt;:    mov    -0x58(%rbp),%rax
    0x00000000000011e3 &lt;+90&gt;:    mov    (%rax),%eax
    0x00000000000011e5 &lt;+92&gt;:    lea    -0x40(%rbp),%rdx
    0x00000000000011e9 &lt;+96&gt;:    mov    %eax,%esi
    0x00000000000011eb &lt;+98&gt;:    lea    0xe12(%rip),%rdi        # 0x2004
    0x00000000000011f2 &lt;+105&gt;:   mov    $0x0,%eax
    0x00000000000011f7 &lt;+110&gt;:   callq  0x1080 &lt;printf@plt&gt;
-   0x00000000000011fc &lt;+115&gt;:   nop
-   0x00000000000011fd &lt;+116&gt;:   mov    -0x18(%rbp),%rax
-   0x0000000000001201 &lt;+120&gt;:   xor    %fs:0x28,%rax
-   0x000000000000120a &lt;+129&gt;:   je     0x1211 &lt;accept_exp+136&gt;
-   0x000000000000120c &lt;+131&gt;:   callq  0x1070 &lt;__stack_chk_fail@plt&gt;
-   0x0000000000001211 &lt;+136&gt;:   add    $0x48,%rsp
-   0x0000000000001215 &lt;+140&gt;:   pop    %rbx
-   0x0000000000001216 &lt;+141&gt;:   pop    %rbp
-   0x0000000000001217 &lt;+142&gt;:   retq
+   0x00000000000011fc &lt;+115&gt;:   mov    -0x58(%rbp),%rax
+   0x0000000000001200 &lt;+119&gt;:   mov    (%rax),%eax
+   0x0000000000001202 &lt;+121&gt;:   mov    %eax,-0x44(%rbp)
+   0x0000000000001205 &lt;+124&gt;:   mov    -0x44(%rbp),%eax
+   0x0000000000001208 &lt;+127&gt;:   mov    %eax,%esi
+   0x000000000000120a &lt;+129&gt;:   lea    0xe05(%rip),%rdi        # 0x2016
+   0x0000000000001211 &lt;+136&gt;:   mov    $0x0,%eax
+   0x0000000000001216 &lt;+141&gt;:   callq  0x1080 &lt;printf@plt&gt;
+   0x000000000000121b &lt;+146&gt;:   nop
+   0x000000000000121c &lt;+147&gt;:   mov    -0x18(%rbp),%rax
+   0x0000000000001220 &lt;+151&gt;:   xor    %fs:0x28,%rax
+   0x0000000000001229 &lt;+160&gt;:   je     0x1230 &lt;accept_exp+167&gt;
+   0x000000000000122b &lt;+162&gt;:   callq  0x1070 &lt;__stack_chk_fail@plt&gt;
+   0x0000000000001230 &lt;+167&gt;:   add    $0x58,%rsp
+   0x0000000000001234 &lt;+171&gt;:   pop    %rbx
+   0x0000000000001235 &lt;+172&gt;:   pop    %rbp
+   0x0000000000001236 &lt;+173&gt;:   retq
 End of assembler dump.
 </code></pre>
 <p>可以看到 <code>0x00000000000011f7 &lt;+110&gt;:   callq  0x1080 &lt;printf@plt&gt;</code> 在这里， <code>name</code> 会作为第三个参数传入 <code>printf</code> 里面。
-所以我们可以知道，需要看 <code>%rdx</code> 寄存器<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。</p>
+所以我们可以知道，需要看 <code>%rdx</code> 寄存器<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。至于 <code>a</code> 可以从 <code>0x0000000000001216 &lt;+141&gt;:   callq  0x1080 &lt;printf@plt&gt;</code>
+往上找，看到它在栈里的位置 <code>-0x44(%rbp)</code> ，我们读这个位置就好。</p>
 <pre><code class="language-bpftrace">#!/usr/bin/env bpftrace
 
 uprobe:./exp:accept_exp+110
@@ -386,16 +399,26 @@ uprobe:./exp:accept_exp+110
     print(&quot;no ax value get&quot;);
   }
 }
+
+uprobe:./exp:accept_exp+141
+{
+  $bp = reg(&quot;bp&quot;);
+  $local_va = $bp - 0x44;
+  $si = reg(&quot;si&quot;);
+  printf(&quot;local_va: %d/%d, si: %d\n&quot;,$local_va, *($local_va), $si);
+}
 </code></pre>
-<p>这样我们可以知道 <code>name</code> 的值了。</p>
+<p>这样我们可以知道 <code>name</code> 的内容和 <code>a</code> 的值了。</p>
 <h2 id="epilogue">Epilogue</h2>
-<p>当然这个例子很取巧，因为这个临时变量作为某个函数的参数，我们很容易会知道它在哪个寄存器，如果是栈上，那么会费一点功夫，
-因为时间关系这样的例子我之后再补。</p>
+<p>当然这个例子很取巧，主要是这两个变量的位置我都很清楚，更复杂的函数需要花费更多时间去理解汇编代码<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
 <p>注意 bpftrace 支持的 x86 寄存器名字不是常规的 eax, rdx 等，而是 ax, dx 这样的。见<a href="https://github.com/iovisor/bpftrace/blob/45617cd40d5314cd98fa74560d8c980e4a417463/src/arch/x86_64.cpp">源码</a>。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>学习 x86_64 汇编算是今年最有效的投入了，<a href="http://www.egr.unlv.edu/~ed/x86.html">x86-64 Assembly Language Programming with Ubuntu</a> 这本书可以算我年度之书。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
