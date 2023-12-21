@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Bullsh*t!</title>
+    <link>/en/posts/</link>
+    <description>Recent content in Posts on Bullsh*t!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 18 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="/en/posts/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Summerize network throughput by ebpf</title>
+      <link>/en/posts/ebpf-subnet-ipv6/</link>
+      <pubDate>Tue, 18 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/en/posts/ebpf-subnet-ipv6/</guid>
+      <description>TL;DR use bpf_probe_read_kernel() to read structs in the kernel. in a sense, debuging it to printing. Writing a bcc script to test your ebpf_exporter script is a good debugging method. The problem We have servers in different zones, which have different subnets. We want to use ebpf_exporter1 to monitor network throughput from subnet1 to subnet2. So I have to write some bcc scripts.
+Some tcp throughput is sent from subnet1 to subnet2 using ipv6. But the servers don&amp;rsquo;t have real ipv6 addresses, they have ipv4 addresses embedded in ipv62.</description>
+    </item>
+    
+    <item>
+      <title>Where Does My Thought Come From</title>
+      <link>/en/posts/where-does-my-thought-come-from/</link>
+      <pubDate>Wed, 31 Mar 2021 15:37:53 +0800</pubDate>
+      
+      <guid>/en/posts/where-does-my-thought-come-from/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>log on 一派胡言</title>
+    <link>/tags/log/</link>
+    <description>Recent content in log on 一派胡言</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 22 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/log/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>彼岸人生</title>
+      <link>/posts/the-other-shore/</link>
+      <pubDate>Wed, 22 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/the-other-shore/</guid>
+      <description>其实，大一时候读到张生的小说《十年灯》对我影响挺大的。 我将惴惴不安地生活在这个世界上，因为我始终无法实实在在地抓住一些东西，每一天都在模棱两可中挣扎。</description>
+    </item>
+    
+    <item>
+      <title>戒酒记</title>
+      <link>/posts/sobriety/</link>
+      <pubDate>Mon, 05 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/sobriety/</guid>
+      <description>缘起 4月8日去 CMGS 家烧烤，喝得一塌糊涂，之后有宿醉的感觉，于是在4月12日我决心戒酒。 当然这不是我第一次喝到宿醉，也不是我第一次宿醉之后下决心戒酒。不过</description>
+    </item>
+    
+    <item>
+      <title>新加坡观察：基督教后期圣徒教会(LDS)</title>
+      <link>/posts/singapore-lds/</link>
+      <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/singapore-lds/</guid>
+      <description>楔子 新加坡实在太中国了，一点都没有出国的感觉1。你让我买纪念品，我都不知道买什么好。 刚到新加坡时，我就想好好了解这个国家，当时找了很多新加坡的书来看，</description>
+    </item>
+    
+    <item>
+      <title>博客迁移日记</title>
+      <link>/posts/yesterday-once-more/</link>
+      <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/yesterday-once-more/</guid>
+      <description>缘起 我的博客原来用 git-page 部署。 因为去年我转岗到了新加坡，所以我有了方便的支付手段，于是我买了虚拟机和域名，把博客迁移到现在的域名上。 选择 hugo 生成网页是受《博</description>
+    </item>
+    
+  </channel>
+</rss>

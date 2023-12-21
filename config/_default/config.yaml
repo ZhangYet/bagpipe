@@ -40,3 +40,10 @@ taxonomies:
 
 build:
   useResourceCacheWhen: always
+
+outputFormats:
+  RSS:
+    mediatype: "application/rss+xml"
+    baseName: "rss"
+    isPlainText: false
+    notAlternative: true

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 一派胡言</title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on 一派胡言</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 12 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="/posts/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ebpf 札记(4): 用 ebpf 侦测函数内部的状态</title>
+      <link>/posts/ebpf-notes-04/</link>
+      <pubDate>Tue, 12 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ebpf-notes-04/</guid>
+      <description>Introduction 为了行文方便，probe 这个词我就翻译为侦测了。 使用 ebpf 可以很方便地获取被侦测函数的入参（当然大于6个的时候还是有麻烦）和返回值。但如果我们需要获知函</description>
+    </item>
+    
+    <item>
+      <title>ebpf 札记(3): 一个跟踪 kernel I/O request 生命周期的脚本</title>
+      <link>/posts/ebpf-notes-03/</link>
+      <pubDate>Wed, 04 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ebpf-notes-03/</guid>
+      <description>上周睡眠一直有问题，没有继续看 samples 里面的代码。写点别的来充数。 现在在追踪 kernel I/O request ，一个 request 被创建出来之后，会在多个函数中传递，直到被释放。 这个过程中它被那些</description>
+    </item>
+    
+    <item>
+      <title>ebpf 札记(2): samples/bpf/cpustat(WIP)</title>
+      <link>/posts/ebpf-notes-02/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ebpf-notes-02/</guid>
+      <description>linux kernel 源代码下提供了 samples/bpf ，这个目录下有种类繁多的 ebpf 示例，足以作为学习者入门的好教材。 编译 在 samples/bpf/Makefile 中有详细的编译过程。如果缺乏头文件，先执行 make headers_install. 值得注意的是，如</description>
+    </item>
+    
+    <item>
+      <title>ebpf 札记(1): bpf_types.h</title>
+      <link>/posts/ebpf-notes-01/</link>
+      <pubDate>Sat, 16 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ebpf-notes-01/</guid>
+      <description>本文以 5.15 版本内核为例。 概述 include/linux/bpf_types.h 这个头文件有且仅有三种宏指令： BPF_PROG_TYPE; BPF_MAP_TYPE; BPF_LINK_TYPE; 以 BPF_PROG_TYPE 为例，查找它的定义，发现它出现在 include/linux/bpf.h; kernel/bpf/btf.h; kernel/bpf/syscall.c; kernel/bpf/verifier.c; bpf.h 这个文件里面定义了一系列的 bpf_prog_ops, bpf_verifier_ops 和 bpf_map_ops: #define BPF_PROG_TYPE(_id, _name,</description>
+    </item>
+    
+    <item>
+      <title>The Linux Kernel Module Programming Guide 读书笔记</title>
+      <link>/posts/lkmpg/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/lkmpg/</guid>
+      <description>在 https://sysprog21.github.io/lkmpg/ 上有新版，示例代码至少在 5.15 版本内核上可以成功编译1。 内容梗概 一到五章介绍如何写一个 Hello world module。 第六章介绍如何实现一个字符设备驱动。 实现一个设</description>
+    </item>
+    
+    <item>
+      <title>彼岸人生</title>
+      <link>/posts/the-other-shore/</link>
+      <pubDate>Wed, 22 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/the-other-shore/</guid>
+      <description>其实，大一时候读到张生的小说《十年灯》对我影响挺大的。 我将惴惴不安地生活在这个世界上，因为我始终无法实实在在地抓住一些东西，每一天都在模棱两可中挣扎。</description>
+    </item>
+    
+    <item>
+      <title>同光之间的罗定——《晚清官场镜像》读书笔记</title>
+      <link>/posts/luoding-in-tongguang/</link>
+      <pubDate>Fri, 20 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/luoding-in-tongguang/</guid>
+      <description>《晚清官场镜像》其书 本书是中山大学邱捷老师点注《杜凤治日记》（2021年广东人民文学出版社出版）的副产物。主要内容是对日记内容的分类举例。 坦白说，本书</description>
+    </item>
+    
+    <item>
+      <title>个人春秋2022</title>
+      <link>/posts/history-2022/</link>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/history-2022/</guid>
+      <description>缘起 去年在河边散步起意背《离骚》，半途而废。倒是有意模仿春秋，写了一篇《日月忽其不奄兮，春与秋其代序》，这是一篇总结性的文字， 从我过去一年的日记，筛选</description>
+    </item>
+    
+    <item>
+      <title>再看 Ghost in the Shell</title>
+      <link>/posts/ghost-in-the-shell-again/</link>
+      <pubDate>Tue, 25 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ghost-in-the-shell-again/</guid>
+      <description>2017年看过一次电影，当时在电脑上看，看得并不认真。10月16日去电影院重新看了一遍，有点新想法。 「我」的问题 Ghost in the Shell 纠结的归根到底是「我」的问题：</description>
+    </item>
+    
+    <item>
+      <title>不要偷懒</title>
+      <link>/posts/dont-be-lazy/</link>
+      <pubDate>Tue, 27 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/dont-be-lazy/</guid>
+      <description>缘起 这个标题来自脱口秀演员 Storm Xu 的播客2022年9月11日那一期《【脱口秀大会】能不能四年办一次》。 他在里面批评笑果的演员用太多内部梗，太偷懒了。 我很喜</description>
+    </item>
+    
+    <item>
+      <title>个人阅读史2020</title>
+      <link>/posts/personal-reading-history-2020/</link>
+      <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/personal-reading-history-2020/</guid>
+      <description>2019年的余绪 2020年开始的时候，我所在的公司 SMI 倒闭了1，我留在深圳的出租屋里面。有点不安，但也没有很恐慌2，按部就班开始计划找工作。春节临近，我</description>
+    </item>
+    
+    <item>
+      <title>戒酒记</title>
+      <link>/posts/sobriety/</link>
+      <pubDate>Mon, 05 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/sobriety/</guid>
+      <description>缘起 4月8日去 CMGS 家烧烤，喝得一塌糊涂，之后有宿醉的感觉，于是在4月12日我决心戒酒。 当然这不是我第一次喝到宿醉，也不是我第一次宿醉之后下决心戒酒。不过</description>
+    </item>
+    
+    <item>
+      <title>新加坡观察：基督教后期圣徒教会(LDS)</title>
+      <link>/posts/singapore-lds/</link>
+      <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/singapore-lds/</guid>
+      <description>楔子 新加坡实在太中国了，一点都没有出国的感觉1。你让我买纪念品，我都不知道买什么好。 刚到新加坡时，我就想好好了解这个国家，当时找了很多新加坡的书来看，</description>
+    </item>
+    
+    <item>
+      <title>debian 包的依赖问题</title>
+      <link>/posts/debian-package-dependency/</link>
+      <pubDate>Thu, 09 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/debian-package-dependency/</guid>
+      <description>背景 最近我要把 Ubuntu 社区的 bpftrace 包迁移到公司内部发版，所以我从社区将 bpftrace 的源代码1挪到公司内部的 gitlab 开始自己打包。 目前公司使用的主流 Linux 发行版本是 Ubuntu 20.04，所以</description>
+    </item>
+    
+    <item>
+      <title>博客迁移日记</title>
+      <link>/posts/yesterday-once-more/</link>
+      <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/yesterday-once-more/</guid>
+      <description>缘起 我的博客原来用 git-page 部署。 因为去年我转岗到了新加坡，所以我有了方便的支付手段，于是我买了虚拟机和域名，把博客迁移到现在的域名上。 选择 hugo 生成网页是受《博</description>
+    </item>
+    
+  </channel>
+</rss>
