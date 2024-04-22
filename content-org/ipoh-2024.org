@@ -1,0 +1,19 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: zh/posts
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: ipoh travelling
+#+hugo_categories: log
+#+hugo_draft: false
+#+description: 记录一下 Ipoh 旅游的经历。
+#+author: Dantezy
+#+date: 2024-04-23
+#+TITLE: 怡保游记
+* 缘起
+我不喜欢旅游（虽然也不讨厌），但是问我想去哪里旅游，我基本没有没有想法。
+我倒是可以说，我怕麻烦，而且抠，所以需要签证机票贵的地方基本绝缘。
+但这不是根本原因，即使有任意门，我也没有什么特别想去的地方——这可能是精神阳痿的一种。
+
+之所以会去怡保旅行，因缘起于2月新加坡航展上认识了小柯，他在那附近上学，向我推荐了一番。
+种子种下了。后来3月团建的时候我得知隔壁组 PM 是怡保出身了，种子发芽，长成大树。
+买票、请假、定酒店一气呵成，就这样去了怡保。
+
