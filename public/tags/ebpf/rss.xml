@@ -6,7 +6,16 @@
     <description>Recent content in ebpf on 一派胡言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 12 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/ebpf/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="/tags/ebpf/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ebpf 札记(5): bpftrace cgroup_path 无法用作 map key</title>
+      <link>/posts/ebpf-notes-05/</link>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ebpf-notes-05/</guid>
+      <description>背景 bpftrace 的函数 cgroup_path 接受 cgroup id ，返回一个表示 cgroup path 的字符串。 我们很容易觉得它应该可以用做 bpftrace 里面的 map key ，所以不久前社区有一个 issue 要求支持 cgroup_path 作为 map key。 结论 为这个 issue</description>
+    </item>
+    
     <item>
       <title>ebpf 札记(4): 用 ebpf 侦测函数内部的状态</title>
       <link>/posts/ebpf-notes-04/</link>
