@@ -79,9 +79,41 @@ Disassembly of section s_BEGIN_1:
 在14-16行，我们看到 ~bpf_map_lookup_elem~ 使用的 key 是 <13, 1> ， *因为 update 和 lookup
 的时候使用了不同的 key，所以在 map 中使用 ~cgroup_path~ 作为 key 无法达成我们预期的结果*。
 * ~cgroup_path~ 的实现
+~cgroup_path~ 在 bpftrace 里面其实是一个函数：
+```shell
+cgroup_path(int cgroupid, string filter)
+```
+在生成 IR 过程中，bpftrace 每次遇到 "cgroup_path" 都会创建一个 ~CgroupPath~ 实例。
+#+BEGIN_SRC c++
+  struct CgroupPath { 
+   uint64_t cgroup_path_id; 
+   uint64_t cgroup_id; 
+  
+   std::vector<llvm::Type*> asLLVMType(ast::IRBuilderBPF& b); 
+ } __attribute__((packed)); 
+#+END_SRC
+~cgroup_path_id~ 和 ~cgroup_id~ 是上文提及的两个 u64 变量。
 
-* 一些最终无法落地的想法
+~cgroup_path_id~ 其实是一个自增的变量，因为在后面 resource analyse 阶段，
+bpftrace 会把 ~string filter~ （默认的 filter 是"*"）保存到 ~cgroup_path_args~ 这个向量里面，
+这样我们可以用 ~cgroup_path_id~ 作为索引找到对应的 filter。
+
+在使用 ~cgroup_path~ 作为 map key 的情况下，bpf map 里面保存的是 <cgroup_id, cgroup_path_id>
+但是 cgroup_path_id 每次都会变动，导致 update 跟 lookup 的 key 不一样。
+
+我尝试绕开这个问题，发现完全绕不开：
+
+1. 去掉 ~cgroup_path_id~: 我们完全可能出现同一个 cgroup_id 使用不同 filter 的情况。
+2. 直接把 filter 存进来：抛开性能不说，要在 bpf prog 里面存一个字符串，还是只能存一个地址，
+   最后还是每个 key 都会变。
+3. 在 map 里面只使用 cgroup_id 作为key, 到 output 的时候才去把 cgroup_path_id 联回来。
+   老实说，这是最有可能的一种方案，但是 output 的时候，bpftrace 只能读到 key 的数据，
+   如果 key 用 cgroup_id 的值，那根本拿不到整个 ~CgroupPath~ 的信息，如果存 cgroup_id
+   的地址——这回到情况2。
+4. 在 IR 阶段，把 cgroup_id 和 filter 相同的 ~cgroup_path~ 对应成同一个 ~CgroupPath~,
+   你还别说，这个还真的可能可以实现！但我是在写这篇博客的时候想到的，等老衲回去试一试。
 * 总结
+最后考虑到开发成本和收益，我关掉了这个 PR，但是写完这篇博客之后就有点不同了，没准可以再试一发。
 * Footnotes
 
 [fn:1] 当然也可以使用 ~--emit-llvm~ 生成 bpftrace clang IR 来分析，
