@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/categories/</loc>
-    <lastmod>2024-10-02T18:28:05+08:00</lastmod>
+    <lastmod>2024-12-31T18:13:22+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -13,6 +13,54 @@
                 rel="alternate"
                 hreflang="zh"
                 href="/categories/"
+                />
+  </url><url>
+    <loc>/tags/history/</loc>
+    <lastmod>2024-12-31T18:13:22+08:00</lastmod>
+  </url><url>
+    <loc>/categories/log/</loc>
+    <lastmod>2024-12-31T18:13:22+08:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2024-12-31T18:13:22+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="/posts/"
+                />
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2024-12-31T18:13:22+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="/tags/"
+                />
+  </url><url>
+    <loc>/posts/history-2024/</loc>
+    <lastmod>2024-12-31T18:13:22+08:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2024-12-31T18:13:22+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="/"
                 />
   </url><url>
     <loc>/categories/code/</loc>
@@ -57,45 +105,6 @@
                 href="/tags/kernel/"
                 />
   </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2024-10-02T18:28:05+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="/posts/"
-                />
-  </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2024-10-02T18:28:05+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="/tags/"
-                />
-  </url><url>
-    <loc>/</loc>
-    <lastmod>2024-10-02T18:28:05+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="/"
-                />
-  </url><url>
     <loc>/tags/reading/</loc>
     <lastmod>2024-09-09T15:58:29+08:00</lastmod>
   </url><url>
@@ -117,14 +126,8 @@
     <loc>/posts/ipoh-2024/</loc>
     <lastmod>2024-06-06T16:04:18+08:00</lastmod>
   </url><url>
-    <loc>/categories/log/</loc>
-    <lastmod>2024-06-06T16:04:18+08:00</lastmod>
-  </url><url>
     <loc>/tags/travel/</loc>
     <lastmod>2024-06-06T16:04:18+08:00</lastmod>
-  </url><url>
-    <loc>/tags/history/</loc>
-    <lastmod>2023-12-31T22:56:28+08:00</lastmod>
   </url><url>
     <loc>/posts/history-2023/</loc>
     <lastmod>2023-12-31T22:56:28+08:00</lastmod>

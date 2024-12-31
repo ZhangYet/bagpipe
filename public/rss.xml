@@ -6,7 +6,16 @@
     <description>Recent content on 一派胡言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>个人春秋2024</title>
+      <link>/posts/history-2024/</link>
+      <pubDate>Thu, 12 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/history-2024/</guid>
+      <description>又改体例了 我今年不想像前两年那样翻日记写每个月的大事了。 因为日记记的很琐屑，大部分都是私人的事情。 今年也确实平淡了一点（这是好事）。地缘政治上， 今年全</description>
+    </item>
+    
     <item>
       <title>ebpf 札记(5): bpftrace cgroup_path 无法用作 map key</title>
       <link>/posts/ebpf-notes-05/</link>
