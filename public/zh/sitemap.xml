@@ -2,11 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/posts/manga-2025q1/</loc>
-    <lastmod>2025-04-18T13:18:47+08:00</lastmod>
-  </url><url>
     <loc>/categories/</loc>
-    <lastmod>2025-04-18T13:18:47+08:00</lastmod>
+    <lastmod>2025-04-18T22:01:47+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -18,14 +15,14 @@
                 href="/categories/"
                 />
   </url><url>
-    <loc>/tags/manga/</loc>
-    <lastmod>2025-04-18T13:18:47+08:00</lastmod>
+    <loc>/tags/history/</loc>
+    <lastmod>2025-04-18T22:01:47+08:00</lastmod>
   </url><url>
-    <loc>/categories/manga/</loc>
-    <lastmod>2025-04-18T13:18:47+08:00</lastmod>
+    <loc>/categories/log/</loc>
+    <lastmod>2025-04-18T22:01:47+08:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2025-04-18T13:18:47+08:00</lastmod>
+    <lastmod>2025-04-18T22:01:47+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -38,7 +35,7 @@
                 />
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2025-04-18T13:18:47+08:00</lastmod>
+    <lastmod>2025-04-18T22:01:47+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -50,8 +47,11 @@
                 href="/tags/"
                 />
   </url><url>
+    <loc>/posts/how-to-live-an-unhappy-life-ch/</loc>
+    <lastmod>2025-04-18T22:01:47+08:00</lastmod>
+  </url><url>
     <loc>/</loc>
-    <lastmod>2025-04-18T13:18:47+08:00</lastmod>
+    <lastmod>2025-04-18T22:01:47+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -63,11 +63,14 @@
                 href="/"
                 />
   </url><url>
-    <loc>/tags/history/</loc>
-    <lastmod>2025-01-02T11:14:31+08:00</lastmod>
+    <loc>/posts/manga-2025q1/</loc>
+    <lastmod>2025-04-18T13:18:47+08:00</lastmod>
   </url><url>
-    <loc>/categories/log/</loc>
-    <lastmod>2025-01-02T11:14:31+08:00</lastmod>
+    <loc>/tags/manga/</loc>
+    <lastmod>2025-04-18T13:18:47+08:00</lastmod>
+  </url><url>
+    <loc>/categories/manga/</loc>
+    <lastmod>2025-04-18T13:18:47+08:00</lastmod>
   </url><url>
     <loc>/posts/history-2024/</loc>
     <lastmod>2025-01-02T11:14:31+08:00</lastmod>
