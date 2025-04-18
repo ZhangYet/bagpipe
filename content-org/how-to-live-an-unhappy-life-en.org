@@ -1,0 +1,80 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: en/posts
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: history
+#+hugo_categories: log
+#+hugo_draft: true
+#+description: 中学母校25周年了，回忆一下那里的生活。
+#+author: Dantezy
+#+date: 2025-04-18
+#+TITLE: Recalling My Middle School Alma Mater
+#+SUBTITLE: How to live an unhappy life
+
+This post is translated by deepseek.
+
+My middle school alma mater celebrated its 25th anniversary on April 19th.
+I’m not entirely sure why the date was April 19th instead of September 1st,
+the start of the autumn semester. But never mind—let future historians figure that out.
+* Six Years of Middle School – Boarding Life
+My alma mater was also called the Experimental Middle School,so I'll refer to it as EMS hereafter.
+Our small county town had three "key middle schools" (elite public schools), but EMS was the least prestigious at the time.
+Why did I end up there? Because during those years of education reforms, the other two key schools stopped admitting junior
+high students, leaving me no choice.
+
+EMS was originally located in the old town, near the local teachers' college and adjacent to the elementary school
+I attended in grades 5-6. It’s unclear exactly when the school relocated to its new campus.
+The new campus sat along a main road. The teaching building was divided into two wings,
+each with three rows of classrooms. Between them stood two administrative blocks,
+forming a central plaza surrounded by eight buildings in total. A stage occupied the plaza,
+with a flagpole beside it where weekly flag-raising ceremonies were held.
+New Year’s Eve galas and group movie screenings also took place here.
+
+Throughout my six years, EMS never had enough dormitory space to accommodate all boarding students.
+Priority was given to female students and graduating classes (Grade 9 and Grade 12).
+During junior high, we lived on the fourth floor of the teaching building, while in grades 10-11,
+we moved to vacant rooms in the central administrative block.
+
+The dormitories were essentially repurposed classrooms. A single room designed for 60 students
+would be crammed with bunk beds, housing about 40 of us. They were sweltering in summer and freezing in winter.
+The ceiling fans couldn’t reach all the beds—some upper bunks barely got a breeze, let alone the lower ones.
+
+We had to fold our blankets every morning after waking up, and oddly, if we hung mosquito nets, we had to roll them up each day.
+Eventually, I stopped using a net altogether—partly to avoid the hassle, partly because of the heat. Miraculously,
+I never got sick from mosquito bites. Boarders also took turns cleaning: sweeping and mopping the floors.
+I hated this chore. Our beds were covered with cheap straw mats that constantly shed debris, making it impossible to sweep thoroughly.
+
+The school provided separate bathhouses for boys and girls, but I hardly ever used them. The men's bathhouse had no privacy stalls,
+and I can't even recall if there was hot water. To save time, most of us "bathed" in the school toilets.
+The plumbing in that rundown building was terrible—water pressure dropped to zero on the third and fourth floors after evening
+classes. We'd fill buckets at noon, let the water sit until night, and use one bucket to wash ourselves
+(I'm not sure if we also washed clothes with that same water). This only worked if no one stole our water,
+which relied on classmates' honesty. The toilet stall doors were often broken—when I visited during Lunar New Year years later,
+they were even worse. Some might have been broken since my student days. The doors were the least of our worries:
+due to low water pressure, toilets rarely flushed properly, drains clogged for weeks, and… well, I'll spare you the details.
+
+Laundry was another headache. We hand-washed everything (no idea if they have laundry rooms now),
+wrung clothes poorly, and fought for limited drying space. Clothes often stayed damp, forcing us to wear them half-wet.
+Guangdong's infamous HuinanTian (humid spring "sweating walls" season) became my nightmare—clothes never dried,
+floors stayed slick (especially when it was my turn to mop). Ironically, my cleaning shifts always seemed to align
+with HuinanTian (though given how long the season lasts, maybe it wasn't a coincidence).
+Unrelated, but I must emphasize: I hated cleaning.
+
+In Grades 9 and 12, we moved to "formal" 12-person dorms. Conditions barely improved—water issues,
+dampness, and useless fans persisted. The dorm building housed both genders, with terrible lighting:
+boys occupied floors 1-2, separated by two locked doors. It's a miracle no fires broke out over the years.
+The walk back to dorms after evening classes had its moments, but nothing truly memorable ever happened.
+
+Midday naps were mandatory. I rarely slept, often waking up disoriented and melancholy. Beside the teaching building
+stood a stairwell tower. One afternoon, I peered through the gap between the tower and the building and caught
+a glimpse of dazzling blue sky. That fleeting moment, oddly, is what I recall most vividly from those years.
+* Six Years of Middle School – Academics
+Starting from my first year of middle school, morning self-study began at 7:00 AM, but students were required to arrive
+by 6:45 (or 6:50—I'm hazy) to start early. At 7:30, we'd head downstairs for group exercises.
+I forget when the first class actually started, and whether each period lasted 40 or 45 minutes.
+Evening study sessions kicked off at 7:00 PM (again, with an earlier arrival time).
+Day students went home at 9:40 PM, while boarders stayed until 10:10 or 10:20 (I can't recall exactly).
+
+From junior high onward, we attended classes on Saturdays. By Grades 11 and 12, the schedule intensified to
+six full days of classes per week, plus half a day of self-study on Sundays.
+Whether junior high reached this level of rigor, I can't remember.
+
