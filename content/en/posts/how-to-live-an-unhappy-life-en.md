@@ -1,21 +1,23 @@
-#+HUGO_BASE_DIR: ../
-#+HUGO_SECTION: en/posts
-#+hugo_auto_set_lastmod: t
-#+hugo_tags: history
-#+hugo_categories: log
-#+hugo_draft: false
-#+description: 中学母校25周年了，回忆一下那里的生活。
-#+author: Dantezy
-#+date: 2025-04-18
-#+TITLE: Recalling My Middle School Alma Mater
-#+SUBTITLE: How to live an unhappy life
++++
+title = "Recalling My Middle School Alma Mater"
+author = ["Dantezy"]
+description = "中学母校25周年了，回忆一下那里的生活。"
+date = 2025-04-18
+lastmod = 2025-04-19T10:56:07+08:00
+tags = ["history"]
+categories = ["log"]
+draft = false
++++
 
 This post is translated by deepseek and chatgpt.
 
 My middle school alma mater celebrated its 25th anniversary on April 19th.
 I'm not entirely sure why the date was April 19th instead of September 1st,
 the start of the autumn semester. But never mind—let future historians figure that out.
-* Six Years of Middle School – Boarding Lifen
+
+
+## Six Years of Middle School – Boarding Lifen {#six-years-of-middle-school-boarding-lifen}
+
 My alma mater was also called the Experimental Middle School,so I'll refer to it as EMS hereafter.
 Our small county town had three "key middle schools" (elite public schools), but EMS was the least prestigious at the time.
 Why did I end up there? Because during those years of education reforms, the other two key schools stopped admitting junior
@@ -67,7 +69,10 @@ The walk back to dorms after evening classes had its moments, but nothing truly 
 Midday naps were mandatory. I rarely slept, often waking up disoriented and melancholy. Beside the teaching building
 stood a stairwell tower. One afternoon, I peered through the gap between the tower and the building and caught
 a glimpse of dazzling blue sky. That fleeting moment, oddly, is what I recall most vividly from those years.
-* Six Years of Middle School – Academics
+
+
+## Six Years of Middle School – Academics {#six-years-of-middle-school-academics}
+
 Starting from my first year of middle school, morning self-study began at 7:00 AM, but students were required to arrive
 by 6:45 (or 6:50—I'm hazy) to start early. At 7:30, we'd head downstairs for group exercises.
 I forget when the first class actually started, and whether each period lasted 40 or 45 minutes.
@@ -76,11 +81,11 @@ Day students went home at 9:40 PM, while boarders stayed until 10:10 or 10:20 (I
 
 From junior high onward, we attended classes on Saturdays. By Grades 11 and 12, the schedule intensified to
 six full days of classes per week, plus half a day of self-study on Sundays.
-Whether junior high reached this level of rigor, I can't remember.[fn:1]
+Whether junior high reached this level of rigor, I can't remember.[^fn:1]
 
-My homeroom teacher in middle school was an English teacher. He had a bit of a rogue vibe, but many students liked him[fn:2].
+My homeroom teacher in middle school was an English teacher. He had a bit of a rogue vibe, but many students liked him[^fn:2].
 I still remember visiting his dorm with other students.
-During our Saturday make-up classes, he would teach us /New Concept English/.
+During our Saturday make-up classes, he would teach us _New Concept English_.
 I also recall our biology teacher once asking during class: "Why did Deng Xiaoping, who smoked and drank, live into his 90s?"
 We threw out a bunch of guesses, but only one student said, "He was an exception." The teacher said that was correct.
 That story stuck with me. Every time I see trending topics online, I think of that example—
@@ -88,13 +93,13 @@ I wonder whether there's actually data supporting all the spitting-hot analysis 
 and whether we're looking at a real pattern, or just a pure outlier.
 
 To be honest, I never felt like I was a particularly good student in middle school—but looking back now, I was worrying over nothing.
-When I see my past rankings and the admissions plans of the key high schools[fn:3], I realize I really had nothing to be anxious about.
+When I see my past rankings and the admissions plans of the key high schools[^fn:3], I realize I really had nothing to be anxious about.
 
 I spent all three years of middle school in the same classroom, with the same group of classmates.
 High school was a bit different because we split into arts and sciences tracks in the second year.
 I can't even remember where our classroom was in the first year—it might have still been on the middle school side of the campus.
 I have this memory of having lunch with a classmate and his girlfriend from the neighboring class—it was definitely on the old middle school side.
-But then I also remember reading /Anna Karenina/ during math class, and that was on the other side of campus.
+But then I also remember reading _Anna Karenina_ during math class, and that was on the other side of campus.
 
 My homeroom teacher in the first year of high school was the only one I'd describe as a "bad" teacher.
 In a place like ours, where educational resources were scarce, most teachers were at worst mediocre—
@@ -110,7 +115,10 @@ We had monthly exams, and they even published rankings.
 My third-year math teacher was actually really good—great at explaining concepts.
 He taught me one principle I still remember: "Anything I say—if there's no recording,
 once you step out that door, I'll deny I ever said it."
-* Six Years of Middle School - Memories of Youth
+
+
+## Six Years of Middle School - Memories of Youth {#six-years-of-middle-school-memories-of-youth}
+
 Just like the best Peking duck exists only in Guo Degang's crosstalk routines,
 and the most beautiful cherry blossoms are always in anime,
 I feel like all the best parts of youth exist in art.
@@ -145,7 +153,7 @@ I scraped together some savings from that card to buy extracurricular books.
 To save that money, I'd skip the vegetables at every meal.
 I even tried things like mixing rice with Laoganma chili sauce or fermented tofu—pretty unhealthy, in hindsight.
 
-The student cafeteria was originally just a low building with a sheet metal roof[fn:4].
+The student cafeteria was originally just a low building with a sheet metal roof[^fn:4].
 There were no seats, only serving windows. We'd grab our food and bring it back to the classroom to eat.
 It was extremely crowded inside. One shady thing I used to do back then was cut in line.
 By second year of middle school at the latest, I started helping others get their food,
@@ -178,9 +186,11 @@ We made a bit of money, but eventually it fizzled out.
 The last remnant of that little hustle is my QQ email address.
 
 That's enough reminiscing for now—otherwise I could keep writing till tomorrow.
-* How to Live an Unhappy Life
 
-I was listening to the podcast Wuliao Zhai once, and Liu Yang[fn:5] (a.k.a. Jiaozhu) said that when Zhejiang University welcomes new students, they'll invite "outstanding alumni" to give speeches.
+
+## How to Live an Unhappy Life {#how-to-live-an-unhappy-life}
+
+I was listening to the podcast Wuliao Zhai once, and Liu Yang[^fn:5] (a.k.a. Jiaozhu) said that when Zhejiang University welcomes new students, they'll invite "outstanding alumni" to give speeches.
 But why does no one ever come to teach us how to live an unremarkable life?
 
 By the same logic, no one in this world teaches you "how to live an unhappy life."
@@ -193,7 +203,7 @@ By this measure, I could cosplay Wakaba Mutsuki every day, saying: "I've never f
 (Where "XXX" can be replaced with any long enough stretch of time.)
 
 My attitude now is: So what if I'm not happy? Am I supposed to just drop dead or something? (Guo Degang said that.)
-To borrow from /Fire Punch/: even if we have to bear all the suffering in the world,
+To borrow from _Fire Punch_: even if we have to bear all the suffering in the world,
 we must never accept death.
 
 Because unhappiness is emotion, and emotion is real.
@@ -217,27 +227,21 @@ But that doesn't mean I act like the whole world owes me money just because I'm 
 Whether it's Buddhism's "Middle Way" or Confucianism's doctrine of moderation,
 none of them encourage extremism.
 As the old saying goes:
-"The human heart is precarious; the Dao heart is subtle. Be focused, be singular, and hold to the center[fn:6]."
+"The human heart is precarious; the Dao heart is subtle. Be focused, be singular, and hold to the center[^fn:6]."
 
 There's a long road ahead.
 All intense emotions will eventually fade.
 The answer, my friend, is blowin' in the wind.
-The answer is blowin' in the wind. 
+The answer is blowin' in the wind.
 
-* Footnotes
-[fn:6] 人心惟危，道心惟微，惟精惟一，允执厥中。Cool Chinese old saying.
-
-[fn:5] A talkshow actor in China.
-
-[fn:4] It was later replaced by a larger building that looked more like a factory workshop.  
-There were seats, but not enough for everyone.  
-Still, we preferred going back to the classroom to eat.  
-The food, though, tasted just as it always had. 
-
-[fn:3] We had an exam after junior high to decide if you can enter high school and which high school.
-At the time, the three better high schools in the city were admitting around 2,000 students in total,
-and my ranking was roughly within the top 200—so honestly, I had nothing to worry about.
-
-[fn:2] One of my friends said he was bullied by this teacher. And the teacher passed away two years ago. 
-
-[fn:1] Here is the end of deepseek translation. 
+[^fn:1]: Here is the end of deepseek translation.
+[^fn:2]: One of my friends said he was bullied by this teacher. And the teacher passed away two years ago.
+[^fn:3]: We had an exam after junior high to decide if you can enter high school and which high school.
+    At the time, the three better high schools in the city were admitting around 2,000 students in total,
+    and my ranking was roughly within the top 200—so honestly, I had nothing to worry about.
+[^fn:4]: It was later replaced by a larger building that looked more like a factory workshop.
+    There were seats, but not enough for everyone.
+    Still, we preferred going back to the classroom to eat.
+    The food, though, tasted just as it always had.
+[^fn:5]: A talkshow actor in China.
+[^fn:6]: 人心惟危，道心惟微，惟精惟一，允执厥中。Cool Chinese old saying.

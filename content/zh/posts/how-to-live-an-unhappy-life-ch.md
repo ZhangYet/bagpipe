@@ -1,9 +1,9 @@
 +++
 title = "回忆我的中学母校"
 author = ["Dantezy"]
-description = "中学母校25周年了，回忆一下那里的生活。也回答一个我自己的问题：如何度过不快乐的人生。"
+description = "My middle school is celebrating its 25th anniversary,so I thought I’d take a moment to look back on life there. And also try to answer a question of my own: How do you live an unhappy life?"
 date = 2025-04-18
-lastmod = 2025-04-18T21:59:23+08:00
+lastmod = 2025-04-19T10:55:00+08:00
 tags = ["history"]
 categories = ["log"]
 draft = false
