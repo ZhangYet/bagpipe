@@ -1,9 +1,9 @@
 +++
 title = "Recalling My Middle School Alma Mater"
 author = ["Dantezy"]
-description = "中学母校25周年了，回忆一下那里的生活。"
+description = "My middle school is celebrating its 25th anniversary,so I thought I’d take a moment to look back on life there. And also try to answer a question of my own: How do you live an unhappy life?"
 date = 2025-04-18
-lastmod = 2025-04-19T10:56:07+08:00
+lastmod = 2025-04-19T10:59:06+08:00
 tags = ["history"]
 categories = ["log"]
 draft = false

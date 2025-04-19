@@ -4,7 +4,7 @@
 #+hugo_tags: history
 #+hugo_categories: log
 #+hugo_draft: false
-#+description: 中学母校25周年了，回忆一下那里的生活。
+#+description: My middle school is celebrating its 25th anniversary,so I thought I’d take a moment to look back on life there. And also try to answer a question of my own: How do you live an unhappy life?
 #+author: Dantezy
 #+date: 2025-04-18
 #+TITLE: Recalling My Middle School Alma Mater
