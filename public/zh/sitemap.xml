@@ -3,10 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/tags/birding/</loc>
-    <lastmod>2025-10-12T22:52:38+08:00</lastmod>
+    <lastmod>2025-11-07T16:29:20+08:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2025-10-12T22:52:38+08:00</lastmod>
+    <lastmod>2025-11-07T16:29:20+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -19,7 +19,7 @@
                 />
   </url><url>
     <loc>/categories/log/</loc>
-    <lastmod>2025-10-12T22:52:38+08:00</lastmod>
+    <lastmod>2025-11-07T16:29:20+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -32,7 +32,7 @@
                 />
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2025-10-12T22:52:38+08:00</lastmod>
+    <lastmod>2025-11-07T16:29:20+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -45,7 +45,7 @@
                 />
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2025-10-12T22:52:38+08:00</lastmod>
+    <lastmod>2025-11-07T16:29:20+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -57,11 +57,11 @@
                 href="/tags/"
                 />
   </url><url>
-    <loc>/posts/birding-20251011/</loc>
-    <lastmod>2025-10-12T22:52:38+08:00</lastmod>
+    <loc>/posts/birding-20251101/</loc>
+    <lastmod>2025-11-07T16:29:20+08:00</lastmod>
   </url><url>
     <loc>/</loc>
-    <lastmod>2025-10-12T22:52:38+08:00</lastmod>
+    <lastmod>2025-11-07T16:29:20+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -72,6 +72,9 @@
                 hreflang="zh"
                 href="/"
                 />
+  </url><url>
+    <loc>/posts/birding-20251011/</loc>
+    <lastmod>2025-10-12T22:52:38+08:00</lastmod>
   </url><url>
     <loc>/tags/fiction/</loc>
     <lastmod>2025-09-29T22:21:25+08:00</lastmod>
