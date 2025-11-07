@@ -32,7 +32,7 @@ Sungei Buloh 在湿地周围建了一些观鸟点，用1-A到1-F编号，可以�
 它的喙长而弯，并不闭合（这也是它名字 Openbill 的来由），感觉就是强而有力的钳子，吃个蚌毫不费力，所以只有鹬蚌相争没有鹳蚌相争。
 Sungei Buloh 湿地里面里面一堆蚌壳，简直就是鹳鸟大型自助餐厅。
 
-#+CAPTION: 太平洋金斑鸻，非繁殖季身上有这种漂亮的金边
+#+CAPTION: 太平洋金斑鸻，非繁殖季身上有这种漂亮的金斑
 [[./figures/birding-20251101/pacific-golden-plover.jpeg]]
 
 #+CAPTION: 白鹮鹳
