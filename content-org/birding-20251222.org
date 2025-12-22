@@ -1,0 +1,50 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: zh/posts
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: birding
+#+hugo_categories: log
+#+hugo_draft: true
+#+description: 记录一下2025年12月的四次观鸟
+#+author: Dantezy
+#+date: 2025-12-22
+#+TITLE: 观鸟记：20251214, 20251220, 20251221
+本篇观鸟笔记涉及2025年12月的四次观鸟，这次之所以四次观鸟合并作一次写，
+主要的原因有两个：
+
+1. 观察到的新（或者说有趣的）鸟种没那么多了，毕竟我人还在新加坡。
+2. 我懒。
+
+另外本月观鸟的装备也变了，望远镜我都是用胜途 lamda 8x25 袖珍望远镜[fn:1]。
+手机我趁双十二买了 Pixel 10 pro ，它有5倍光学变焦，虽然不强吧，但我之前的 Pixel 7a
+是没有光学变焦的[fn:2]。另外这次观鸟里面我会用到 Pixel 10 pro 的算法补全。
+所以本文会有很多很糊，但是能看出鸟类特征的照片（标题标注 Pixel ），其余照片依旧来自 [[https://ebird.org/home][ebird]].
+
+* Tampines Eco Green 20251214
+这次观鸟主要目的是要把我的旗云带给亮哥，让伊帮我带回国内保修（左侧目镜镜筒转不出来了）。
+
+去到 Turtle pond, 里面有五只水獭在开淡水鱼自助餐，其中有[[https://t.me/danteslimbo/5839][一只吃鱼吃得好开心]]，把我看饿了。
+但也许正是因为有这水獭一家子，Turtle pond 附近都没有鸟了。Turtle pond 旁边的高树上，
+可能是木棉树，上面依然是一群绯胸鹦鹉，旁边树里有一只黑枕黄鹂扑棱了一下，我拍了一下，
+小试了一把 Pixel 大于10倍的镜头补全。
+
+#+CAPTION: 这是不是就是过曝啊(Pixel)？
+[[./figures/birding-20251222/black-naped-oriole.png]]
+
+往里面走，在一棵秃树上看到了一只白领翡翠(Collared Kingfisher, Todiramphus chloris)，
+我第一次在新加坡看到白领翡翠是今年2月在巴西立公园，那个时候还没有正式记录观鸟。
+而且当时我会用 Pixel 7a 加望远镜去拍照，很难拍清。
+
+#+CAPTION: 虽然补全得像油画(Pixel)
+[[./figures/birding-20251222/collared-kingfisher1.png]]
+
+#+CAPTION: 但特征还是出来了(Pixel)
+[[./figures/birding-20251222/collared-kingfisher2.png]]
+
+
+* Footnotes
+[fn:2] 我的网友洋葱还教了我关于手机镜头的知识：这镜头说有5倍光学变焦，
+也就只有5倍是货真价实的，其余2倍10倍的，都是算法补出来的。
+
+[fn:1] 为了跟别人安利观鸟这项有益身心的活动，我12月18日看了一下京东，
+这款望远镜从双十一的798涨价到950，开心坏了，但第二天我看到我的天虎旗云从2480降到2380了，
+快乐打折了。
