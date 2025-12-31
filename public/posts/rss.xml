@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 一派胡言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 22 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="/posts/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="/posts/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>个人春秋2025</title>
+      <link>/posts/history-2025/</link>
+      <pubDate>Wed, 31 Dec 2025 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/history-2025/</guid>
+      <description>日记与遗忘 2019年开始用带格式的文本文档写日记，存在 git repo 里面。从2021年开始每年会写一篇总结。 到现在也算是养成个好习惯了。 前不久跟朋友说起这个习惯</description>
+    </item>
+    
     <item>
       <title>观鸟记：20251214, 20251220, 20251221, 20251225</title>
       <link>/posts/birding-20251222/</link>

@@ -6,7 +6,16 @@
     <description>Recent content in Tags on 一派胡言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 22 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>history</title>
+      <link>/tags/history/</link>
+      <pubDate>Wed, 31 Dec 2025 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/history/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>birding</title>
       <link>/tags/birding/</link>
@@ -49,15 +58,6 @@
       <pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate>
       
       <guid>/tags/travel/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>history</title>
-      <link>/tags/history/</link>
-      <pubDate>Fri, 18 Apr 2025 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/history/</guid>
       <description></description>
     </item>
     
