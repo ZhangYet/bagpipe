@@ -1,0 +1,11 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: zh/posts
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: birding
+#+hugo_categories: log
+#+hugo_draft: true
+#+description: 2026年1月观鸟记录
+#+author: Dantezy
+#+date: 2025-01-27
+#+TITLE: 观鸟记：2026年1月
+我的观鸟记录再次升级写法，因为我观鸟的频率变高了，同时我再次升级了观察设备，我买了一台尼康 P1100，所以再整点新思路。
