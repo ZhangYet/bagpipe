@@ -315,7 +315,7 @@ shimogamo baisenjo），点了他们家的中烘的豆子，喝不出特别的�
 所以菜单上的野鸟我都不点，又因为年轻时候反对日本捕鲸，我与我周旋久，最终还没有没有点鲸肉。但还是兴尽而归，幸甚至哉。
 
 #+CAPTION: 鹿肉刺身，鹿肉新加坡能吃到，但不会做刺身
-[[./figures/kyoto-202511/deer.jpg]]
+[[./figures/kyoto-202511/deer-raw.jpg]]
 
 #+CAPTION: 炸鹿排，这是虾夷鹿，不是奈良鹿，可惜
 [[./figures/kyoto-202511/deer1.jpg]]
