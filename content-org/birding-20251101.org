@@ -2,7 +2,7 @@
 #+HUGO_SECTION: zh/posts
 #+hugo_auto_set_lastmod: t
 #+hugo_tags: birding
-#+hugo_categories: log
+#+hugo_categories: log birding
 #+hugo_draft: false
 #+description: 记录一下11月1日 Sungei Bedok 看到的鸟。
 #+author: Dantezy
