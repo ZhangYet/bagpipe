@@ -2,8 +2,8 @@
 title = "观鸟改变了我"
 author = ["Dantezy"]
 description = "观鸟就像寻找随时变化的宝箱：去上次发现宝箱的地点，可能不再有宝箱，也可能有不同的宝箱。其乐无穷。"
-date = 2025-02-02
-lastmod = 2026-02-04T11:07:04+08:00
+date = 2026-02-02
+lastmod = 2026-02-04T11:57:33+08:00
 tags = ["birding"]
 categories = ["log"]
 draft = false
@@ -13,9 +13,17 @@ draft = false
 
 当我说「观鸟改变了我」的时候，我并不是说什么精神气之类的主观印象。我是有数据支持的。
 
+{{< figure src="/ox-hugo/birding-202601-sleep-duration.png" caption="<span class=\"figure-number\">Figure 1: </span>周平均睡眠时间统计" >}}
+
+20251130-20251206 睡眠时间特别长是因为当时去京都旅游了，见[我的京都游记](https://dantezy.xyz/posts/kyoto-202511/)。抛开这个异常点，
+从我2025年10月11日第一次正式观鸟开始（关于我的之前的观鸟），我的睡眠时长稳步提升。
+
+
+## 附录 {#附录}
+
 <div class="table-caption">
   <span class="table-number">Table 1:</span>
-  周平均睡眠时间统计
+  周平均睡眠时间数据
 </div>
 
 | 日期              | 平均睡眠时间 |
