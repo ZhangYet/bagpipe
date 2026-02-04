@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>birding | 一派胡言</title>
+<title>log | 一派胡言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -83,12 +83,12 @@
   "itemListElement": [{
       "@type": "ListItem",
       "position": 1 ,
-      "name":"Tags",
-      "item":"/tags/"},{
+      "name":"Categories",
+      "item":"/categories/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"birding",
-      "item":"/tags/birding/"}]
+      "name":"log",
+      "item":"/categories/log/"}]
 }
 </script>
 
@@ -102,38 +102,20 @@
     "itemListElement":[{
             "@type":"ListItem",
             "position":  1 ,
-            "name": "观鸟改变了我",
-            "description": "观鸟就像寻找随时变化的宝箱：去上次发现宝箱的地点，可能不再有宝箱，也可能有不同的宝箱。其乐无穷。",
-            "url": "/posts/birding-202601/"
-        },{
-            "@type":"ListItem",
-            "position":  2 ,
-            "name": "观鸟记：20251214, 20251220, 20251221, 20251225",
-            "description": "记录一下2025年12月的四次观鸟",
-            "url": "/posts/birding-20251222/"
-        },{
-            "@type":"ListItem",
-            "position":  3 ,
-            "name": "观鸟记：Sungei Buloh 20251101",
-            "description": "记录一下11月1日 Sungei Bedok 看到的鸟。",
-            "url": "/posts/birding-20251101/"
-        },{
-            "@type":"ListItem",
-            "position":  4 ,
-            "name": "观鸟记: Tampines Eco Green 20251011",
-            "description": "记录一下在 Tampines Eco Green 看到的鸟。",
-            "url": "/posts/birding-20251011/"
+            "name": "博客迁移日记",
+            "description": "简单讲述一下博客迁移的过程。",
+            "url": "/posts/yesterday-once-more/"
         }
     ]
 }
-</script><meta property="og:title" content="birding | 一派胡言" />
+</script><meta property="og:title" content="log | 一派胡言" />
 <meta property="og:type" content="website" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/tags/birding/" />
+<meta property="og:url" content="/categories/log/" />
 
 
 
@@ -149,6 +131,10 @@
 
 
 
+<meta property="og:locale:alternate" content="en" />
+
+
+
 
 <meta property="og:site_name" content="一派胡言" />
 
@@ -161,7 +147,7 @@
 
 
 
-<meta property="article:section" content="tags" />
+<meta property="article:section" content="categories" />
 
 
 
@@ -204,6 +190,19 @@
                     <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
                 </div>
             </div>
+            <div class="relative pt-4 ps-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="languageMode">
+                    <i class="fas fa-globe"></i>
+                    <span class="ps-1">简体中文</span>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open-lang">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='languageOptions'>
+                    <a class="px-4 py-1 hover:text-eureka" href="/categories/log/">简体中文</a>
+                    <a class="px-4 py-1 hover:text-eureka" href="/en/categories/log/">English</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -231,6 +230,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         getcolorscheme();
         switchBurger();
+        switchLanguage()
     });
 </script>
 </div>
@@ -239,7 +239,7 @@
         <div class="pl-scrollbar">
           <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
   <article class="prose mx-6 my-8">
-  <h1>birding</h1>
+  <h1>log</h1>
   
 </article>
 
@@ -251,11 +251,11 @@
   
   <div class="w-full ">
     <div class="prose">
-  <a href="/posts/birding-202601/" class="no-underline">
-    <h3 class="mt-0">观鸟改变了我</h3>
+  <a href="/posts/yesterday-once-more/" class="no-underline">
+    <h3 class="mt-0">博客迁移日记</h3>
   </a>
   
-    观鸟就像寻找随时变化的宝箱：去上次发现宝箱的地点，可能不再有宝箱，也可能有不同的宝箱。其乐无穷。
+    简单讲述一下博客迁移的过程。
   
 
   
@@ -265,169 +265,7 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2026-02-02</span
-    >
-  </div>
-  <div class="me-6 my-2">
-    <i class="fas fa-clock me-1"></i>
-    <span>1分钟阅读时长</span>
-  </div>
-
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-folder me-1"></i>
-      
-        <a href="/categories/log/" class="hover:text-eureka"
-          >log</a
-        >
-      
-    </div>
-  
-
-  
-</div>
-
-  
-</div>
-
-  </div>
-
-  
-</div>
-  </div>
-  
-  <div class="py-6">
-    <div class="flex flex-col-reverse lg:flex-row justify-between">
-  
-  <div class="w-full ">
-    <div class="prose">
-  <a href="/posts/birding-20251222/" class="no-underline">
-    <h3 class="mt-0">观鸟记：20251214, 20251220, 20251221, 20251225</h3>
-  </a>
-  
-    记录一下2025年12月的四次观鸟
-  
-
-  
-    <div
-  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
->
-  <div class="me-6 my-2">
-    <i class="fas fa-calendar me-1"></i>
-    <span
-      >2025-12-22</span
-    >
-  </div>
-  <div class="me-6 my-2">
-    <i class="fas fa-clock me-1"></i>
-    <span>8分钟阅读时长</span>
-  </div>
-
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-folder me-1"></i>
-      
-        <a href="/categories/log/" class="hover:text-eureka"
-          >log</a
-        >
-      
-        
-          <span>, </span>
-        <a href="/categories/birding/" class="hover:text-eureka"
-          >birding</a
-        >
-      
-    </div>
-  
-
-  
-</div>
-
-  
-</div>
-
-  </div>
-
-  
-</div>
-  </div>
-  
-  <div class="py-6">
-    <div class="flex flex-col-reverse lg:flex-row justify-between">
-  
-  <div class="w-full ">
-    <div class="prose">
-  <a href="/posts/birding-20251101/" class="no-underline">
-    <h3 class="mt-0">观鸟记：Sungei Buloh 20251101</h3>
-  </a>
-  
-    记录一下11月1日 Sungei Bedok 看到的鸟。
-  
-
-  
-    <div
-  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
->
-  <div class="me-6 my-2">
-    <i class="fas fa-calendar me-1"></i>
-    <span
-      >2025-11-04</span
-    >
-  </div>
-  <div class="me-6 my-2">
-    <i class="fas fa-clock me-1"></i>
-    <span>5分钟阅读时长</span>
-  </div>
-
-  
-    <div class="me-6 my-2">
-      <i class="fas fa-folder me-1"></i>
-      
-        <a href="/categories/log/" class="hover:text-eureka"
-          >log</a
-        >
-      
-        
-          <span>, </span>
-        <a href="/categories/birding/" class="hover:text-eureka"
-          >birding</a
-        >
-      
-    </div>
-  
-
-  
-</div>
-
-  
-</div>
-
-  </div>
-
-  
-</div>
-  </div>
-  
-  <div class="py-6">
-    <div class="flex flex-col-reverse lg:flex-row justify-between">
-  
-  <div class="w-full ">
-    <div class="prose">
-  <a href="/posts/birding-20251011/" class="no-underline">
-    <h3 class="mt-0">观鸟记: Tampines Eco Green 20251011</h3>
-  </a>
-  
-    记录一下在 Tampines Eco Green 看到的鸟。
-  
-
-  
-    <div
-  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
->
-  <div class="me-6 my-2">
-    <i class="fas fa-calendar me-1"></i>
-    <span
-      >2025-10-11</span
+      >2022-05-19</span
     >
   </div>
   <div class="me-6 my-2">
@@ -443,12 +281,6 @@
           >log</a
         >
       
-        
-          <span>, </span>
-        <a href="/categories/birding/" class="hover:text-eureka"
-          >birding</a
-        >
-      
     </div>
   
 
@@ -469,6 +301,32 @@
 
   </div>
   
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/categories/log/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/categories/log/page/3/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/categories/log/" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="/categories/log/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="/categories/log/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 4" class="page-link" role="button">4</a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Next" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
 
           </div>
         </div>

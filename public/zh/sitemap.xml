@@ -2,8 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/tags/birding/</loc>
+    <lastmod>2026-02-04T12:02:00+08:00</lastmod>
+  </url><url>
     <loc>/categories/</loc>
-    <lastmod>2026-02-02T22:56:32+08:00</lastmod>
+    <lastmod>2026-02-04T12:02:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -13,6 +16,61 @@
                 rel="alternate"
                 hreflang="zh"
                 href="/categories/"
+                />
+  </url><url>
+    <loc>/categories/log/</loc>
+    <lastmod>2026-02-04T12:02:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/categories/log/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="/categories/log/"
+                />
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2026-02-04T12:02:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="/posts/"
+                />
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2026-02-04T12:02:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="/tags/"
+                />
+  </url><url>
+    <loc>/posts/birding-202601/</loc>
+    <lastmod>2026-02-04T11:57:58+08:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2026-02-04T12:02:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="/"
                 />
   </url><url>
     <loc>/tags/history/</loc>
@@ -28,66 +86,14 @@
                 href="/tags/history/"
                 />
   </url><url>
-    <loc>/categories/log/</loc>
-    <lastmod>2026-02-02T22:56:32+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/categories/log/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="/categories/log/"
-                />
-  </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2026-02-02T22:56:32+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="/posts/"
-                />
-  </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2026-02-02T22:56:32+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="/tags/"
-                />
-  </url><url>
     <loc>/posts/history-2025/</loc>
     <lastmod>2025-12-31T21:21:57+08:00</lastmod>
   </url><url>
-    <loc>/</loc>
-    <lastmod>2026-02-02T22:56:32+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="/"
-                />
-  </url><url>
-    <loc>/tags/birding/</loc>
-    <lastmod>2025-12-29T22:58:56+08:00</lastmod>
+    <loc>/categories/birding/</loc>
+    <lastmod>2026-02-04T12:02:00+08:00</lastmod>
   </url><url>
     <loc>/posts/birding-20251222/</loc>
-    <lastmod>2025-12-29T22:58:56+08:00</lastmod>
+    <lastmod>2026-02-04T12:02:00+08:00</lastmod>
   </url><url>
     <loc>/tags/tokyo/</loc>
     <lastmod>2026-02-02T22:56:32+08:00</lastmod>
@@ -102,10 +108,10 @@
     <lastmod>2026-02-02T22:56:32+08:00</lastmod>
   </url><url>
     <loc>/posts/birding-20251101/</loc>
-    <lastmod>2025-11-07T16:37:24+08:00</lastmod>
+    <lastmod>2026-02-04T12:02:00+08:00</lastmod>
   </url><url>
     <loc>/posts/birding-20251011/</loc>
-    <lastmod>2025-10-12T22:52:38+08:00</lastmod>
+    <lastmod>2026-02-04T12:02:00+08:00</lastmod>
   </url><url>
     <loc>/tags/fiction/</loc>
     <lastmod>2025-09-29T22:21:25+08:00</lastmod>

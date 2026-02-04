@@ -6,13 +6,22 @@
     <description>Recent content in Categories on 一派胡言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 31 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="/categories/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="/categories/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>log</title>
       <link>/categories/log/</link>
-      <pubDate>Wed, 31 Dec 2025 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate>
       
       <guid>/categories/log/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>birding</title>
+      <link>/categories/birding/</link>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/birding/</guid>
       <description></description>
     </item>
     
