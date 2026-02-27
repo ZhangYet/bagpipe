@@ -83,21 +83,8 @@
     <loc>/posts/birding-202602-guangzhou/</loc>
     <lastmod>2026-02-27T20:19:56+08:00</lastmod>
   </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2026-02-27T20:20:18+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/en/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="/posts/"
-                />
-  </url><url>
     <loc>/</loc>
-    <lastmod>2026-02-27T20:20:18+08:00</lastmod>
+    <lastmod>2026-02-27T20:35:53+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -357,6 +344,19 @@
                 rel="alternate"
                 hreflang="zh"
                 href="/series/"
+                />
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2026-02-27T20:35:53+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="/posts/"
                 />
   </url>
 </urlset>
