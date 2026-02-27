@@ -1,11 +1,10 @@
 baseURL: /
 title: 一派胡言
 
-# Uncomment when not installing with Hugo Modules
-# theme: eureka
-# Comment when not installing with Hugo Modules
-theme: wangchucheng.com/hugo-eureka
-# If you cannot access the Github mirror, you can also use the Gitee mirror: gitee.com/wangchucheng/hugo-eureka
+# Use local theme (run ./scripts/setup-theme.sh once to clone into themes/hugo-eureka)
+theme: hugo-eureka
+# Alternative: Hugo Module (replace in go.mod: github.com/ZhangYet/hugo-eureka)
+# theme: wangchucheng.com/hugo-eureka
 
 paginate: 5
 enableEmoji: true
