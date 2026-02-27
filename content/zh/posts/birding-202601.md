@@ -3,9 +3,9 @@ title = "观鸟改变了我"
 author = ["Dantezy"]
 description = "观鸟就像寻找流动的宝箱，我们四处游弋，凭借技巧、耐心和运气，寻找鸟儿的踪迹，一旦发现有趣的鸟类，就像发现了一个宝箱。但是旧地重游未必能遇上同一个宝箱，也可能在散步中偶遇一只从未见过的珍禽，这可算 One Piece 级别的大秘宝。"
 date = 2026-02-02
-lastmod = 2026-02-21T16:17:14+08:00
-tags = ["birding"]
-categories = ["log"]
+lastmod = 2026-02-27T20:19:40+08:00
+tags = ["birding", "log"]
+categories = ["log", "birding"]
 draft = false
 +++
 

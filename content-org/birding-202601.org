@@ -1,8 +1,8 @@
 #+HUGO_BASE_DIR: ../
 #+HUGO_SECTION: zh/posts
 #+hugo_auto_set_lastmod: t
-#+hugo_tags: birding
-#+hugo_categories: log
+#+hugo_tags: birding log
+#+hugo_categories: log birding
 #+hugo_draft: false
 #+description: 观鸟就像寻找流动的宝箱，我们四处游弋，凭借技巧、耐心和运气，寻找鸟儿的踪迹，一旦发现有趣的鸟类，就像发现了一个宝箱。但是旧地重游未必能遇上同一个宝箱，也可能在散步中偶遇一只从未见过的珍禽，这可算 One Piece 级别的大秘宝。
 #+author: Dantezy

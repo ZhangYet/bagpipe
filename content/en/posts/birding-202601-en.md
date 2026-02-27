@@ -3,9 +3,9 @@ title = "Birding Changed Me"
 author = ["Dantezy"]
 description = "Birding is like searching for moving treasure chests. We roam around, relying on skill, patience, and luck to trace the presence of birds. Once we find an interesting species, it feels like discovering a treasure chest. But revisiting the same place does not guarantee encountering the same treasure again. Sometimes, during an ordinary walk, you may stumble upon a bird you have never seen before — that would count as a One Piece–level ultimate treasure."
 date = 2026-02-02
-lastmod = 2026-02-21T16:32:37+08:00
-tags = ["birding"]
-categories = ["log"]
+lastmod = 2026-02-27T20:19:33+08:00
+tags = ["birding", "log"]
+categories = ["log", "birding"]
 draft = false
 +++
 

@@ -1,8 +1,8 @@
 #+HUGO_BASE_DIR: ../
 #+HUGO_SECTION: en/posts
 #+hugo_auto_set_lastmod: t
-#+hugo_tags: birding
-#+hugo_categories: log
+#+hugo_tags: birding log
+#+hugo_categories: log birding
 #+hugo_draft: false
 #+description: Birding is like searching for moving treasure chests. We roam around, relying on skill, patience, and luck to trace the presence of birds. Once we find an interesting species, it feels like discovering a treasure chest. But revisiting the same place does not guarantee encountering the same treasure again. Sometimes, during an ordinary walk, you may stumble upon a bird you have never seen before — that would count as a One Piece–level ultimate treasure.
 #+author: Dantezy
