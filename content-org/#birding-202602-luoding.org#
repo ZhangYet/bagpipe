@@ -1,17 +1,17 @@
-+++
-title = "春节观鸟记：罗定篇"
-author = ["Dantezy"]
-description = "从鸟开始重新认识我的故乡。"
-date = 2026-03-05
-lastmod = 2026-03-13T17:42:28+08:00
-tags = ["birding", "log"]
-categories = ["birding", "log"]
-draft = false
-+++
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: zh/posts
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: birding log
+#+hugo_categories: birding log
+#+hugo_draft: false
+#+description: 从鸟开始重新认识我的故乡。
+#+author: Dantezy
+#+date: 2026-03-05
+#+TITLE: 春节观鸟记：罗定篇
 
 我的故乡是罗定，广东西部一个明不见经传的县级市。历史上，它是罗定州，管辖西宁和东安两县，
 解放后，西宁变成了郁南县，东安变成了云浮市——反过来管辖罗定，真是一个悲伤的故事。
-关于罗定在清朝的历史，可以看我之前的读书笔记：[《同光之间的罗定》](https://dantezy.xyz/posts/luoding-in-tongguang/)。
+关于罗定在清朝的历史，可以看我之前的读书笔记：[[https://dantezy.xyz/posts/luoding-in-tongguang/][《同光之间的罗定》]]。
 至于现在，罗定实在藉藉无名——除了云浮常年蹲在广东地级市 GDP 倒数第一这个名气之外，
 最近一个名人，是蓝战非，对，虽然我都不知道为啥这人出名，但这确实是我同乡。
 
@@ -31,9 +31,11 @@ draft = false
 到除夕，回旧居贴对联，我看到一些燕子停在了电线上，终于能拍到比较清晰的照片，
 Merlin 鉴定为赤腰燕(Red-rumped Swallow, Cecropis daurica)，这种燕子比较大胆，还会在地上水坑戏水。
 
-{{< figure src="/ox-hugo/red-rumped-swallow0.jpg" caption="<span class=\"figure-number\">Figure 1: </span>还似旧时" >}}
+#+CAPTION: 还似旧时
+[[./figures/birding-202602-luoding/red-rumped-swallow0.jpg]]
 
-{{< figure src="/ox-hugo/red-rumped-swallow1.jpg" caption="<span class=\"figure-number\">Figure 2: </span>非常大胆，跟家燕，还有新加坡常见的 Swift 非常不同" >}}
+#+CAPTION: 非常大胆，跟家燕，还有新加坡常见的 Swift 非常不同
+[[./figures/birding-202602-luoding/red-rumped-swallow1.jpg]]
 
 到初一那天，我们一家惯例会出门走走，我依然带着望远镜出门。走到本地的江滨公园，
 居然能看到暗绿绣眼。随后还看到斑文鸟（我在新加坡也就见过一会）。还有一只黄腹山鹪莺
